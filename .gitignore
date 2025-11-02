@@ -1,0 +1,8 @@
+# Codex CLI - exclude auth tokens but include prompts
+.codex/*
+!.codex/prompts/
+!.codex/README.md
+!.codex/.gitignore
+
+# direnv
+.envrc.local
