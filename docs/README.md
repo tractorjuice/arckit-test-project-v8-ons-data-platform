@@ -22,17 +22,19 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 5. [Business Case](guides/business-case.md) - `/arckit.sobc` ⭐ NEW
 6. [Requirements Definition](guides/requirements.md) - `/arckit.requirements`
 7. [Data Model](guides/data-model.md) - `/arckit.data-model` ⭐ NEW
-8. [Wardley Mapping](guides/wardley-mapping.md) - `/arckit.wardley` ⭐ NEW
-9. [Design Reviews](guides/design-review.md) - `/arckit.hld-review`, `/arckit.dld-review`
-10. [Traceability](guides/traceability.md) - `/arckit.traceability`
+8. [Data Protection Impact Assessment](guides/dpia.md) - `/arckit.dpia` ⭐ NEW
+9. [Wardley Mapping](guides/wardley-mapping.md) - `/arckit.wardley` ⭐ NEW
+10. [Design Reviews](guides/design-review.md) - `/arckit.hld-review`, `/arckit.dld-review`
+11. [Traceability](guides/traceability.md) - `/arckit.traceability`
 
 ### Research & Analysis
-11. [Research](guides/research.md) - `/arckit.research` ⭐ NEW
-12. [Analyze](guides/analyze.md) - `/arckit.analyze` ⭐ NEW
-13. [Diagrams](guides/diagram.md) - `/arckit.diagram` ⭐ NEW
+12. [Research](guides/research.md) - `/arckit.research` ⭐ NEW
+13. [Analyze](guides/analyze.md) - `/arckit.analyze` ⭐ NEW
+14. [Principles Compliance](guides/principles-compliance.md) - `/arckit.principles-compliance` ⭐ NEW
+15. [Diagrams](guides/diagram.md) - `/arckit.diagram` ⭐ NEW
 
 ### Procurement
-14. [Vendor Procurement](guides/procurement.md) - `/arckit.sow`, `/arckit.evaluate`
+16. [Vendor Procurement](guides/procurement.md) - `/arckit.sow`, `/arckit.evaluate`
 
 ### UK Government
 - [Service Assessment](guides/service-assessment.md) - `/arckit.service-assessment` ⭐ NEW
@@ -93,6 +95,7 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 | `/arckit.sobc` | [business-case.md](guides/business-case.md) | ✅ Complete |
 | `/arckit.requirements` | [requirements.md](guides/requirements.md) | ✅ Complete |
 | `/arckit.data-model` | [data-model.md](guides/data-model.md) | ✅ Complete |
+| `/arckit.dpia` | [dpia.md](guides/dpia.md) | ✅ Complete |
 | `/arckit.research` | [research.md](guides/research.md) | ✅ Complete |
 | `/arckit.wardley` | [wardley-mapping.md](guides/wardley-mapping.md) | ✅ Complete |
 | `/arckit.diagram` | [diagram.md](guides/diagram.md) | ✅ Complete |
@@ -107,6 +110,7 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 | `/arckit.servicenow` | [design-review.md](guides/design-review.md) | ✅ Complete |
 | `/arckit.traceability` | [traceability.md](guides/traceability.md) | ✅ Complete |
 | `/arckit.analyze` | [analyze.md](guides/analyze.md) | ✅ Complete |
+| `/arckit.principles-compliance` | [principles-compliance.md](guides/principles-compliance.md) | ✅ Complete |
 | `/arckit.service-assessment` | [service-assessment.md](guides/service-assessment.md) | ✅ Complete |
 | `/arckit.tcop` | [technology-code-of-practice.md](guides/uk-government/technology-code-of-practice.md) | ✅ Complete |
 | `/arckit.ai-playbook` | [ai-playbook.md](guides/uk-government/ai-playbook.md) | ✅ Complete |
@@ -114,8 +118,9 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 | `/arckit.secure` | [secure-by-design.md](guides/uk-government/secure-by-design.md) | ✅ Complete |
 | `/arckit.mod-secure` | [secure-by-design.md](guides/uk-mod/secure-by-design.md) | ✅ Complete |
 | `/arckit.jsp-936` | [jsp-936.md](guides/jsp-936.md) | ✅ Complete |
+| `/arckit.story` | [story.md](guides/story.md) | ✅ Complete |
 
-**Coverage**: 28/28 commands documented (100%) ✅ COMPLETE
+**Coverage**: 31/31 commands documented (100%)
 
 ---
 
@@ -127,5 +132,5 @@ Found a gap or want to improve documentation?
 
 ---
 
-**Last updated**: 2025-10-31
-**ArcKit Version**: 0.7.0
+**Last updated**: 2025-11-04
+**ArcKit Version**: 0.8.3
