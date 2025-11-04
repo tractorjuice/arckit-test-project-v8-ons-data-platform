@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="ArcKit - Enterprise Architecture Governance & Vendor Procurement Toolkit. 30 AI-assisted commands for systematic, compliant project delivery following UK Government standards.">
+    <meta name="keywords" content="enterprise architecture, UK government, GDS, architecture governance, vendor procurement, ArcKit, compliance, TCOP, secure by design">
+    <meta name="author" content="ArcKit">
+    <title>ArcKit - Enterprise Architecture Governance & Vendor Procurement</title>
+
+    <!-- GOV.UK Frontend v5.13.0 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.css">
+
+    <style>
+        /*
+         * Font Override for Non-GOV.UK Domains
+         *
+         * GDS Transport font is licensed ONLY for *.gov.uk, *.service.gov.uk, and *.blog.gov.uk domains.
+         * ArcKit is hosted on tractorjuice.github.io, so per GDS guidelines we must use system fonts.
+         *
+         * Reference: https://design-system.service.gov.uk/styles/typeface/
+         * "If your service is publicly available on a subdomain other than service.gov.uk,
+         * use an alternative typeface like Helvetica or Arial."
+         */
+        body,
+        .govuk-template,
+        .govuk-template__body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                         Helvetica, Arial, sans-serif, "Apple Color Emoji",
+                         "Segoe UI Emoji", "Segoe UI Symbol" !important;
+        }
+
+        /* Override all GDS typography classes to use system fonts */
+        [class*="govuk-"] {
+            font-family: inherit;
+        }
+
+        /* Minimal custom styles for ArcKit-specific components not in GDS */
+        .app-hero {
+            background: linear-gradient(135deg, #1d70b8 0%, #003078 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .app-hero h1,
+        .app-hero p {
+            color: white;
+        }
+
+        .app-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .app-stat-card {
+            background: #f3f2f1;
+            padding: 1.5rem;
+            text-align: center;
+            border-left: 4px solid #1d70b8;
+        }
+
+        .app-stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1d70b8;
+            line-height: 1;
+        }
+
+        .app-stat-label {
+            font-size: 1rem;
+            color: #0b0c0c;
+            margin-top: 0.5rem;
+        }
+
+        .app-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .app-feature-card {
+            border: 2px solid #b1b4b6;
+            padding: 1.5rem;
+        }
+
+        .app-phase-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f3f2f1;
+        }
+
+        .app-phase-box {
+            background: white;
+            border: 2px solid #1d70b8;
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .app-phase-arrow {
+            font-size: 2rem;
+            color: #1d70b8;
+            font-weight: 700;
+        }
+
+        .app-command-section {
+            background: #f3f2f1;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-command-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .app-command-list li {
+            background: white;
+            border-left: 4px solid #00703c;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-command-code {
+            font-family: monospace;
+            background: #f3f2f1;
+            padding: 0.25rem 0.5rem;
+            font-weight: 700;
+        }
+
+        .app-ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .app-ai-card {
+            border: 3px solid #1d70b8;
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .app-use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .app-use-case-card {
+            background: #f3f2f1;
+            padding: 1.5rem;
+            border-top: 4px solid #00703c;
+        }
+
+        .app-code-block {
+            background: #0b0c0c;
+            color: #00ff00;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .app-code-block pre {
+            margin: 0;
+        }
+
+        .app-footer {
+            background: #0b0c0c;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .app-footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .app-footer a:hover {
+            color: #5694ca;
+        }
+    </style>
+</head>
+<body class="govuk-template__body">
+    <a class="govuk-skip-link" href="#main-content">Skip to main content</a>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <!-- Phase Banner -->
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">
+                    This is a new toolkit. <a class="govuk-link" href="https://github.com/tractorjuice/arc-kit/issues">Help us improve it with your feedback</a>.
+                </span>
+            </p>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="app-hero">
+            <div class="govuk-width-container">
+                <h1 class="govuk-heading-xl">ArcKit</h1>
+                <p class="govuk-body-l">Transform architecture chaos into systematic, audit-ready governance.</p>
+                <p class="govuk-body">31 AI-assisted commands that generate complete governance documents. From stakeholder analysis and risk registers to design reviews and traceability matrices—each command produces template-driven, audit-ready artifacts. Navigate discovery to delivery with built-in UK Government compliance: GDS Service Manual, Technology Code of Practice, Secure by Design.</p>
+
+                <div class="govuk-button-group govuk-!-margin-top-6">
+                    <a href="https://github.com/tractorjuice/arc-kit" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                        Get started on GitHub
+                        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+                        </svg>
+                    </a>
+                    <a href="#documentation" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                        View documentation
+                    </a>
+                    <a href="#getting-started" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                        Quick start guide
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <!-- Features Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9">
+        <h2 class="govuk-heading-l">Features</h2>
+        <div class="app-feature-grid">
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">Systematic</h3>
+                <p class="govuk-body">Follow GDS Agile Delivery phases (Discovery → Alpha → Beta → Live) with structured command workflow ensuring complete, auditable project artifacts.</p>
+            </div>
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">Compliant</h3>
+                <p class="govuk-body">Built-in compliance with Technology Code of Practice (TCoP), Secure by Design principles, GDS Service Standard, and UK Government procurement frameworks.</p>
+            </div>
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">Auditable</h3>
+                <p class="govuk-body">Every artifact includes version control, traceability matrices, design review checklists, and comprehensive gap analysis for audit readiness.</p>
+            </div>
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">AI-Assisted</h3>
+                <p class="govuk-body">Works with Claude Code, OpenAI Codex CLI, and Gemini CLI. AI generates first drafts following templates; architects review and refine.</p>
+            </div>
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">Traceable</h3>
+                <p class="govuk-body">Complete traceability chains from stakeholder goals through risks and requirements to design decisions. Every artifact links back to business drivers and outcomes.</p>
+            </div>
+            <div class="app-feature-card">
+                <h3 class="govuk-heading-m">Open Source</h3>
+                <p class="govuk-body">Free and open under MIT licence. Full transparency, community contributions welcome, and no vendor lock-in. Adapt and extend for your organisation's needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Capabilities Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9">
+        <h2 class="govuk-heading-l">What ArcKit Does</h2>
+        <p class="govuk-body">Transform scattered documents into systematic, auditable architecture governance across four key areas:</p>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6">
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s" style="border-left: 4px solid #1d70b8; padding-left: 1rem;">Governance & Strategy</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Architecture principles enforcement</li>
+                    <li>Stakeholder analysis with RACI matrices</li>
+                    <li>Risk management (HM Treasury Orange Book)</li>
+                    <li>Business case justification (Green Book SOBC)</li>
+                    <li>Strategic planning with Wardley Mapping</li>
+                </ul>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s" style="border-left: 4px solid #00703c; padding-left: 1rem;">Requirements & Data</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Comprehensive requirements documentation</li>
+                    <li>Data modelling with ERD diagrams</li>
+                    <li>GDPR compliance and data governance</li>
+                    <li>Complete requirements traceability</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6">
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s" style="border-left: 4px solid #912b88; padding-left: 1rem;">Procurement & Vendors</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Technology research with build vs buy analysis</li>
+                    <li>RFP statement of work generation</li>
+                    <li>Vendor evaluation and selection</li>
+                    <li>Digital Marketplace compliance</li>
+                </ul>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s" style="border-left: 4px solid #d4351c; padding-left: 1rem;">Design & Quality</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Visual architecture diagrams (Mermaid)</li>
+                    <li>Formal design reviews (HLD/DLD)</li>
+                    <li>Secure by Design compliance checks</li>
+                    <li>ServiceNow service management integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDS Workflow Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9">
+        <h2 class="govuk-heading-l">GDS Agile Delivery Workflow</h2>
+        <p class="govuk-body">ArcKit follows the UK Government's GDS Service Manual Agile Delivery framework:</p>
+
+        <div class="app-phase-flow">
+            <div class="app-phase-box">Phase 0<br>Planning</div>
+            <div class="app-phase-arrow">→</div>
+            <div class="app-phase-box">Discovery</div>
+            <div class="app-phase-arrow">→</div>
+            <div class="app-phase-box">Alpha</div>
+            <div class="app-phase-arrow">→</div>
+            <div class="app-phase-box">Beta</div>
+            <div class="app-phase-arrow">→</div>
+            <div class="app-phase-box">Live</div>
+        </div>
+    </div>
+
+    <!-- Commands Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9" id="commands">
+        <h2 class="govuk-heading-l">31 ArcKit Commands</h2>
+        <p class="govuk-body">Organized by workflow phase for systematic project execution:</p>
+
+        <!-- Foundation Commands -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Foundation</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.plan</span> - Create comprehensive project plan with GDS phases, Mermaid Gantt charts, and workflow diagrams</li>
+                <li><span class="app-command-code">/arckit.principles</span> - Establish architecture principles (Security, Performance, Scalability, Interoperability)</li>
+            </ul>
+        </div>
+
+        <!-- Strategic Context -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Strategic Context</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.stakeholders</span> - Analyze stakeholder drivers and goals (RACI matrix, power/interest grid)</li>
+                <li><span class="app-command-code">/arckit.risk</span> - Create comprehensive risk register (HM Treasury Orange Book methodology)</li>
+                <li><span class="app-command-code">/arckit.sobc</span> - Generate Strategic Outline Business Case (Green Book 5-case model: Strategic, Economic, Commercial, Financial, Management)</li>
+            </ul>
+        </div>
+
+        <!-- Requirements & Data -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Requirements & Data</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.requirements</span> - Define comprehensive requirements (Business, Functional, Non-Functional, Data, Integration)</li>
+                <li><span class="app-command-code">/arckit.data-model</span> - Design entity-relationship data model with GDPR compliance</li>
+                <li><span class="app-command-code">/arckit.dpia</span> - Generate Data Protection Impact Assessment for UK GDPR Article 35 compliance with ICO 9-criteria screening</li>
+            </ul>
+        </div>
+
+        <!-- Research & Strategy -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Research & Strategy</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.research</span> - Internet research with cited sources for technical decisions and build vs buy analysis</li>
+                <li><span class="app-command-code">/arckit.wardley</span> - Create Wardley Map for strategic planning and evolution analysis</li>
+            </ul>
+        </div>
+
+        <!-- Procurement -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Procurement</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.sow</span> - Generate Statement of Work (SOW) / RFP document for vendor procurement</li>
+                <li><span class="app-command-code">/arckit.dos</span> - Generate Digital Outcomes and Specialists procurement documentation for UK Digital Marketplace</li>
+                <li><span class="app-command-code">/arckit.gcloud-search</span> - Find G-Cloud services on UK Digital Marketplace with live search</li>
+                <li><span class="app-command-code">/arckit.gcloud-clarify</span> - Analyze G-Cloud service gaps and generate supplier clarification questions</li>
+                <li><span class="app-command-code">/arckit.evaluate</span> - Create vendor evaluation framework and score vendor proposals</li>
+            </ul>
+        </div>
+
+        <!-- Design & Architecture -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Design & Architecture</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.diagram</span> - Generate architecture diagrams using Mermaid (C4 Model: Context, Container, Component, Deployment)</li>
+                <li><span class="app-command-code">/arckit.hld-review</span> - Review High-Level Design (HLD) against architecture principles and requirements</li>
+                <li><span class="app-command-code">/arckit.dld-review</span> - Review Detailed Low-Level Design (DLD) for implementation readiness</li>
+            </ul>
+        </div>
+
+        <!-- Implementation Planning -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Implementation Planning</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.backlog</span> - Generate prioritized product backlog - convert requirements to GDS user stories, organize into sprints</li>
+            </ul>
+        </div>
+
+        <!-- Operations -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Operations</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.servicenow</span> - Generate ServiceNow CMDB design with CIs, relationships, and service management integration</li>
+                <li><span class="app-command-code">/arckit.traceability</span> - Generate requirements traceability matrix from requirements → design → tests</li>
+            </ul>
+        </div>
+
+        <!-- Quality & Governance -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Quality & Governance</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.analyze</span> - Perform comprehensive governance quality analysis across all architecture artifacts</li>
+                <li><span class="app-command-code">/arckit.principles-compliance</span> - Assess project compliance with architecture principles using RAG status and evidence-based validation</li>
+            </ul>
+        </div>
+
+        <!-- UK Government Compliance -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">UK Government Compliance</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.service-assessment</span> - Prepare for GDS Service Standard assessment (14 points, RAG ratings, evidence mapping)</li>
+                <li><span class="app-command-code">/arckit.tcop</span> - Generate Technology Code of Practice (TCoP) review document (13 points)</li>
+                <li><span class="app-command-code">/arckit.secure</span> - Generate Secure by Design assessment for UK Government projects (NCSC CAF, Cyber Essentials, UK GDPR)</li>
+                <li><span class="app-command-code">/arckit.ai-playbook</span> - Assess UK Government AI Playbook compliance for responsible AI deployment</li>
+                <li><span class="app-command-code">/arckit.atrs</span> - Generate Algorithmic Transparency Recording Standard (ATRS) record for AI/algorithmic tools</li>
+            </ul>
+        </div>
+
+        <!-- UK MOD Defence -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">UK MOD (Ministry of Defence)</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.mod-secure</span> - Generate MOD Secure by Design assessment using CAAT and continuous assurance</li>
+                <li><span class="app-command-code">/arckit.jsp-936</span> - Generate MOD JSP 936 AI assurance documentation for defence AI/ML systems</li>
+            </ul>
+        </div>
+
+        <!-- Reporting -->
+        <div class="app-command-section">
+            <h3 class="govuk-heading-m">Reporting</h3>
+            <ul class="app-command-list">
+                <li><span class="app-command-code">/arckit.story</span> - Generate comprehensive project story with timeline analysis, traceability, and governance achievements</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Multi-AI Support Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9" id="multi-ai">
+        <h2 class="govuk-heading-l">Multi-AI System Support</h2>
+        <p class="govuk-body">ArcKit works with three major AI development environments:</p>
+
+        <div class="app-ai-grid">
+            <div class="app-ai-card">
+                <h3 class="govuk-heading-m">Claude Code</h3>
+                <strong class="govuk-tag govuk-tag--green">Primary</strong>
+                <p class="govuk-body govuk-!-margin-top-3">Official CLI from Anthropic. Commands in <code>.claude/prompts/</code> directory.</p>
+                <p class="govuk-body"><strong>Best for:</strong> Complex reasoning, architecture design, comprehensive documentation generation.</p>
+                <p class="govuk-body"><strong>Installation:</strong> <code>brew install claude</code></p>
+            </div>
+
+            <div class="app-ai-card">
+                <h3 class="govuk-heading-m">OpenAI Codex CLI</h3>
+                <strong class="govuk-tag govuk-tag--blue">Supported</strong>
+                <p class="govuk-body govuk-!-margin-top-3">Codex CLI for GPT-4. Commands in <code>.codex/prompts/</code> directory.</p>
+                <p class="govuk-body"><strong>Best for:</strong> Code generation, technical implementation, API integration.</p>
+                <p class="govuk-body"><strong>Installation:</strong> <code>npm install -g @openai/codex-cli</code></p>
+            </div>
+
+            <div class="app-ai-card">
+                <h3 class="govuk-heading-m">Gemini CLI</h3>
+                <strong class="govuk-tag govuk-tag--purple">Supported</strong>
+                <p class="govuk-body govuk-!-margin-top-3">Google Gemini CLI. Commands in <code>.gemini/prompts/</code> directory (TOML format).</p>
+                <p class="govuk-body"><strong>Best for:</strong> Multi-modal analysis, data processing, rapid prototyping.</p>
+                <p class="govuk-body"><strong>Installation:</strong> <code>pip install gemini-cli</code></p>
+            </div>
+        </div>
+
+        <div class="govuk-inset-text govuk-!-margin-top-6">
+            All commands work identically across AI systems. Choose based on your organisation's AI platform preference.
+        </div>
+    </div>
+
+    <!-- Use Cases Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9" id="use-cases">
+        <h2 class="govuk-heading-l">Real-World Use Cases</h2>
+        <p class="govuk-body">ArcKit generates complete architecture documentation. Browse actual outputs from these UK Government scenarios:</p>
+
+        <div class="app-use-case-grid">
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">NHS Appointment Booking</h3>
+                <p class="govuk-body-s">Digital health platform with patient portal, NHS Spine integration, IG Toolkit compliance, accessibility (WCAG 2.1 AA), GDPR data handling.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v7-nhs-appointment" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">M365 GCC-H Migration</h3>
+                <p class="govuk-body-s">Government cloud migration from on-premise to Microsoft 365 GCC High with data sovereignty, compliance mapping, user training, rollback planning.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v1-m365" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">HMRC Tax Assistant</h3>
+                <p class="govuk-body-s">Conversational AI for tax guidance with PII handling, HMRC integration, compliance with Government Security Classification, Welsh language support.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">Windows 11 Deployment</h3>
+                <p class="govuk-body-s">Enterprise OS upgrade with hardware compatibility assessment, Group Policy migration, security baseline configuration, pilot testing framework.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v3-windows11" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">Patent Application System</h3>
+                <p class="govuk-body-s">Intellectual property platform with document management, workflow automation, GOV.UK Pay integration, Notify for status updates.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v6-patent-system" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+
+            <div class="app-use-case-card">
+                <h3 class="govuk-heading-s">Cabinet Office GenAI Platform</h3>
+                <p class="govuk-body-s">Cross-government generative AI service with multi-tenant architecture, AI Playbook compliance, ATRS publication, responsible AI governance, departmental isolation for OFFICIAL to OFFICIAL-SENSITIVE data.</p>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v8-cabinet-office-genai" class="govuk-link govuk-body-s">View example outputs →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Section -->
+    <div class="govuk-width-container govuk-!-margin-top-9" id="documentation">
+        <h2 class="govuk-heading-l">Documentation</h2>
+        <p class="govuk-body">Comprehensive guides for every aspect of ArcKit usage:</p>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6">
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s">Command Guides</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/analyze.md" class="govuk-link">Analysis Guide</a> - Gap analysis across artifacts</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/design-review.md" class="govuk-link">Design Review Guide</a> - 10-section assessment checklist</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/diagram.md" class="govuk-link">Architecture Diagrams</a> - C4 Model visualization</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/traceability.md" class="govuk-link">Traceability Guide</a> - Requirements traceability matrix</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/wardley-mapping.md" class="govuk-link">Wardley Mapping</a> - Strategic analysis and build vs buy</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/docs/guides/procurement.md" class="govuk-link">Procurement Guide</a> - Digital Marketplace frameworks</li>
+                </ul>
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+                <h3 class="govuk-heading-s">Technical Documentation</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/README.md" class="govuk-link">README</a> - Quick start and overview</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/CHANGELOG.md" class="govuk-link">Changelog</a> - Release history and updates</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/CONTRIBUTING.md" class="govuk-link">Contributing</a> - How to contribute to ArcKit</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/releases" class="govuk-link">Release Notes</a> - Detailed version information</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/.claude/COMMANDS.md" class="govuk-link">Command Reference</a> - All 30 commands documented</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6">
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-s">Workflow & Dependencies</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/WORKFLOW-DIAGRAMS.md" class="govuk-link">Workflow Diagrams</a> - Visual Mermaid diagrams for all 5 project paths (Standard, UK Gov, UK Gov AI, MOD, MOD AI) with Gantt charts and decision trees</li>
+                    <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/DEPENDENCY-MATRIX.md" class="govuk-link">Dependency Structure Matrix</a> - Complete 30×30 command dependency matrix showing mandatory, recommended, and optional relationships</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <!-- Getting Started Section -->
+        <div class="govuk-width-container govuk-!-margin-top-9" id="getting-started">
+            <h2 class="govuk-heading-l">Getting Started (5 Minutes)</h2>
+
+            <h3 class="govuk-heading-m">1. Install Claude Code</h3>
+            <p class="govuk-body">macOS & Linux (Homebrew):</p>
+            <div class="app-code-block">brew install --cask claude-code</div>
+            <p class="govuk-body govuk-!-margin-top-3">macOS, Linux & WSL (Shell script):</p>
+            <div class="app-code-block">curl -fsSL https://claude.ai/install.sh | bash</div>
+            <p class="govuk-body govuk-!-margin-top-3">Windows (PowerShell):</p>
+            <div class="app-code-block">irm https://claude.ai/install.ps1 | iex</div>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-6">2. Install ArcKit CLI</h3>
+            <div class="app-code-block">pip install arckit-cli</div>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-6">3. Initialize Your Project</h3>
+            <div class="app-code-block"><pre><code>arckit init my-project --ai claude
+cd my-project
+claude</code></pre></div>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-6">4. Run Your First Command</h3>
+            <div class="app-code-block">/arckit.plan Create project plan for NHS appointment booking system</div>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-6">5. Follow GDS Phases</h3>
+
+            <h4 class="govuk-heading-s govuk-!-margin-top-4" style="color: #1d70b8;">Discovery</h4>
+            <div class="app-code-block">/arckit.stakeholders Analyze stakeholders for appointment system</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.risk Create risk register</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.sobc Generate Strategic Outline Business Case</div>
+
+            <h4 class="govuk-heading-s govuk-!-margin-top-4" style="color: #1d70b8;">Alpha</h4>
+            <div class="app-code-block">/arckit.requirements Define requirements</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.principles Establish architecture principles</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.wardley Create Wardley Map for build vs buy decisions</div>
+
+            <h4 class="govuk-heading-s govuk-!-margin-top-4" style="color: #1d70b8;">Beta</h4>
+            <div class="app-code-block">/arckit.hld-review Review High-Level Design</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.diagram Create C4 architecture diagrams</div>
+            <div class="app-code-block govuk-!-margin-top-2">/arckit.analyze Comprehensive gap analysis</div>
+
+            <div class="govuk-warning-text govuk-!-margin-top-6">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-visually-hidden">Warning</span>
+                    AI generates first drafts following templates. Always review, validate, and refine AI output with human expertise.
+                </strong>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-m">ArcKit</h2>
+                    <p class="govuk-body">Enterprise Architecture Governance & Vendor Procurement Toolkit</p>
+                    <p class="govuk-body">Version 0.8.3 - November 2025</p>
+                </div>
+
+                <div class="govuk-grid-column-one-third">
+                    <h3 class="govuk-heading-s">Links</h3>
+                    <ul class="govuk-list">
+                        <li><a href="https://github.com/tractorjuice/arc-kit" class="govuk-link">GitHub Repository</a></li>
+                        <li><a href="https://github.com/tractorjuice/arc-kit/issues" class="govuk-link">Report Issues</a></li>
+                        <li><a href="https://github.com/tractorjuice/arc-kit/releases" class="govuk-link">Releases</a></li>
+                        <li><a href="https://github.com/tractorjuice/arc-kit/blob/main/CONTRIBUTING.md" class="govuk-link">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <p class="govuk-body-s">Built with <a href="https://design-system.service.gov.uk/" class="govuk-link">GOV.UK Design System</a> | MIT License</p>
+            <p class="govuk-body-s">Note: This site uses system fonts (Helvetica, Arial) as per <a href="https://design-system.service.gov.uk/styles/typeface/" class="govuk-link">GDS guidelines for non-gov.uk domains</a>. GDS Transport font is licensed only for official GOV.UK services.</p>
+        </div>
+    </footer>
+
+    <!-- GOV.UK Frontend JavaScript -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js"></script>
+    <script type="module">
+        import { initAll } from 'https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js'
+        initAll()
+    </script>
+</body>
+</html>
