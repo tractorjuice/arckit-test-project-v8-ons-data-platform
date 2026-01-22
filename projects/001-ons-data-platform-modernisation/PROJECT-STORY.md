@@ -1394,7 +1394,7 @@ mindmap
     Data Model
       15 Entities Created
       187 Attributes Defined
-      GDPR Article 6(1)(e) Compliant
+      GDPR Article 6.1.e Compliant
       Special Category Data Handling
     Privacy
       DPIA Complete
@@ -1403,7 +1403,7 @@ mindmap
       ICO Consultation Not Required
       SIRO Approved
     Compliance
-      TCoP 10/13 (88%)
+      TCoP 10/13 - 88%
       NCSC CAF 14/14
       Cyber Essentials 5/5
       GovS 007 Target
