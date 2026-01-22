@@ -1,0 +1,86 @@
+{
+  "generated": "2026-01-22T08:15:00Z",
+  "repository": {
+    "owner": "tractorjuice",
+    "name": "arckit-test-project-v8-ons-data-platform",
+    "branch": "main"
+  },
+  "global": [
+    {
+      "path": ".arckit/memory/architecture-principles.md",
+      "title": "Architecture Principles",
+      "category": "Architecture"
+    }
+  ],
+  "projects": [
+    {
+      "id": "001-ons-data-platform-modernisation",
+      "name": "ONS Data Platform Modernisation",
+      "documents": [
+        {
+          "path": "projects/001-ons-data-platform-modernisation/stakeholder-drivers.md",
+          "title": "Stakeholder Drivers",
+          "category": "Discovery"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/requirements.md",
+          "title": "Requirements",
+          "category": "Discovery"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/risk-register.md",
+          "title": "Risk Register",
+          "category": "Governance"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/sobc.md",
+          "title": "Strategic Outline Business Case",
+          "category": "Planning"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/project-plan.md",
+          "title": "Project Plan",
+          "category": "Planning"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/data-model.md",
+          "title": "Data Model",
+          "category": "Architecture"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/tcop-review.md",
+          "title": "TCoP Assessment",
+          "category": "Compliance"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ukgov-secure-by-design.md",
+          "title": "Secure by Design",
+          "category": "Compliance"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/dpia.md",
+          "title": "Data Protection Impact Assessment",
+          "category": "Compliance"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/gaap-ecosystem-analysis.md",
+          "title": "GAAP Ecosystem Analysis",
+          "category": "Discovery"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/PROJECT-STORY.md",
+          "title": "Project Story",
+          "category": "Overview"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/README.md",
+          "title": "Project README",
+          "category": "Overview"
+        }
+      ],
+      "diagrams": [],
+      "decisions": [],
+      "vendors": []
+    }
+  ]
+}
