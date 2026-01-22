@@ -5,9 +5,59 @@ All notable changes to ArcKit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.10.0] - 2026-01-21
 
 ### Added
+
+- **New Command**: `/arckit.finops` (39th ArcKit command) - Create FinOps strategy for cloud financial management
+  - **Cost Visibility**: Tagging strategy, cost allocation, reporting cadence, dashboards
+  - **Cost Optimization**: Rightsizing, reserved instances/savings plans, spot instances, storage tiering
+  - **Commitment Management**: RI/SP inventory, utilization tracking, purchase recommendations
+  - **Showback/Chargeback**: Allocation methodology, unit economics, internal billing processes
+  - **Budgeting & Forecasting**: Budget types, alert thresholds, forecasting methodology
+  - **Anomaly Detection**: Alert configuration, investigation workflow, escalation matrix
+  - **Governance**: Cloud policies, approval workflows, exception processes
+  - **Sustainability**: Carbon footprint visibility, green region preferences, sustainable practices
+  - **UK Government Context**: Cabinet Office spend controls, Treasury Green Book, G-Cloud tracking
+  - **Template**: `finops-template.md` (800+ lines) with 16 comprehensive sections
+  - **Workflow Position**: Run AFTER /arckit.devops (Tier 8: Operations)
+  - **Use Cases**: Cloud cost management, FinOps maturity assessment, cost optimization initiatives
+
+- **New Command**: `/arckit.operationalize` (36th ArcKit command) - Create operational readiness pack for production services
+  - **SRE Best Practices**: SLIs, SLOs, error budgets, golden signals monitoring
+  - **Support Model**: Tiered support (L1/L2/L3), escalation procedures, on-call rotations
+  - **Runbook Library**: 6 detailed runbooks (startup, shutdown, backup/restore, incident response, scaling, failover)
+  - **DR/BCP**: Disaster recovery procedures, business continuity planning, RTO/RPO targets
+  - **Operational Handover**: Knowledge transfer, training materials, handover checklists
+  - **UK Government Context**: Service Standard operations alignment, NCSC CAF operational security
+  - **Template**: `operationalize-template.md` (1,000+ lines) with 17 comprehensive sections
+  - **Workflow Position**: Run AFTER /arckit.servicenow (Tier 8: Operations)
+  - **Use Cases**: Production readiness, operations handover, SRE implementation, support model design
+
+- **New Command**: `/arckit.devops` (35th ArcKit command) - Create comprehensive DevOps strategy
+  - **CI/CD Pipeline Design**: Build automation, testing strategy, quality gates, artifact management
+  - **Infrastructure as Code**: Terraform/Pulumi/CloudFormation patterns, module structure, state management
+  - **Container Strategy**: Docker, container registries, image scanning, orchestration (Kubernetes/ECS)
+  - **GitOps**: ArgoCD/Flux patterns, deployment strategies (blue-green, canary, rolling)
+  - **DevSecOps**: Shift-left security, SAST/DAST/SCA integration, compliance as code
+  - **Developer Experience**: Local development, devcontainers, inner loop optimization, self-service
+  - **DORA Metrics**: Deployment frequency, lead time, MTTR, change failure rate tracking
+  - **UK Government Context**: Cloud First (TCoP Point 5), open standards, Digital Marketplace compatibility
+  - **Template**: `devops-template.md` (1,200+ lines) with 17 comprehensive sections
+  - **Workflow Position**: Run AFTER /arckit.servicenow (Tier 8: Operations)
+
+- **New Command**: `/arckit.mlops` (34th ArcKit command) - Create MLOps strategy for AI/ML projects
+  - **Model Lifecycle**: Training, serving, monitoring, retirement workflows
+  - **Training Pipeline**: Experiment tracking, hyperparameter optimization, model versioning
+  - **Feature Engineering**: Feature stores, data versioning, feature quality checks
+  - **Model Registry**: Model storage, metadata, approval workflow, promotion stages
+  - **Model Monitoring**: Data drift, concept drift, performance degradation, fairness monitoring
+  - **Retraining Strategy**: Automated triggers, champion-challenger deployment, rollback procedures
+  - **LLM/GenAI Operations**: Prompt management, guardrails, token monitoring, RAG pipelines
+  - **Responsible AI**: Bias detection, explainability (SHAP/LIME), human oversight mechanisms
+  - **UK Government Context**: AI Playbook principles, ATRS compliance, JSP 936 for MOD projects
+  - **Template**: `mlops-template.md` (1,100+ lines) with 15 comprehensive sections
+  - **Workflow Position**: Run AFTER /arckit.devops for AI projects (Tier 8: Operations)
 
 - **New Command**: `/arckit.platform-design` (33rd ArcKit command) - Design multi-sided platforms using Platform Design Toolkit (PDT) methodology
   - **8 PDT Canvases**: Ecosystem Canvas, Entity-Role Portraits, Motivations Matrix, Transactions Board, Learning Engine Canvas, Platform Experience Canvas, MVP Canvas, Platform Design Canvas

@@ -38,7 +38,7 @@ uv tool install arckit-cli --from git+https://github.com/tractorjuice/arc-kit.gi
 uvx --from git+https://github.com/tractorjuice/arc-kit.git arckit init my-project
 ```
 
-**Latest Release**: [v0.9.1](https://github.com/tractorjuice/arc-kit/releases/tag/v0.9.1)
+**Latest Release**: [v0.10.0](https://github.com/tractorjuice/arc-kit/releases/tag/v0.10.0)
 
 ### Initialize a Project
 
@@ -517,6 +517,18 @@ Create narrative historical record with complete timeline analysis:
 
 **When to use**: At project milestones or completion to create shareable story for stakeholders, leadership, or portfolio reporting. Perfect for demonstrating systematic governance and ArcKit workflow value.
 
+### Phase 16: Documentation Publishing
+**`/arckit.pages`** → Generate GitHub Pages documentation site
+
+Publish all project documentation as an interactive website:
+- **GitHub Pages Integration**: Generates `docs/index.html` and `docs/manifest.json` for GitHub Pages hosting
+- **Mermaid Diagram Rendering**: All architecture diagrams render inline with mermaid.js
+- **Project Navigation**: Sidebar with collapsible project tree and document categories
+- **GOV.UK Styling**: Professional government design system styling
+- **Document Index**: Manifest.json provides programmatic access to all artifacts
+
+**When to use**: When you want to share project documentation with stakeholders via a professional web interface, or to create a portfolio view of all architecture artifacts.
+
 ---
 
 ## Supported AI Agents
@@ -592,87 +604,126 @@ payment-modernization/
 
 ---
 
-## Available Commands
+## Complete Command Reference
 
-### Core Commands
+All 40 ArcKit commands with maturity status and example outputs from public test repositories.
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.principles` | Establish architecture governance | `memory/architecture-principles.md` |
-| `/arckit.stakeholders` | Analyze stakeholder drivers, goals, and outcomes | `projects/XXX/stakeholder-drivers.md` |
-| `/arckit.risk` | Create comprehensive risk register (Orange Book) | `projects/XXX/risk-register.md` |
-| `/arckit.sobc` | Create Strategic Outline Business Case (Green Book 5-case) | `projects/XXX/sobc.md` |
-| `/arckit.requirements` | Define comprehensive requirements | `projects/XXX/requirements.md` |
-| `/arckit.platform-design` | Design multi-sided platform strategy using Platform Design Toolkit (8 PDT canvases) | `projects/XXX/platform-design.md` |
-| `/arckit.data-model` | Create data model with ERD, GDPR compliance, data governance | `projects/XXX/data-model.md` |
-| `/arckit.research` | Research technology, services, and products with build vs buy analysis | `projects/XXX/research-findings.md` |
-| `/arckit.wardley` | Create strategic Wardley Maps for build vs buy and procurement strategy | `projects/XXX/wardley-maps/{map-name}.md` |
-| `/arckit.roadmap` | Create multi-year strategic architecture roadmap with capability evolution and governance | `projects/XXX/roadmap.md` |
-| `/arckit.adr` | Document architectural decisions with MADR v4.0 format and UK Government compliance | `projects/XXX/decisions/ADR-{NUM}-{title}.md` |
-| `/arckit.sow` | Generate vendor RFP | `projects/XXX/sow.md` |
-| `/arckit.dos` | Generate Digital Outcomes and Specialists (DOS) procurement docs for UK Digital Marketplace | `projects/XXX/procurement/dos-requirements.md` |
-| `/arckit.gcloud-search` | Search G-Cloud services on UK Digital Marketplace with live WebSearch | `projects/XXX/procurement/gcloud-requirements.md` |
-| `/arckit.gcloud-clarify` | Validate G-Cloud services and generate supplier clarification questions | `projects/XXX/procurement/gcloud-clarification-questions.md` |
+### Status Legend
 
-### Sprint Planning
+| Status | Description |
+|--------|-------------|
+| 🟢 **Live** | Production-ready, extensively tested |
+| 🔵 **Beta** | Feature-complete, actively refined |
+| 🟠 **Alpha** | Working, limited testing |
+| 🟣 **Experimental** | New in v0.10.0, early adopters |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.backlog` | Generate prioritised product backlog - convert requirements to GDS user stories, organise into sprints | `projects/XXX/backlog.md` (+ optional CSV/JSON) |
+### Example Repositories
 
-### Vendor Management
+| Code | Repository | Description |
+|------|------------|-------------|
+| v1 | [arckit-test-project-v1-m365](https://github.com/tractorjuice/arckit-test-project-v1-m365) | Microsoft 365 GCC-H Migration |
+| v2 | [arckit-test-project-v2-hmrc-chatbot](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot) | HMRC Tax Assistant Chatbot |
+| v3 | [arckit-test-project-v3-windows11](https://github.com/tractorjuice/arckit-test-project-v3-windows11) | Windows 11 Enterprise Deployment |
+| v6 | [arckit-test-project-v6-patent-system](https://github.com/tractorjuice/arckit-test-project-v6-patent-system) | IPO Patent Application System |
+| v8 | [arckit-test-project-v8-ons-data-platform](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform) | ONS Data Platform Modernisation |
+| v9 | [arckit-test-project-v9-cabinet-office-genai](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai) | Cabinet Office GenAI Platform |
+| v10 | [arckit-test-project-v10-training-marketplace](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace) | UK Government Training Marketplace |
+| v11 | [arckit-test-project-v11-national-highways-data](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data) | National Highways Data Architecture |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.evaluate` | Create evaluation framework and score vendors | `projects/XXX/evaluation-criteria.md`, `projects/XXX/vendor-comparison.md` |
+### Foundation
 
-### Design Review
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.plan` | Create project plan with timeline, phases, gates, and Mermaid diagrams | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/project-plan.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/project-plan.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/project-plan.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/project-plan.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/project-plan.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/project-plan.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/project-plan.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/project-plan.md) | 🟢 Live |
+| `/arckit.principles` | Create or update enterprise architecture principles | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/.arckit/memory/architecture-principles.md) [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/.arckit/memory/architecture-principles.md) [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/.arckit/memory/architecture-principles.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/.arckit/memory/architecture-principles.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/.arckit/memory/architecture-principles.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/.arckit/memory/architecture-principles.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/.arckit/memory/architecture-principles.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/.arckit/memory/architecture-principles.md) | 🟢 Live |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.hld-review` | Review high-level design | `projects/XXX/vendors/[vendor]/reviews/hld-review.md` |
-| `/arckit.dld-review` | Review detailed design | `projects/XXX/vendors/[vendor]/reviews/dld-review.md` |
+### Strategic Context
 
-### Architecture Diagrams
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.stakeholders` | Analyze stakeholder drivers, goals, and measurable outcomes | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/stakeholder-drivers.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/stakeholder-drivers.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/stakeholder-drivers.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/stakeholder-drivers.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/stakeholder-drivers.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/stakeholder-drivers.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/stakeholder-drivers.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/stakeholder-drivers.md) | 🟢 Live |
+| `/arckit.risk` | Create comprehensive risk register following HM Treasury Orange Book principles | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/risk-register.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/risk-register.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/risk-register.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/risk-register.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/risk-register.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/risk-register.md) | 🟢 Live |
+| `/arckit.sobc` | Create Strategic Outline Business Case (SOBC) using UK Government Green Book 5-case model | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/sobc.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/sobc.md) | 🟢 Live |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.diagram` | Generate visual architecture diagrams using Mermaid (C4, deployment, sequence, data flow) | `projects/XXX/diagrams/{diagram-type}-{name}.md` |
+### Requirements & Data
 
-### Service Management
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.requirements` | Create comprehensive business and technical requirements | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/projects/001-exchange-online-migration/requirements.md) [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/projects/001-hmrc-chatbot/requirements.md) [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/requirements.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/requirements.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/requirements.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/requirements.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/requirements.md) [v3/006](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/006-large-format-printer/requirements.md) [v3/007](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/007-vpn-service-windows11-autopilot/requirements.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/requirements.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/requirements.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/requirements.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/requirements.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/requirements.md) | 🟢 Live |
+| `/arckit.data-model` | Create comprehensive data model with entity relationships, GDPR compliance, and data governance | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/data-model.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/data-model.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/data-model.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/data-model.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/data-model.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/data-model.md) | 🟢 Live |
+| `/arckit.data-mesh-contract` | Create federated data product contracts for mesh architectures with SLAs, governance, and interoperability guarantees | — | 🟠 Alpha |
+| `/arckit.dpia` | Generate Data Protection Impact Assessment (DPIA) for UK GDPR Article 35 compliance | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/dpia.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/dpia.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/dpia.md) | 🔵 Beta |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.servicenow` | Generate ServiceNow service design (CMDB, SLAs, incident/change management, monitoring) | `projects/XXX/servicenow-design.md` |
+### Research & Strategy
 
-### Traceability
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.platform-design` | Create platform strategy using Platform Design Toolkit (8 canvases for multi-sided ecosystems) | [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/gaap-ecosystem-analysis.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/platform-design.md) | 🟣 Experimental |
+| `/arckit.research` | Research technology, services, and products to meet requirements with build vs buy analysis | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/research-findings.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/research-findings.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/research-findings-dell.md) | 🔵 Beta |
+| `/arckit.wardley` | Create strategic Wardley Maps for architecture decisions and build vs buy analysis | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/wardley-maps/procurement-strategy.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/wardley-maps/procurement-strategy.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/wardley-maps/current-state-procurement-strategy.md) | 🟣 Experimental |
+| `/arckit.roadmap` | Create strategic architecture roadmap with multi-year timeline, capability evolution, and governance | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/roadmap.md) | 🔵 Beta |
+| `/arckit.adr` | Document architectural decisions with options analysis and traceability | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/decisions/ADR-001-cloud-native-endpoint-management-platform-selection.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/decisions/ADR-001-application-packaging-format-strategy.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/adr-001-multi-vendor-peripheral-procurement-strategy.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/decisions/ADR-001-use-microsoft-teams-rooms.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/decisions/ADR-001-use-cloud-pki-service.md) | 🔵 Beta |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.traceability` | Generate traceability matrix | `projects/XXX/traceability-matrix.md` |
+### Procurement
 
-### Quality Assurance
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.sow` | Generate Statement of Work (SOW) / RFP document for vendor procurement | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/projects/001-exchange-online-migration/sow.md) [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/projects/001-hmrc-chatbot/sow.md) [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/sow.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/sow.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/sow.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/sow.md) | 🟢 Live |
+| `/arckit.dos` | Generate Digital Outcomes and Specialists (DOS) procurement documentation for UK Digital Marketplace | — | 🟣 Experimental |
+| `/arckit.gcloud-search` | Find G-Cloud services on UK Digital Marketplace with live search and comparison | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/procurement/gcloud-requirements.md) | 🟣 Experimental |
+| `/arckit.gcloud-clarify` | Analyze G-Cloud service gaps and generate supplier clarification questions | — | 🟣 Experimental |
+| `/arckit.evaluate` | Create vendor evaluation framework and score vendor proposals | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/projects/001-exchange-online-migration/evaluation-criteria.md) [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/projects/001-hmrc-chatbot/evaluation-criteria.md) [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/evaluation-criteria.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/evaluation-criteria.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/evaluation-criteria.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/evaluation-criteria.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/evaluation-criteria.md) | 🟢 Live |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.analyze` | Comprehensive governance quality analysis across all artifacts | `projects/XXX/analysis-report.md` |
+### Design & Architecture
 
-### UK Government Compliance
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.diagram` | Generate architecture diagrams using Mermaid for visual documentation | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/projects/001-exchange-online-migration/diagrams/container-m365-exchange-online.md) [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/diagrams/container-intune-architecture.md) [v3/005](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/005-cloud-pki/diagrams/container-hybrid-pki.md) [v3/007](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/007-vpn-service-windows11-autopilot/diagrams/container-vpn-architecture.md) [v10](https://github.com/tractorjuice/arckit-test-project-v10-training-marketplace/blob/main/projects/001-ai-training-marketplace/diagrams/container-ai-training-marketplace.md) | 🟢 Live |
+| `/arckit.hld-review` | Review High-Level Design (HLD) against architecture principles and requirements | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/hld.md) | 🔵 Beta |
+| `/arckit.dld-review` | Review Detailed Design (DLD) for implementation readiness | — | 🔵 Beta |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.service-assessment` | Prepare for GDS Service Standard assessment - analyze evidence against 14 points, identify gaps, generate readiness report | `projects/XXX/service-assessment-{phase}-prep.md` |
-| `/arckit.tcop` | Comprehensive Technology Code of Practice assessment (all 13 points, Digital Spend Controls) | `projects/XXX/tcop-review.md` |
-| `/arckit.ai-playbook` | Assess AI Playbook compliance for responsible AI | `projects/XXX/ai-playbook-assessment.md` |
-| `/arckit.atrs` | Generate Algorithmic Transparency Recording Standard (ATRS) record | `projects/XXX/atrs-record.md` |
+### Operations
 
-### Security Assessment
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.backlog` | Generate prioritised product backlog from ArcKit artifacts - convert requirements to user stories, organise into sprints | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/backlog.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/backlog.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/backlog.md) [v3/004](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/004-conference-facilities-modernization/backlog.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/backlog.md) | 🔵 Beta |
+| `/arckit.servicenow` | Create comprehensive ServiceNow service design with CMDB, SLAs, incident management, and change control | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/servicenow-design.md) | 🔵 Beta |
+| `/arckit.devops` | Create DevOps strategy with CI/CD pipelines, IaC, container orchestration, and developer experience | — | 🟣 Experimental |
+| `/arckit.mlops` | Create MLOps strategy with model lifecycle, training pipelines, serving, monitoring, and governance | — | 🟣 Experimental |
+| `/arckit.finops` | Create FinOps strategy with cloud cost management, optimization, governance, and forecasting | — | 🟣 Experimental |
+| `/arckit.operationalize` | Create operational readiness pack with support model, runbooks, DR/BCP, on-call, and handover documentation | — | 🟣 Experimental |
+| `/arckit.traceability` | Generate requirements traceability matrix from requirements to design to tests | [v1](https://github.com/tractorjuice/arckit-test-project-v1-m365/blob/main/projects/001-exchange-online-migration/traceability-matrix.md) [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/projects/001-hmrc-chatbot/traceability-matrix.md) [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/traceability-matrix.md) [v3/002](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/002-application-packaging-rationalisation/traceability-matrix.md) [v3/003](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/003-peripherals-update-upgrade/traceability-matrix.md) [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/traceability-matrix.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/traceability-matrix.md) | 🟢 Live |
 
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `/arckit.secure` | UK Government Secure by Design assessment (NCSC CAF, Cyber Essentials, UK GDPR) | `projects/XXX/ukgov-secure-by-design.md` |
-| `/arckit.mod-secure` | MOD Secure by Design assessment (JSP 440, IAMM, security clearances) | `projects/XXX/mod-secure-by-design.md` |
-| `/arckit.jsp-936` | MOD JSP 936 AI assurance documentation for defence AI/ML systems | `projects/XXX/jsp-936-assessment.md` |
+### Quality & Governance
+
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.analyze` | Perform comprehensive governance quality analysis across architecture artifacts | [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/analysis-report.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/analysis-report.md) | 🔵 Beta |
+| `/arckit.principles-compliance` | Assess compliance with architecture principles and generate scorecard with evidence, gaps, and recommendations | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/principles-compliance-assessment-2025-11-04.md) | 🟢 Live |
+| `/arckit.story` | Generate comprehensive project story with timeline analysis, traceability, and governance achievements | [v3](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/PROJECT-STORY.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/PROJECT-STORY.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/PROJECT-STORY.md) | 🟢 Live |
+
+### UK Government
+
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.service-assessment` | Prepare for GDS Service Standard assessment - analyze evidence against 14 points, identify gaps, generate readiness report | — | 🔵 Beta |
+| `/arckit.tcop` | Generate a Technology Code of Practice (TCoP) review document for a UK Government technology project | [v6](https://github.com/tractorjuice/arckit-test-project-v6-patent-system/blob/main/projects/001-patent-management-system-for-the-intellectual-property-office/tcop-assessment.md) [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/tcop-review.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/tcop-review.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/tcop-assessment.md) | 🔵 Beta |
+| `/arckit.secure` | Generate a Secure by Design assessment for UK Government projects (civilian departments) | [v8](https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform/blob/main/projects/001-ons-data-platform-modernisation/ukgov-secure-by-design.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/ukgov-secure-by-design.md) [v11](https://github.com/tractorjuice/arckit-test-project-v11-national-highways-data/blob/main/projects/001-national-highways-data-architecture-modernization/ukgov-secure-by-design.md) | 🔵 Beta |
+| `/arckit.ai-playbook` | Assess UK Government AI Playbook compliance for responsible AI deployment | [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/ai-playbook-assessment.md) | 🟠 Alpha |
+| `/arckit.atrs` | Generate Algorithmic Transparency Recording Standard (ATRS) record for AI/algorithmic tools | [v2](https://github.com/tractorjuice/arckit-test-project-v2-hmrc-chatbot/blob/main/projects/001-hmrc-chatbot/atrs-record.md) [v9](https://github.com/tractorjuice/arckit-test-project-v9-cabinet-office-genai/blob/main/projects/001-cabinet-office-genai/atrs-record.md) | 🟠 Alpha |
+
+### UK MOD
+
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.mod-secure` | Generate a MOD Secure by Design assessment for UK Ministry of Defence projects using CAAT and continuous assurance | [v3/001](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/001-windows-11-migration-intune/mod-secure-by-design.md) [v3/006](https://github.com/tractorjuice/arckit-test-project-v3-windows11/blob/main/projects/006-large-format-printer/mod-secure-by-design.md) | 🟣 Experimental |
+| `/arckit.jsp-936` | Generate MOD JSP 936 AI assurance documentation for defence AI/ML systems | — | 🟣 Experimental |
+
+### Documentation & Publishing
+
+| Command | Description | Examples | Status |
+|---------|-------------|----------|--------|
+| `/arckit.pages` | Generate GitHub Pages documentation site with Mermaid diagram support | — | 🟠 Alpha |
 
 ---
 
@@ -780,7 +831,7 @@ arckit init my-project
 Full guidance lives in `docs/` and the static site.
 - Quick tour: [docs/index.html](docs/index.html) (mirrors the public landing page).
 - Core guides: [docs/principles.md](docs/principles.md), [docs/requirements.md](docs/requirements.md), [docs/procurement.md](docs/procurement.md), [docs/design-review.md](docs/design-review.md).
-- Reference packs: [WORKFLOW-DIAGRAMS.md](WORKFLOW-DIAGRAMS.md) and [DEPENDENCY-MATRIX.md](DEPENDENCY-MATRIX.md) cover lifecycle visualisations and the 35×35 command matrix.
+- Reference packs: [WORKFLOW-DIAGRAMS.md](WORKFLOW-DIAGRAMS.md) and [DEPENDENCY-MATRIX.md](DEPENDENCY-MATRIX.md) cover lifecycle visualisations and the 40×40 command matrix.
 - Traceability: [docs/traceability.md](docs/traceability.md) documents end-to-end requirements coverage.
 
 ## Relationship to Spec Kit
@@ -867,7 +918,7 @@ arckit init .
 
 - **Issues**: [GitHub Issues](https://github.com/tractorjuice/arc-kit/issues)
 - **Releases**: [GitHub Releases](https://github.com/tractorjuice/arc-kit/releases)
-- **Latest Version**: [v0.9.1](https://github.com/tractorjuice/arc-kit/releases/tag/v0.9.1)
+- **Latest Version**: [v0.10.0](https://github.com/tractorjuice/arc-kit/releases/tag/v0.10.0)
 
 ---
 
