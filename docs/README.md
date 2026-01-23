@@ -52,6 +52,15 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 - [MOD Secure by Design](guides/uk-mod/secure-by-design.md) - `/arckit.mod-secure` ⭐ NEW
 - [JSP 936 AI Assurance](guides/jsp-936.md) - `/arckit.jsp-936` ⭐ NEW
 
+### DevOps & Operations
+- [Operationalize](guides/operationalize.md) - `/arckit.operationalize` ⭐ NEW - SRE operational readiness
+- [DevOps Strategy](guides/devops.md) - `/arckit.devops` ⭐ NEW - CI/CD, IaC, containers
+- [MLOps Strategy](guides/mlops.md) - `/arckit.mlops` ⭐ NEW - ML lifecycle, model monitoring
+- [FinOps Strategy](guides/finops.md) - `/arckit.finops` ⭐ NEW - Cloud cost management, optimization
+
+### Documentation & Publishing
+- [GitHub Pages](guides/pages.md) - `/arckit.pages` ⭐ NEW - Generate documentation site
+
 ---
 
 ## 🎯 By Use Case
@@ -85,7 +94,7 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 ## 🔧 Technical Guides
 
 - [Token Limits Solutions](TOKEN-LIMITS.md) - Handling large projects with AI token limits
-- [Document Control Standard](templates/document-control.md) - Canonical metadata + revision history table used across all templates
+- Document Control Standard - See [CLAUDE.md](../CLAUDE.md#document-control-standard) for the canonical specification
 
 ---
 
@@ -128,8 +137,13 @@ Complete documentation for ArcKit - Enterprise Architecture Governance & Vendor 
 | `/arckit.mod-secure` | [secure-by-design.md](guides/uk-mod/secure-by-design.md) | ✅ Complete |
 | `/arckit.jsp-936` | [jsp-936.md](guides/jsp-936.md) | ✅ Complete |
 | `/arckit.story` | [story.md](guides/story.md) | ✅ Complete |
+| `/arckit.operationalize` | [operationalize.md](guides/operationalize.md) | ✅ Complete |
+| `/arckit.devops` | [devops.md](guides/devops.md) | ✅ Complete |
+| `/arckit.mlops` | [mlops.md](guides/mlops.md) | ✅ Complete |
+| `/arckit.finops` | [finops.md](guides/finops.md) | ✅ Complete |
+| `/arckit.pages` | [pages.md](guides/pages.md) | ✅ Complete |
 
-**Coverage**: 35/35 commands documented (100%)
+**Coverage**: 40/40 commands documented (100%)
 
 ---
 
@@ -141,5 +155,5 @@ Found a gap or want to improve documentation?
 
 ---
 
-**Last updated**: 2025-11-12
-**ArcKit Version**: 0.9.1
+**Last updated**: 2026-01-23
+**ArcKit Version**: 0.9.2
