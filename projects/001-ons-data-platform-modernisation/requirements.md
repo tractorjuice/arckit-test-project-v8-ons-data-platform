@@ -1,41 +1,39 @@
 # Project Requirements: ONS Data Platform Modernisation
 
+> **Template Status**: Live | **Version**: 0.11.2 | **Command**: `/arckit.requirements`
+
 ## Document Control
 
 | Field | Value |
 |-------|-------|
-| **Document ID** | ARC-001-REQ-v1.0 |
+| **Document ID** | ARC-001-REQ-v1.1 |
 | **Document Type** | Business and Technical Requirements |
 | **Project** | ONS Data Platform Modernisation (Project 001) |
 | **Classification** | OFFICIAL |
 | **Status** | DRAFT |
-| **Version** | 1.0 |
+| **Version** | 1.1 |
 | **Created Date** | 2025-11-01 |
-| **Last Modified** | 2025-11-01 |
-| **Review Date** | 2025-12-01 |
+| **Last Modified** | 2026-01-26 |
+| **Review Cycle** | Quarterly |
+| **Next Review Date** | 2026-04-26 |
 | **Owner** | Chief Data Architect, ONS |
-| **Reviewed By** | [PENDING] |
-| **Approved By** | [PENDING] |
+| **Reviewed By** | PENDING |
+| **Approved By** | PENDING |
 | **Distribution** | Project Team, Architecture Team, ONS Leadership |
 
 ## Revision History
 
 | Version | Date | Author | Changes | Approved By | Approval Date |
 |---------|------|--------|---------|-------------|---------------|
-| 1.0 | 2025-11-01 | ArcKit AI | Initial creation from `/arckit.requirements` command | [PENDING] | [PENDING] |
-
-## Document Purpose
-
-This document defines the comprehensive business and technical requirements for the Office for National Statistics (ONS) Data Platform Modernisation project. It will be used for:
-- Vendor RFP/procurement processes
-- Architecture design and review
-- Solution evaluation and scoring
-- Acceptance testing and validation
-- Change control and scope management
+| 1.0 | 2025-11-01 | ArcKit AI | Initial creation from `/arckit.requirements` command | PENDING | PENDING |
+| 1.1 | 2026-01-26 | ArcKit AI | Updated to template v0.11.2: Added User Personas, Use Cases, Requirement Conflicts & Resolutions, Budget sections; Enhanced Document Control with Review Cycle and Next Review Date | PENDING | PENDING |
 
 ---
 
 ## Executive Summary
+
+### Purpose
+This document defines the comprehensive business and technical requirements for the Office for National Statistics (ONS) Data Platform Modernisation project. It establishes the foundation for vendor procurement, architecture design, solution evaluation, acceptance testing, and change control.
 
 ### Business Context
 
@@ -48,8 +46,6 @@ The current ONS data platform infrastructure was built incrementally over the pa
 - **Digital expectations**: Users expect modern API access, real-time data, and self-service capabilities rather than static file downloads
 - **Operational burden**: Manual publication processes require significant statistician time, delaying releases and increasing error risk
 - **Cloud-first mandate**: UK Government Digital Service (GDS) policy requires migration from on-premises to cloud infrastructure
-
-This modernisation will transform ONS's data infrastructure to support the next generation of statistical publishing, improving public access to trusted statistics while reducing operational costs and technical debt.
 
 ### Objectives
 
@@ -67,6 +63,22 @@ This modernisation will transform ONS's data infrastructure to support the next 
 - **Availability**: Achieve 99.95% publication API uptime (max 21.9 minutes downtime per month)
 - **Scalability**: Handle census-scale data (67M records) with processing time <24 hours
 - **User satisfaction**: Achieve 85% satisfaction score from data users (researchers, journalists, policy makers)
+
+### Requirements Summary
+
+| Category | MUST_HAVE | SHOULD_HAVE | COULD_HAVE | WONT_HAVE | Total |
+|----------|-----------|-------------|------------|-----------|-------|
+| Business Requirements (BR) | 5 | 0 | 0 | 0 | 5 |
+| Functional Requirements (FR) | 6 | 0 | 0 | 0 | 6 |
+| Non-Functional - Performance (NFR-P) | 3 | 0 | 0 | 0 | 3 |
+| Non-Functional - Security (NFR-SEC) | 3 | 0 | 0 | 0 | 3 |
+| Non-Functional - Availability (NFR-A) | 3 | 0 | 0 | 0 | 3 |
+| Non-Functional - Scalability (NFR-S) | 2 | 0 | 0 | 0 | 2 |
+| Non-Functional - Compliance (NFR-C) | 4 | 0 | 0 | 0 | 4 |
+| Non-Functional - Observability (NFR-O) | 2 | 1 | 0 | 0 | 3 |
+| Data Requirements (DR) | 5 | 0 | 0 | 0 | 5 |
+| Integration Requirements (INT) | 3 | 1 | 0 | 0 | 4 |
+| **Total** | **36** | **2** | **0** | **0** | **38** |
 
 ### Project Scope
 
@@ -108,6 +120,345 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 ---
 
+## User Personas
+
+### UP-1: Data Analyst (Government)
+
+**Name**: Sarah, Policy Analyst at HM Treasury
+
+**Role**: Uses ONS statistics for economic policy analysis and forecasting
+
+**Goals**:
+- Access timely economic indicators (GDP, inflation, employment) for policy briefings
+- Download large datasets for statistical modelling
+- Query historical time-series data programmatically
+
+**Pain Points**:
+- Current file download process is slow and manual
+- No API access forces copy-paste into analytical tools
+- Inconsistent data formats across statistical series
+
+**Technical Proficiency**: Intermediate - comfortable with Excel, R, Python
+
+**Access Patterns**: Daily during publication windows, weekly for analysis
+
+**Requirements Influenced**: FR-001, FR-003, NFR-P-001
+
+---
+
+### UP-2: Data Journalist
+
+**Name**: Marcus, Economics Correspondent at BBC News
+
+**Role**: Reports on economic statistics for public consumption
+
+**Goals**:
+- Access data immediately at 9:30 AM publication time
+- Get pre-release briefing under embargo (authorised press)
+- Quickly verify figures and compare to historical data
+
+**Pain Points**:
+- Website crashes during major releases
+- Difficult to find historical comparisons quickly
+- Pre-release access process is cumbersome
+
+**Technical Proficiency**: Basic - primarily uses web interface and Excel
+
+**Access Patterns**: High intensity during publication windows (9:30-10:00 AM)
+
+**Requirements Influenced**: NFR-P-003, FR-004, NFR-A-001
+
+---
+
+### UP-3: Academic Researcher
+
+**Name**: Dr. Emily Chen, Professor of Economics at University of Edinburgh
+
+**Role**: Conducts research using ONS statistical data
+
+**Goals**:
+- Access granular microdata for research (via Secure Research Service)
+- Download long time-series for econometric analysis
+- Understand methodology and quality indicators
+
+**Pain Points**:
+- Metadata often incomplete or hard to find
+- Large dataset downloads timeout or fail
+- Changes to methodology not clearly documented
+
+**Technical Proficiency**: Advanced - uses R, Stata, Python
+
+**Access Patterns**: Periodic intensive use for research projects
+
+**Requirements Influenced**: INT-004, FR-003, DR-003, DR-004
+
+---
+
+### UP-4: Application Developer
+
+**Name**: Raj, Senior Developer at FinTech startup
+
+**Role**: Builds applications that consume ONS data
+
+**Goals**:
+- Integrate ONS data into commercial applications via API
+- Receive real-time updates when new data published
+- Understand API rate limits and plan accordingly
+
+**Pain Points**:
+- No programmatic API currently available
+- Data formats inconsistent across datasets
+- No developer documentation or sandbox
+
+**Technical Proficiency**: Expert - REST APIs, JSON, modern development practices
+
+**Access Patterns**: Continuous automated polling/streaming
+
+**Requirements Influenced**: FR-001, NFR-P-001, NFR-S-001
+
+---
+
+### UP-5: Statistician (Internal)
+
+**Name**: James, Senior Statistician in ONS Economic Statistics Division
+
+**Role**: Produces and publishes official statistics
+
+**Goals**:
+- Publish statistics with minimal manual effort
+- Ensure data quality through automated validation
+- Control pre-release access for authorised users
+
+**Pain Points**:
+- Manual file formatting and upload process
+- Quality checks are time-consuming and error-prone
+- Pre-release access management is manual and auditable
+
+**Technical Proficiency**: Intermediate - Excel, SAS, some Python
+
+**Access Patterns**: Daily during publication preparation
+
+**Requirements Influenced**: FR-002, FR-005, FR-006, BR-002
+
+---
+
+### UP-6: Citizen (General Public)
+
+**Name**: Lisa, interested member of the public
+
+**Role**: Occasional consumer of statistics for personal interest or local context
+
+**Goals**:
+- Find statistics about local area
+- Understand what statistics mean
+- Share statistics on social media
+
+**Pain Points**:
+- Website is difficult to navigate
+- Statistical terminology is confusing
+- Can't find local-level data easily
+
+**Technical Proficiency**: Basic - web browser, mobile
+
+**Access Patterns**: Occasional, event-driven (news stories, local issues)
+
+**Requirements Influenced**: FR-003, NFR-C-004
+
+---
+
+## Use Cases
+
+### UC-1: Programmatic Data Access via API
+
+**Actor**: Data Analyst (UP-1), Application Developer (UP-4)
+
+**Preconditions**:
+- User has registered for API access
+- API key has been issued and activated
+- Statistical series is published and available
+
+**Main Flow**:
+1. User authenticates using API key
+2. User queries data catalog to find dataset ID
+3. User requests data with filters (time period, geography, breakdown)
+4. System validates request against rate limits
+5. System retrieves data from data store
+6. System returns data in requested format (JSON/CSV/SDMX)
+7. System logs access for analytics
+
+**Alternative Flows**:
+- **Rate limit exceeded**: Return 429 with retry-after header
+- **Dataset not found**: Return 404 with suggested alternatives
+- **Invalid parameters**: Return 400 with validation errors
+
+**Postconditions**:
+- User receives requested data
+- Access logged for analytics and audit
+
+**Related Requirements**: FR-001, NFR-P-001, NFR-SEC-001
+
+---
+
+### UC-2: Automated Statistical Publication
+
+**Actor**: Statistician (UP-5)
+
+**Preconditions**:
+- Statistical data validated and approved for publication
+- Metadata prepared (methodology, quality indicators)
+- Publication date/time scheduled
+- Pre-release access list configured
+
+**Main Flow**:
+1. Statistician uploads validated data file with metadata
+2. System performs automated quality validation
+3. System applies Statistical Disclosure Control rules
+4. System generates SDMX-compliant metadata
+5. System stores data in pre-release state
+6. System grants access to pre-release users (up to 24 hours before)
+7. At scheduled time, system publishes to public API
+8. System invalidates caches and notifies subscribers
+9. System logs publication event with audit trail
+
+**Alternative Flows**:
+- **Quality validation fails**: Alert statistician, block publication
+- **SDC rules triggered**: Suppress cells, alert statistician for review
+- **Scheduled time missed**: Alert operations, manual intervention
+
+**Postconditions**:
+- Statistics published and available via API
+- Pre-release access records auditable
+- Publication logged for compliance
+
+**Related Requirements**: FR-002, FR-004, FR-005, FR-006, NFR-C-002
+
+---
+
+### UC-3: Data Discovery and Catalog Search
+
+**Actor**: All user personas
+
+**Preconditions**:
+- User has access to data catalog (public for published data)
+- Catalog contains metadata for statistical series
+
+**Main Flow**:
+1. User enters search query (keywords, topic, geography)
+2. System performs full-text and faceted search
+3. System returns ranked results with relevance scoring
+4. User filters results by facets (topic, time period, geography)
+5. User selects dataset to view details
+6. System displays metadata (methodology, quality, source)
+7. User navigates to API endpoint or download
+
+**Alternative Flows**:
+- **No results found**: Suggest related terms, popular datasets
+- **Ambiguous query**: Show disambiguation options
+
+**Postconditions**:
+- User finds relevant dataset
+- Search analytics captured for improvement
+
+**Related Requirements**: FR-003, NFR-P-001
+
+---
+
+### UC-4: Pre-Release Access for Authorised Users
+
+**Actor**: Data Journalist (UP-2), Government Minister
+
+**Preconditions**:
+- User is on designated pre-release access list
+- MFA credentials configured
+- Statistics in pre-release state
+
+**Main Flow**:
+1. User authenticates with MFA
+2. System validates user against pre-release access list
+3. System checks pre-release window (max 24 hours before publication)
+4. System grants access to embargoed data
+5. User views/downloads data under embargo terms
+6. System logs all pre-release access events
+
+**Alternative Flows**:
+- **User not authorised**: Deny access, alert security
+- **Outside pre-release window**: Deny access with explanation
+- **MFA failure**: Deny access, log security event
+
+**Postconditions**:
+- Authorised user accesses pre-release data
+- Complete audit trail for Statistics Act compliance
+
+**Related Requirements**: FR-004, NFR-SEC-001, NFR-C-002
+
+---
+
+### UC-5: Census-Scale Data Processing
+
+**Actor**: Census Programme, System (automated)
+
+**Preconditions**:
+- Census microdata collected and securely transferred
+- Processing pipelines configured and tested
+- Sufficient compute capacity available
+
+**Main Flow**:
+1. Census microdata ingested from secure transfer (67M records)
+2. System performs data quality validation at scale
+3. System applies Statistical Disclosure Control
+4. System aggregates data to publication geographies
+5. System generates output tables with metadata
+6. System validates against previous census for consistency
+7. System stores for statistician review
+8. Statistician approves for publication
+
+**Alternative Flows**:
+- **Quality issues detected**: Alert statisticians, pause pipeline
+- **SDC threshold breached**: Flag for manual review
+- **Processing exceeds SLA**: Alert operations, scale resources
+
+**Postconditions**:
+- Census statistics ready for publication
+- Processing completed within 24-hour SLA
+- Full lineage and audit trail available
+
+**Related Requirements**: BR-005, NFR-P-002, NFR-S-002
+
+---
+
+### UC-6: Disaster Recovery Failover
+
+**Actor**: Operations Team, System (automated)
+
+**Preconditions**:
+- Primary region experiencing major outage
+- DR site synchronised within RPO (1 hour)
+- Runbooks approved and tested
+
+**Main Flow**:
+1. Monitoring detects primary region failure
+2. System alerts operations team
+3. Operations initiates DR failover procedure
+4. System redirects traffic to secondary region
+5. System validates data integrity at DR site
+6. System confirms all services operational
+7. Operations monitors for stability
+8. Communication sent to stakeholders
+
+**Alternative Flows**:
+- **Automated failover**: System performs automatic failover if criteria met
+- **Data integrity issues**: Alert operations, manual intervention required
+- **Partial failure**: Graceful degradation to read-only mode
+
+**Postconditions**:
+- Service restored within RTO (4 hours)
+- Data loss within RPO (1 hour)
+- Incident documented for review
+
+**Related Requirements**: NFR-A-002, NFR-A-003
+
+---
+
 ## Business Requirements
 
 ### BR-001: Reduce Infrastructure Costs
@@ -127,6 +478,11 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Stakeholder**: Chief Data Officer (CDO)
 
 **Alignment**: Supports ONS Value for Money strategic objective
+
+**Traceability**:
+- Drivers: SD-1 (CDO cost reduction pressure)
+- Goals: G-1 (40% infrastructure cost reduction)
+- Outcomes: O-1 (£4.5M annual savings)
 
 ---
 
@@ -148,6 +504,11 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 **Alignment**: Supports ONS Operational Excellence priority
 
+**Traceability**:
+- Drivers: SD-2 (Director of Statistical Production efficiency needs)
+- Goals: G-2 (60% reduction in manual publication effort)
+- Outcomes: O-2 (Publication time reduced to 2 days)
+
 ---
 
 ### BR-003: Enhance Public Data Access
@@ -167,6 +528,11 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Stakeholder**: National Statistician
 
 **Alignment**: Statistics and Registration Service Act 2007 statutory duty
+
+**Traceability**:
+- Drivers: SD-3 (National Statistician accessibility mandate)
+- Goals: G-3 (API-first data access)
+- Outcomes: O-3 (10,000 API users, 50% API consumption)
 
 ---
 
@@ -188,6 +554,11 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 **Alignment**: Mandatory UK Government policy
 
+**Traceability**:
+- Drivers: SD-4 (GDS compliance mandate)
+- Goals: G-4 (Service Standard compliance)
+- Outcomes: O-4 (LIVE assessment passed)
+
 ---
 
 ### BR-005: Enable Census-Scale Processing
@@ -207,6 +578,11 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Stakeholder**: Census Programme Director
 
 **Alignment**: Census Act 1920, Statistics Act 2007
+
+**Traceability**:
+- Drivers: SD-5 (Census Programme scalability needs)
+- Goals: G-5 (Census-scale processing capability)
+- Outcomes: O-5 (67M records in <24 hours)
 
 ---
 
@@ -231,6 +607,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 **Related Principle**: API-First Design (Principle 7)
 
+**User Personas**: UP-1 (Data Analyst), UP-4 (Application Developer)
+
+**Use Cases**: UC-1 (Programmatic Data Access)
+
 ---
 
 ### FR-002: Automated Publication Workflow
@@ -251,6 +631,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Priority**: MUST_HAVE
 
 **Related Principle**: Automation and Continuous Delivery (Principle 13)
+
+**User Personas**: UP-5 (Statistician)
+
+**Use Cases**: UC-2 (Automated Statistical Publication)
 
 ---
 
@@ -273,6 +657,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 **Related Principle**: Interoperability and Open Standards (Principle 8)
 
+**User Personas**: All user personas
+
+**Use Cases**: UC-3 (Data Discovery and Catalog Search)
+
 ---
 
 ### FR-004: Pre-Release Access Control
@@ -292,6 +680,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Priority**: MUST_HAVE
 
 **Related Principle**: Security by Design and Zero Trust (Principle 10)
+
+**User Personas**: UP-2 (Data Journalist), UP-5 (Statistician)
+
+**Use Cases**: UC-4 (Pre-Release Access for Authorised Users)
 
 ---
 
@@ -314,6 +706,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 **Related Principle**: Privacy by Design and Statistical Disclosure Control (Principle 6)
 
+**User Personas**: UP-5 (Statistician)
+
+**Use Cases**: UC-2 (Automated Statistical Publication), UC-5 (Census-Scale Data Processing)
+
 ---
 
 ### FR-006: Data Quality Validation
@@ -334,6 +730,10 @@ This modernisation will transform ONS's data infrastructure to support the next 
 **Priority**: MUST_HAVE
 
 **Related Principle**: Data Quality by Design (Principle 5)
+
+**User Personas**: UP-5 (Statistician), UP-3 (Academic Researcher)
+
+**Use Cases**: UC-2 (Automated Statistical Publication)
 
 ---
 
@@ -892,6 +1292,92 @@ This modernisation will transform ONS's data infrastructure to support the next 
 
 ---
 
+## Requirement Conflicts & Resolutions
+
+### Conflict RC-1: Cost Reduction vs. Security Investment
+
+**Conflicting Requirements**:
+- BR-001: Reduce Infrastructure Costs (40% reduction target)
+- NFR-SEC-001 to NFR-SEC-003: Security requirements (Zero Trust, audit logging, vulnerability management)
+
+**Nature of Conflict**: Security implementation requires investment in additional tooling (SIEM, secrets management, vulnerability scanning), dedicated security roles, and security testing which increases costs. This conflicts with aggressive cost reduction targets.
+
+**Resolution Strategy**:
+- Security is non-negotiable for government data - implement security requirements fully
+- Focus cost reduction on compute/storage optimisation rather than security tooling
+- Use cloud-native security services (AWS Security Hub, Azure Security Center) rather than third-party tools where possible
+- Accept that security baseline may require adjusting cost reduction target to 35% rather than 40%
+
+**Decision**: Security requirements take precedence. Cost reduction target remains 40% but excludes mandatory security tooling costs.
+
+**Approved By**: Chief Data Officer, Head of Cyber Security
+
+---
+
+### Conflict RC-2: API Performance vs. Comprehensive Audit Logging
+
+**Conflicting Requirements**:
+- NFR-P-001: API Response Time (<500ms p95)
+- NFR-SEC-002: Audit Logging (all data access events)
+
+**Nature of Conflict**: Synchronous audit logging adds latency to every API request. At high volumes (10,000 req/s), audit log writes could become a bottleneck affecting p95 latency targets.
+
+**Resolution Strategy**:
+- Implement asynchronous audit logging using message queue (Kafka/SQS)
+- Buffer audit events and write in batches
+- Ensure audit logs are guaranteed delivery (at-least-once semantics)
+- Accept slight risk of audit log delay (not loss) during peak load
+
+**Decision**: Use asynchronous audit logging with guaranteed delivery. Accept up to 5-minute delay in audit log availability during peak load spikes.
+
+**Approved By**: Head of Cyber Security, Chief Data Architect
+
+---
+
+### Conflict RC-3: Open Data Access vs. Pre-Release Controls
+
+**Conflicting Requirements**:
+- BR-003: Enhance Public Data Access (API-first, open access)
+- FR-004: Pre-Release Access Control (restrict access before publication)
+- NFR-C-002: Statistics Act 2007 Compliance
+
+**Nature of Conflict**: Open by default principle conflicts with statutory requirement to restrict pre-release access to designated users only.
+
+**Resolution Strategy**:
+- Implement clear state machine for data lifecycle: DRAFT → PRE_RELEASE → PUBLISHED
+- Published data is fully open with no authentication required
+- Pre-release data requires authentication and authorisation check
+- System enforces automatic transition from PRE_RELEASE to PUBLISHED at scheduled time
+- No manual intervention can delay publication once scheduled
+
+**Decision**: Two-tier access model - unrestricted for published data, strictly controlled for pre-release. Statistics Act compliance takes precedence.
+
+**Approved By**: National Statistician, Chief Data Officer
+
+---
+
+### Conflict RC-4: Comprehensive SDC vs. Publication Speed
+
+**Conflicting Requirements**:
+- FR-005: Statistical Disclosure Control (comprehensive automated SDC)
+- BR-002: Improve Publication Efficiency (reduce time-to-publish)
+- NFR-P-002: Publication Processing Time (<24 hours for census scale)
+
+**Nature of Conflict**: Comprehensive SDC analysis, especially secondary suppression and re-identification risk assessment, is computationally intensive. For census-scale data (67M records), thorough SDC could exceed 24-hour processing target.
+
+**Resolution Strategy**:
+- Implement tiered SDC approach based on sensitivity classification
+- High-sensitivity data (geography <1000 population): comprehensive SDC with risk assessment
+- Standard data: automated rule-based SDC without full risk assessment
+- Pre-compute SDC during data processing, not at publication time
+- Invest in SDC algorithm optimisation and parallel processing
+
+**Decision**: Tiered SDC based on sensitivity. Standard automated SDC for majority of publications, comprehensive SDC reserved for high-risk datasets with extended processing window.
+
+**Approved By**: Chief Statistician, Data Protection Officer
+
+---
+
 ## Requirements Traceability
 
 ### Business Requirement to Architecture Principle Mapping
@@ -915,6 +1401,19 @@ This modernisation will transform ONS's data infrastructure to support the next 
 | Compliance | NFR-C-001 to NFR-C-004 | Principle 6 (Privacy by Design), Principle 1 (Open by Default) |
 | Observability | NFR-O-001 to NFR-O-003 | Principle 11 (Observability and Operational Excellence) |
 
+### Full Traceability Matrix
+
+| Stakeholder | Driver | Goal | Requirement | Use Case |
+|-------------|--------|------|-------------|----------|
+| CDO | SD-1: Cost reduction | G-1: 40% cost reduction | BR-001, NFR-S-001, NFR-S-002 | UC-5, UC-6 |
+| Director of Statistical Production | SD-2: Efficiency | G-2: 60% less manual effort | BR-002, FR-002, FR-006 | UC-2 |
+| National Statistician | SD-3: Accessibility | G-3: API-first access | BR-003, FR-001, FR-003 | UC-1, UC-3 |
+| GDS Service Assessor | SD-4: Standards | G-4: Service Standard | BR-004, NFR-C-004 | All UCs |
+| Census Programme Director | SD-5: Scale | G-5: Census processing | BR-005, NFR-P-002, NFR-S-002 | UC-5 |
+| Head of Cyber Security | SD-6: Security | G-6: GovS 007 compliance | NFR-SEC-001 to 003, NFR-C-003 | UC-4, UC-6 |
+| Data Protection Officer | SD-7: Privacy | G-7: GDPR compliance | FR-005, NFR-C-001, DR-001, DR-002 | UC-2 |
+| Data Users | SD-8: Access | G-8: Better data access | FR-001, FR-003, INT-003 | UC-1, UC-3 |
+
 ---
 
 ## Assumptions and Constraints
@@ -935,6 +1434,34 @@ This modernisation will transform ONS's data infrastructure to support the next 
 4. **Security**: All solutions must achieve OFFICIAL accreditation (no cloud services without UK region)
 5. **Skills**: ONS has limited cloud engineering expertise (vendor must provide training/knowledge transfer)
 6. **Legacy Integration**: Must integrate with legacy systems during transition (5+ years until full decommission)
+
+---
+
+## Budget
+
+### Capital Budget (Implementation)
+
+| Category | Allocation | Notes |
+|----------|------------|-------|
+| Cloud Infrastructure Setup | £4.0M | Initial provisioning, networking, security controls |
+| Software Development | £6.0M | Platform development, API implementation, automation |
+| Data Migration | £2.5M | Migration tooling, validation, parallel running |
+| Integration Development | £2.0M | Survey systems, admin data, website integration |
+| Security Implementation | £1.5M | Zero Trust architecture, SIEM, penetration testing |
+| Training & Knowledge Transfer | £1.0M | ONS staff upskilling, documentation |
+| Contingency (10%) | £1.0M | Risk buffer |
+| **Total Capital** | **£18.0M** | |
+
+### Operating Budget (Annual)
+
+| Category | Year 1 | Year 2 (Target) | Notes |
+|----------|--------|-----------------|-------|
+| Cloud Compute & Storage | £3.5M | £3.0M | Auto-scaling, reserved instances |
+| Software Licenses | £1.0M | £0.8M | SaaS tools, support contracts |
+| Operations & Support | £2.0M | £1.9M | L1/L2 support, incident management |
+| Security Operations | £0.8M | £0.7M | SOC, vulnerability management |
+| Continuous Improvement | £0.5M | £0.3M | Performance optimisation, feature additions |
+| **Total Operating** | **£7.8M** | **£6.7M** | Target: 40% reduction from £11.2M baseline |
 
 ---
 
@@ -986,11 +1513,34 @@ The project will be considered successful when:
 
 ---
 
+## Approval
+
+### Requirements Review
+
+| Reviewer | Role | Review Date | Status | Comments |
+|----------|------|-------------|--------|----------|
+| Chief Data Officer | Executive Sponsor | PENDING | PENDING | |
+| Director of Statistical Production | Product Owner | PENDING | PENDING | |
+| Chief Data Architect | Technical Authority | PENDING | PENDING | |
+| Head of Cyber Security | Security Authority | PENDING | PENDING | |
+| Data Protection Officer | Privacy Authority | PENDING | PENDING | |
+| GDS Service Assessor | Government Assurance | PENDING | PENDING | |
+
+### Document Approval
+
+| Role | Name | Signature | Date |
+|------|------|-----------|------|
+| Project Sponsor | | | |
+| Business Owner | | | |
+| Technical Authority | | | |
+
+---
+
 ## Generation Metadata
 
 **Generated by**: ArcKit `/arckit.requirements` command
-**Generated on**: 2025-11-01
-**ArcKit Version**: 0.8.1
+**Generated on**: 2026-01-26
+**ArcKit Version**: 0.11.2
 **Project**: ONS Data Platform Modernisation (Project 001)
-**AI Model**: claude-sonnet-4-5-20250929
-**Generation Context**: Requirements generated based on ONS Data Platform modernisation scope, aligned with architecture principles defined in ARC-001-PRIN-v1.0
+**AI Model**: claude-opus-4-5-20251101
+**Generation Context**: Requirements updated to template v0.11.2, aligned with architecture principles defined in ARC-001-PRIN-v1.1 and stakeholder analysis in ARC-001-STKE-v1.1
