@@ -202,7 +202,7 @@ timeline
              : 22 Risks Identified
     2025-11-05 : Business Case Approved
              : SOBC - Green Book 5-Case Model
-             : NPV £18.6M, BCR 2.3:1
+             : NPV £18.6M, BCR 2.3 to 1
     2025-11-09 : Strategic Planning Complete
              : GaaP Ecosystem Mapped
              : 10,000 API Users Target
@@ -742,7 +742,7 @@ mindmap
     Business Case
       SOBC Approved
       NPV £18.6M
-      BCR 2.3:1
+      BCR 2.3 to 1
       Data Model GDPR Compliant
     Requirements
       38 Requirements Defined
