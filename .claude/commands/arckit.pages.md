@@ -198,6 +198,32 @@ Create `docs/manifest.json` with the discovered structure:
           "documentId": "ARC-001-ADR-001-v1.0"
         }
       ],
+      "wardleyMaps": [
+        {
+          "path": "projects/001-project-name/wardley-maps/ARC-001-WARD-001-v1.0.md",
+          "title": "Technology Landscape",
+          "documentId": "ARC-001-WARD-001-v1.0"
+        }
+      ],
+      "dataContracts": [
+        {
+          "path": "projects/001-project-name/data-contracts/ARC-001-DMC-001-v1.0.md",
+          "title": "Customer Data Contract",
+          "documentId": "ARC-001-DMC-001-v1.0"
+        }
+      ],
+      "reviews": [
+        {
+          "path": "projects/001-project-name/reviews/ARC-001-HLD-v1.0.md",
+          "title": "High-Level Design Review",
+          "documentId": "ARC-001-HLD-v1.0"
+        },
+        {
+          "path": "projects/001-project-name/reviews/ARC-001-DLD-v1.0.md",
+          "title": "Detailed Design Review",
+          "documentId": "ARC-001-DLD-v1.0"
+        }
+      ],
       "vendors": [
         {
           "name": "Acme Corp",
