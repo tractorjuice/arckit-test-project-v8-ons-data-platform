@@ -471,7 +471,43 @@ migrate_project() {
     log_success "Migration complete for: $(basename "$project_dir")"
 }
 
+# Migrate global principles from legacy locations
+migrate_global_principles() {
+    local global_dir="$REPO_ROOT/projects/000-global"
+    local backup_dir="$global_dir/.backup/$(date +%Y%m%d_%H%M%S)"
+
+    # Check legacy locations for principles
+    local legacy_locations=(
+        "$REPO_ROOT/.arckit/memory/architecture-principles.md"
+        "$REPO_ROOT/.arckit/memory/principles.md"
+    )
+
+    for legacy_path in "${legacy_locations[@]}"; do
+        if [[ -f "$legacy_path" ]]; then
+            local new_name="ARC-000-PRIN-v1.0.md"
+            local new_path="$global_dir/$new_name"
+
+            if [[ -f "$new_path" && "$FORCE" == "false" ]]; then
+                log_info "Principles already exist at: $new_path"
+                return 0
+            fi
+
+            log_info "Found principles at legacy location: $legacy_path"
+
+            if [[ "$DRY_RUN" == "false" ]]; then
+                mkdir -p "$global_dir"
+            fi
+
+            migrate_file "$legacy_path" "$new_path" "$backup_dir"
+            return 0
+        fi
+    done
+}
+
 # Main execution
+# Always try to migrate global principles first
+migrate_global_principles
+
 if [[ "$MIGRATE_GLOBAL" == "true" ]]; then
     # Migrate only the global directory (will be created if it doesn't exist)
     GLOBAL_DIR="$REPO_ROOT/projects/000-global"
