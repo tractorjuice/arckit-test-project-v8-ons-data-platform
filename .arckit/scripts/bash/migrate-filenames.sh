@@ -50,6 +50,7 @@ declare -A FILE_MAPPING=(
     # Procurement
     ["sow.md"]="SOW"
     ["dos-requirements.md"]="DOS"
+    ["digital-marketplace-dos.md"]="DOS"  # Alternative name
     ["gcloud-requirements.md"]="GCLD"
     ["gcloud-clarification-questions.md"]="GCLC"
     ["evaluation-criteria.md"]="EVAL"
@@ -333,6 +334,20 @@ migrate_project() {
             migrate_file "$old_path" "$new_path" "$backup_dir"
         fi
     done
+
+    # Also check procurement/ subdirectory for old-style files
+    if [[ -d "$project_dir/procurement" ]]; then
+        for old_name in "${!FILE_MAPPING[@]}"; do
+            local type_code="${FILE_MAPPING[$old_name]}"
+            local old_path="$project_dir/procurement/$old_name"
+
+            if [[ -f "$old_path" ]]; then
+                local new_name="ARC-${project_id}-${type_code}-v1.0.md"
+                local new_path="$project_dir/$new_name"
+                migrate_file "$old_path" "$new_path" "$backup_dir"
+            fi
+        done
+    fi
 
     # Migrate date-suffixed compliance files (e.g., principles-compliance-assessment-YYYY-MM-DD.md)
     for file in "$project_dir"/principles-compliance-assessment-*.md; do
