@@ -56,6 +56,7 @@ declare -A FILE_MAPPING=(
 
     # Compliance
     ["tcop-review.md"]="TCOP"
+    ["tcop-assessment.md"]="TCOP"  # Alternative name
     ["ukgov-secure-by-design.md"]="SECD"
     ["secure-by-design.md"]="SECD"  # Alternative name
     ["mod-secure-by-design.md"]="SECD-MOD"
