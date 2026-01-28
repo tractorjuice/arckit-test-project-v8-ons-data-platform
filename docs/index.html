@@ -1415,13 +1415,22 @@
                 // Setup keyboard shortcuts
                 setupKeyboardShortcuts();
 
-                // Handle initial hash
+                // Handle initial hash or load default document
                 if (window.location.hash) {
                     const path = window.location.hash.slice(1);
                     loadDocument(path);
 
                     // Mark as active
                     const link = document.querySelector(`a[data-path="${path}"]`);
+                    if (link) link.classList.add('active');
+                } else if (manifest.defaultDocument) {
+                    // Load default document (Architecture Principles)
+                    const defaultPath = manifest.defaultDocument;
+                    window.location.hash = defaultPath;
+                    loadDocument(defaultPath);
+
+                    // Mark as active
+                    const link = document.querySelector(`a[data-path="${defaultPath}"]`);
                     if (link) link.classList.add('active');
                 }
 

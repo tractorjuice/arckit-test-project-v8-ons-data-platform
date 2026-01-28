@@ -1,15 +1,18 @@
 {
-  "generated": "2026-01-26T12:00:00Z",
+  "generated": "2026-01-28T20:30:00Z",
   "repository": {
     "owner": "tractorjuice",
     "name": "arckit-test-project-v8-ons-data-platform",
     "branch": "main"
   },
+  "defaultDocument": "projects/000-global/ARC-000-PRIN-v1.0.md",
   "global": [
     {
-      "path": ".arckit/memory/architecture-principles.md",
+      "path": "projects/000-global/ARC-000-PRIN-v1.0.md",
       "title": "Architecture Principles",
-      "category": "Architecture"
+      "category": "Architecture",
+      "documentId": "ARC-000-PRIN-v1.0",
+      "isDefault": true
     }
   ],
   "projects": [
@@ -18,68 +21,78 @@
       "name": "ONS Data Platform Modernisation",
       "documents": [
         {
-          "path": "projects/001-ons-data-platform-modernisation/README.md",
-          "title": "Project README",
-          "category": "Overview"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/PROJECT-STORY.md",
-          "title": "Project Story",
-          "category": "Overview"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/stakeholder-drivers.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-STKE-v1.0.md",
           "title": "Stakeholder Drivers",
-          "category": "Discovery"
+          "category": "Discovery",
+          "documentId": "ARC-001-STKE-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/requirements.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-REQ-v1.0.md",
           "title": "Requirements",
-          "category": "Discovery"
+          "category": "Discovery",
+          "documentId": "ARC-001-REQ-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/gaap-ecosystem-analysis.md",
-          "title": "GaaP Ecosystem Analysis",
-          "category": "Discovery"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/project-plan.md",
-          "title": "Project Plan",
-          "category": "Planning"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/sobc.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-SOBC-v1.0.md",
           "title": "Strategic Outline Business Case",
-          "category": "Planning"
+          "category": "Planning",
+          "documentId": "ARC-001-SOBC-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/data-model.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-PLAN-v1.0.md",
+          "title": "Project Plan",
+          "category": "Planning",
+          "documentId": "ARC-001-PLAN-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DATA-v1.0.md",
           "title": "Data Model",
-          "category": "Architecture"
+          "category": "Architecture",
+          "documentId": "ARC-001-DATA-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/risk-register.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-GAAP-v1.0.md",
+          "title": "GaaP Ecosystem Analysis",
+          "category": "Architecture",
+          "documentId": "ARC-001-GAAP-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-RISK-v1.0.md",
           "title": "Risk Register",
-          "category": "Governance"
+          "category": "Governance",
+          "documentId": "ARC-001-RISK-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/dpia.md",
-          "title": "Data Protection Impact Assessment",
-          "category": "Compliance"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/tcop-review.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-TCOP-v1.0.md",
           "title": "TCoP Assessment",
-          "category": "Compliance"
+          "category": "Compliance",
+          "documentId": "ARC-001-TCOP-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ukgov-secure-by-design.md",
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-SECD-v1.0.md",
           "title": "Secure by Design",
-          "category": "Compliance"
+          "category": "Compliance",
+          "documentId": "ARC-001-SECD-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DPIA-v1.0.md",
+          "title": "Data Protection Impact Assessment",
+          "category": "Compliance",
+          "documentId": "ARC-001-DPIA-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-STORY-v1.0.md",
+          "title": "Project Story",
+          "category": "Other",
+          "documentId": "ARC-001-STORY-v1.0"
         }
       ],
       "diagrams": [],
       "decisions": [],
+      "wardleyMaps": [],
+      "dataContracts": [],
+      "reviews": [],
+      "research": [],
       "vendors": []
     }
   ]
