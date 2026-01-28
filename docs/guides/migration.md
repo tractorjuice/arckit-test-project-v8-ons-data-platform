@@ -141,6 +141,16 @@ Files in these subdirectories are renamed with sequence numbers:
 | `diagrams/` | DIAG | `ARC-{PID}-DIAG-{NNN}-v1.0.md` |
 | `wardley-maps/` | WARD | `ARC-{PID}-WARD-{NNN}-v1.0.md` |
 | `data-contracts/` | DMC | `ARC-{PID}-DMC-{NNN}-v1.0.md` |
+| `research/` | RSCH | `ARC-{PID}-RSCH-{NNN}-v1.0.md` |
+
+### Research Files
+
+Root-level research files are moved to `research/` subdirectory:
+
+| Pattern | Migrated To |
+|---------|-------------|
+| `research-*.md` | `research/ARC-{PID}-RSCH-{NNN}-v1.0.md` |
+| `research.md` | `research/ARC-{PID}-RSCH-{NNN}-v1.0.md` |
 
 ### Procurement Subdirectory
 

@@ -28,7 +28,7 @@ declare -A FILE_MAPPING=(
     ["risk-register.md"]="RISK"
     ["sobc.md"]="SOBC"
     ["data-model.md"]="DATA"
-    ["research-findings.md"]="RSCH"
+    # research-findings.md moved to research/ subdirectory (multi-instance)
     ["traceability-matrix.md"]="TRAC"
     ["analysis-report.md"]="ANAL"
 
@@ -84,6 +84,7 @@ declare -A SUBDIR_MAPPING=(
     ["diagrams"]="DIAG"
     ["wardley-maps"]="WARD"
     ["data-contracts"]="DMC"
+    ["research"]="RSCH"
 )
 
 usage() {
@@ -315,6 +316,7 @@ migrate_project() {
         mkdir -p "$project_dir/wardley-maps"
         mkdir -p "$project_dir/data-contracts"
         mkdir -p "$project_dir/reviews"
+        mkdir -p "$project_dir/research"
     fi
 
     # Migrate root-level files
@@ -426,6 +428,24 @@ migrate_project() {
                 mkdir -p "$project_dir/decisions"
             fi
             migrate_file "$file" "$project_dir/decisions/$new_name" "$backup_dir"
+        fi
+    done
+
+    # Check for research files at root level (should be in research/)
+    local rsch_count=0
+    if [[ -d "$project_dir/research" ]]; then
+        rsch_count=$(find "$project_dir/research" -maxdepth 1 -name "ARC-*.md" 2>/dev/null | wc -l)
+    fi
+    for file in "$project_dir"/research-*.md "$project_dir"/research.md; do
+        if [[ -f "$file" ]]; then
+            rsch_count=$((rsch_count + 1))
+            local seq_num=$(printf "%03d" $rsch_count)
+            local new_name="ARC-${project_id}-RSCH-${seq_num}-v1.0.md"
+
+            if [[ "$DRY_RUN" == "false" ]]; then
+                mkdir -p "$project_dir/research"
+            fi
+            migrate_file "$file" "$project_dir/research/$new_name" "$backup_dir"
         fi
     done
 

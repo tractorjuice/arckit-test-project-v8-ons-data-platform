@@ -191,6 +191,13 @@ Create `docs/manifest.json` with the discovered structure:
           \"documentId\": \"ARC-001-DIAG-001-v1.0\"
         }
       ],
+      \"research\": [
+        {
+          \"path\": \"projects/001-project-name/research/ARC-001-RSCH-001-v1.0.md\",
+          \"title\": \"Technology Research\",
+          \"documentId\": \"ARC-001-RSCH-001-v1.0\"
+        }
+      ],
       \"decisions\": [
         {
           \"path\": \"projects/001-project-name/decisions/ARC-001-ADR-001-v1.0.md\",
