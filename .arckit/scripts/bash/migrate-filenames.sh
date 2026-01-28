@@ -70,7 +70,9 @@ declare -A FILE_MAPPING=(
 
     # Reviews
     ["hld-review.md"]="HLD"
+    ["hld.md"]="HLD"  # Alternative name
     ["dld-review.md"]="DLD"
+    ["dld.md"]="DLD"  # Alternative name
 
     # Other
     ["PROJECT-STORY.md"]="STORY"
@@ -401,6 +403,32 @@ migrate_project() {
                 mkdir -p "$project_dir/diagrams"
             fi
             migrate_file "$file" "$project_dir/diagrams/$new_name" "$backup_dir"
+        fi
+    done
+
+    # Check for ADR files at root level (should be in decisions/)
+    for file in "$project_dir"/adr-*.md "$project_dir"/ADR-*.md; do
+        if [[ -f "$file" ]]; then
+            local count=$(ls "$project_dir/decisions"/ARC-*.md 2>/dev/null | wc -l)
+            count=$((count + 1))
+            local seq_num=$(printf "%03d" $count)
+            local new_name="ARC-${project_id}-ADR-${seq_num}-v1.0.md"
+
+            if [[ "$DRY_RUN" == "false" ]]; then
+                mkdir -p "$project_dir/decisions"
+            fi
+            migrate_file "$file" "$project_dir/decisions/$new_name" "$backup_dir"
+        fi
+    done
+
+    # Check for version-suffixed traceability files (e.g., traceability-matrix-v4.md)
+    for file in "$project_dir"/traceability-matrix-v*.md; do
+        if [[ -f "$file" ]]; then
+            local new_name="ARC-${project_id}-TRAC-v1.0.md"
+            local new_path="$project_dir/$new_name"
+            if [[ ! -f "$new_path" || "$FORCE" == "true" ]]; then
+                migrate_file "$file" "$new_path" "$backup_dir"
+            fi
         fi
     done
 
