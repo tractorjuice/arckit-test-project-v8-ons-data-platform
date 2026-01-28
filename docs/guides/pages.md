@@ -9,7 +9,7 @@
 | Artefact | Purpose |
 |----------|---------|
 | Repository structure | Scans for all ArcKit artifacts |
-| `.arckit/memory/` | Global documents (principles) |
+| `projects/000-global/` | Global documents (principles) |
 | `projects/*/` | All project documents |
 
 ---
@@ -147,7 +147,7 @@ All libraries loaded from CDN for easy updates.
 Documents use hash-based routing:
 
 ```
-https://org.github.io/repo/#projects/001-name/requirements.md
+https://org.github.io/repo/#projects/001-name/ARC-001-REQ-v1.0.md
 ```
 
 Benefits:

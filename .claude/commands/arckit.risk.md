@@ -31,14 +31,14 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
 
 1. **Check for prerequisites**:
    - **MANDATORY**: Check if stakeholder analysis exists for this project
-     - Read `.arckit/memory/` or `projects/*/stakeholder-drivers.md` to find it
+     - Read `projects/000-global/` or `projects/*/ARC-*-STKE-v*.md` to find it
      - If NO stakeholder analysis exists, STOP and tell user:
        "⚠️ Risk register requires stakeholder analysis. Run `/arckit.stakeholders` first to identify risk owners and affected parties."
    - **RECOMMENDED**: Check if architecture principles exist
-     - Read `.arckit/memory/architecture-principles.md`
+     - Read any `ARC-000-PRIN-*.md` file in `projects/000-global/`
      - Non-compliance with principles creates risks
    - **RECOMMENDED**: Check if organizational risk appetite exists
-     - Read `.arckit/memory/risk-appetite.md`
+     - Read `projects/000-global/risk-appetite.md`
      - If exists, assess risks against appetite thresholds
    - **OPTIONAL**: Check if requirements exist
      - Requirements can create risks (complexity, technical challenges)
@@ -116,7 +116,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - **Root Cause**: What underlying issue creates this risk?
    - **Trigger Events**: What events would cause this risk to materialize?
    - **Consequences if Realized**: What happens if this risk occurs? (tangible impacts)
-   - **Affected Stakeholders**: Link to stakeholder-drivers.md (who is impacted?)
+   - **Affected Stakeholders**: Link to ARC-{PROJECT_ID}-STKE-v*.md (who is impacted?)
    - **Related Objectives**: Link to stakeholder goals/business objectives that are threatened
 
    **Inherent Risk Assessment** (BEFORE controls):
@@ -212,29 +212,31 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - Key risks requiring immediate attention (top 3-5)
    - Recommended actions and decisions needed
 
-   **B. Risk Matrix Visualization** (5x5 grid):
+   **B. Risk Matrix Visualization** (using ASCII 5×5 matrix):
 
-   Create TWO matrices:
+   Create TWO 5×5 matrices showing Likelihood (rows) × Impact (columns):
 
    **Inherent Risk Matrix** (before controls):
    ```
-   LIKELIHOOD ↑
-       5 |     | R-3 | R-7 |     | R-1 |  ← Almost Certain
-       4 |     |     | R-5 | R-9 |     |
-       3 | R-6 |     | R-2 |     | R-4 |  ← Possible
-       2 |     | R-8 |     |     |     |
-       1 |     |     | R-10|     |     |  ← Rare
-         +---------------------------→
-           1     2     3     4     5
-                IMPACT →
+                                       IMPACT
+                 1-Minimal   2-Minor    3-Moderate   4-Major    5-Severe
+              ┌───────────┬───────────┬───────────┬───────────┬───────────┐
+   5-Almost   │           │           │   R-003   │   R-007   │   R-001   │
+   Certain    │    5      │    10     │    15     │    20     │    25     │
+              ├───────────┼───────────┼───────────┼───────────┼───────────┤
+   4-Likely   │           │           │           │   R-009   │   R-004   │
+              │    4      │    8      │    12     │    16     │    20     │
+   L          ├───────────┼───────────┼───────────┼───────────┼───────────┤
+   I 3-Possible│          │           │   R-002   │           │           │
+   K          │    3      │    6      │    9      │    12     │    15     │
+   ...        └───────────┴───────────┴───────────┴───────────┴───────────┘
+
+   Legend: Critical (20-25)  High (13-19)  Medium (6-12)  Low (1-5)
    ```
 
-   **Residual Risk Matrix** (after controls):
-   ```
-   [Similar 5x5 grid showing risk positions AFTER controls]
-   ```
+   **Residual Risk Matrix** (after controls): Same format showing new positions
 
-   Show movement: "R-001 moved from Critical (25) to Medium (9) after controls"
+   Show movement: "R-001 moved from Critical (25) to Medium (6) after controls"
 
    **C. Top 10 Risks** (by residual score):
 
@@ -326,7 +328,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    Every risk must link back to stakeholder analysis:
 
    ```
-   Stakeholder: CFO (from stakeholder-drivers.md)
+   Stakeholder: CFO (from ARC-{PROJECT_ID}-STKE-v*.md)
      → Concern: Budget overrun risk (from conflict analysis)
        → Risk R-003: Cloud costs exceed budget 40% (FINANCIAL, High)
          → Risk Owner: CFO (from RACI matrix - Accountable)
@@ -343,9 +345,9 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - **Unmitigated high risks**: High risks with no treatment plan
 
 10. **Write the output**:
-    - Create or update `projects/NNN-project-name/risk-register.md`
+    - Create or update `projects/NNN-project-name/ARC-{PROJECT_ID}-RISK-v1.0.md`
     - Use project directory structure (create if doesn't exist)
-    - File name pattern: `risk-register.md` (standard name)
+    - File name pattern: `ARC-{PROJECT_ID}-RISK-v{VERSION}.md`
     - Update date and version in header
 
 
@@ -377,7 +379,7 @@ Before completing the document, populate document information fields:
 ```markdown
 **Generated by**: ArcKit `/arckit.risk` command
 **Generated on**: {DATE}
-**ArcKit Version**: [VERSION from VERSION or "0.6.0"]
+**ArcKit Version**: [VERSION from VERSION or "1.0.0"]
 **Project**: {PROJECT_NAME} (Project {PROJECT_ID})
 **AI Model**: [Actual model name]
 ```
@@ -386,7 +388,7 @@ Before completing the document, populate document information fields:
 ## Output Format
 
 Provide:
-1. **Location**: `projects/NNN-project-name/risk-register.md`
+1. **Location**: `projects/NNN-project-name/ARC-{PROJECT_ID}-RISK-v1.0.md`
 2. **Summary**:
    - "Created comprehensive risk register following HM Treasury Orange Book"
    - "Identified [X] risks across 6 categories"
