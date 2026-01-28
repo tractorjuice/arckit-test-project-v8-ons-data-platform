@@ -6,3 +6,6 @@
 
 # direnv
 .envrc.local
+
+# ArcKit backup files
+.backup/
