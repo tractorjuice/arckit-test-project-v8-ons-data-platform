@@ -376,12 +376,14 @@ migrate_project() {
     done
 
     # Also check for old wardley-maps location at root level
+    local ward_count=0
+    if [[ -d "$project_dir/wardley-maps" ]]; then
+        ward_count=$(find "$project_dir/wardley-maps" -maxdepth 1 -name "ARC-*.md" 2>/dev/null | wc -l)
+    fi
     for file in "$project_dir"/*-wardley.md "$project_dir"/*-map.md; do
         if [[ -f "$file" ]]; then
-            # Move to wardley-maps subdirectory with new naming
-            local count=$(ls "$project_dir/wardley-maps"/ARC-*.md 2>/dev/null | wc -l)
-            count=$((count + 1))
-            local seq_num=$(printf "%03d" $count)
+            ward_count=$((ward_count + 1))
+            local seq_num=$(printf "%03d" $ward_count)
             local new_name="ARC-${project_id}-WARD-${seq_num}-v1.0.md"
 
             if [[ "$DRY_RUN" == "false" ]]; then
@@ -392,11 +394,14 @@ migrate_project() {
     done
 
     # Check for old diagram files at root
+    local diag_count=0
+    if [[ -d "$project_dir/diagrams" ]]; then
+        diag_count=$(find "$project_dir/diagrams" -maxdepth 1 -name "ARC-*.md" 2>/dev/null | wc -l)
+    fi
     for file in "$project_dir"/*-diagram.md "$project_dir"/diagram-*.md; do
         if [[ -f "$file" ]]; then
-            local count=$(ls "$project_dir/diagrams"/ARC-*.md 2>/dev/null | wc -l)
-            count=$((count + 1))
-            local seq_num=$(printf "%03d" $count)
+            diag_count=$((diag_count + 1))
+            local seq_num=$(printf "%03d" $diag_count)
             local new_name="ARC-${project_id}-DIAG-${seq_num}-v1.0.md"
 
             if [[ "$DRY_RUN" == "false" ]]; then
@@ -407,11 +412,14 @@ migrate_project() {
     done
 
     # Check for ADR files at root level (should be in decisions/)
+    local adr_count=0
+    if [[ -d "$project_dir/decisions" ]]; then
+        adr_count=$(find "$project_dir/decisions" -maxdepth 1 -name "ARC-*.md" 2>/dev/null | wc -l)
+    fi
     for file in "$project_dir"/adr-*.md "$project_dir"/ADR-*.md; do
         if [[ -f "$file" ]]; then
-            local count=$(ls "$project_dir/decisions"/ARC-*.md 2>/dev/null | wc -l)
-            count=$((count + 1))
-            local seq_num=$(printf "%03d" $count)
+            adr_count=$((adr_count + 1))
+            local seq_num=$(printf "%03d" $adr_count)
             local new_name="ARC-${project_id}-ADR-${seq_num}-v1.0.md"
 
             if [[ "$DRY_RUN" == "false" ]]; then
