@@ -145,20 +145,41 @@ Build a blended TCO table across all categories:
 
 Map every requirement to a recommended solution or flag as a gap.
 
-### Step 9: Generate Document ID
+### Step 9: Detect Version and Determine Increment
+
+Check if a previous version of this document exists in the project directory:
+
+```bash
+EXISTING=$(ls projects/{project-dir}/ARC-{PROJECT_ID}-RSCH-v*.md 2>/dev/null | sort -V | tail -1)
+```
+
+**If no existing file**: Use VERSION="1.0"
+
+**If existing file found**:
+1. Read the existing document to understand its scope (categories researched, vendors evaluated, recommendations made)
+2. Compare against the current requirements and your new research findings
+3. Determine version increment:
+   - **Minor increment** (e.g., 1.0 → 1.1, 2.1 → 2.2): Use when the scope is unchanged — refreshed data, updated pricing, corrected details, minor additions within existing categories
+   - **Major increment** (e.g., 1.0 → 2.0, 1.3 → 2.0): Use when scope has materially changed — new requirement categories, removed categories, fundamentally different recommendations, significant new requirements added since last version
+4. Use the determined version for ALL subsequent references:
+   - Document ID and filename (passed to generate-document-id.sh)
+   - Document Control: Version field
+   - Revision History: Add new row with version, date, "AI Agent", description of changes, "PENDING", "PENDING"
+
+### Step 10: Generate Document ID
 
 Run bash:
 ```bash
-.arckit/scripts/bash/generate-document-id.sh PROJECT_ID RSCH 1.0 --filename
+.arckit/scripts/bash/generate-document-id.sh PROJECT_ID RSCH ${VERSION} --filename
 ```
 
-### Step 10: Write the Document
+### Step 11: Write the Document
 
-**Use the Write tool** to save the complete document to `projects/{project-dir}/ARC-{PROJECT_ID}-RSCH-v1.0.md` following the template structure.
+**Use the Write tool** to save the complete document to `projects/{project-dir}/ARC-{PROJECT_ID}-RSCH-v${VERSION}.md` following the template structure.
 
 Auto-populate fields:
 - `[PROJECT_ID]` from project path
-- `[VERSION]` = "1.0"
+- `[VERSION]` = determined version from Step 9
 - `[DATE]` = current date (YYYY-MM-DD)
 - `[STATUS]` = "DRAFT"
 - `[CLASSIFICATION]` = "OFFICIAL" (UK Gov) or "PUBLIC"
@@ -174,7 +195,7 @@ Include the generation metadata footer:
 
 **DO NOT output the full document.** Write it to file only.
 
-### Step 11: Return Summary
+### Step 12: Return Summary
 
 Return ONLY a concise summary including:
 - Project name and file path created
