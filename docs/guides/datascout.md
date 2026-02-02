@@ -56,6 +56,8 @@ Add constraints (budget, data residency, freshness) in the prompt for tailored r
 
 Outputs: `projects/<id>/ARC-<id>-DSCT-v1.0.md`
 
+> **Auto-versioning**: Re-running this command when a document already exists automatically increments the version (minor for refreshed content, major for changed scope) instead of overwriting.
+
 ---
 
 ## Output Highlights
