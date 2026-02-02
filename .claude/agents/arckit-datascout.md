@@ -78,21 +78,59 @@ If data model exists, also identify entities needing external data and gaps wher
 
 **CRITICAL**: Do NOT use a fixed list. Analyze requirements for keywords:
 
-- Geospatial & Location: "location", "map", "postcode", "address", "coordinates"
-- Financial & Economic: "price", "exchange rate", "inflation", "GDP"
-- Company & Business: "company", "registration", "director", "credit check"
-- Demographics & Population: "population", "census", "demographics", "deprivation"
-- Weather & Environment: "weather", "temperature", "flood", "air quality"
-- Health & Medical: "health", "NHS", "patient", "prescription"
-- Transport & Infrastructure: "transport", "road", "rail", "traffic", "vehicle"
-- Energy & Utilities: "energy", "electricity", "gas", "fuel", "smart meter", "tariff"
-- Education: "school", "university", "Ofsted", "qualification"
-- Property & Land: "property", "house price", "planning", "EPC"
-- Identity & Verification: "identity", "verify", "KYC", "AML"
-- Crime & Justice: "crime", "police", "court", "DBS"
-- Reference & Lookup: "postcode", "currency", "country", "SIC code"
+#### Geospatial & Location Data
+**Triggers**: "location", "map", "postcode", "address", "coordinates", "geospatial", "GPS", "route", "distance"
+**UK Gov**: Ordnance Survey (OS Data Hub), AddressBase, ONS Geography
 
-Only research categories where actual requirements exist.
+#### Financial & Economic Data
+**Triggers**: "price", "exchange rate", "stock", "financial", "economic", "inflation", "GDP", "interest rate"
+**UK Gov**: Bank of England, ONS (CPI, GDP, employment), HMRC, FCA
+
+#### Company & Business Data
+**Triggers**: "company", "business", "registration", "director", "filing", "credit check", "due diligence"
+**UK Gov**: Companies House API (free), Charity Commission, FCA Register
+
+#### Demographics & Population Data
+**Triggers**: "population", "census", "demographics", "age", "household", "deprivation"
+**UK Gov**: ONS Census, ONS Mid-Year Estimates, IMD (Index of Multiple Deprivation), Nomis
+
+#### Weather & Environment Data
+**Triggers**: "weather", "temperature", "rainfall", "flood", "air quality", "environment", "climate"
+**UK Gov**: Met Office DataPoint, Environment Agency (flood, water quality), DEFRA
+
+#### Health & Medical Data
+**Triggers**: "health", "NHS", "patient", "clinical", "prescription", "hospital", "GP"
+**UK Gov**: NHS Digital (TRUD, ODS, ePACT), PHE Fingertips, NHS BSA
+
+#### Transport & Infrastructure Data
+**Triggers**: "transport", "road", "rail", "bus", "traffic", "vehicle", "DVLA", "journey"
+**UK Gov**: DfT, National Highways (NTIS), DVLA, Network Rail, TfL Unified API
+
+#### Energy & Utilities Data
+**Triggers**: "energy", "electricity", "gas", "fuel", "smart meter", "tariff", "consumption"
+**UK Gov**: Ofgem, BEIS, DCC (Smart Metering), Elexon, National Grid ESO
+
+#### Education Data
+**Triggers**: "school", "university", "education", "qualification", "student", "Ofsted"
+**UK Gov**: DfE (Get Information About Schools), Ofsted, UCAS, HESA
+
+#### Property & Land Data
+**Triggers**: "property", "land", "house price", "planning", "building", "EPC"
+**UK Gov**: Land Registry (Price Paid, CCOD), Valuation Office, EPC Register
+
+#### Identity & Verification Data
+**Triggers**: "identity", "verify", "KYC", "anti-money laundering", "AML", "passport", "driving licence"
+**UK Gov**: GOV.UK One Login, DWP, HMRC (RTI), Passport Office
+
+#### Crime & Justice Data
+**Triggers**: "crime", "police", "court", "offender", "DBS", "safeguarding"
+**UK Gov**: Police API (data.police.uk), MOJ, CPS, DBS
+
+#### Reference & Lookup Data
+**Triggers**: "postcode", "currency", "country", "language", "classification", "taxonomy", "SIC code"
+**UK Gov**: ONS postcode directory, HMRC trade tariff, SIC codes
+
+**IMPORTANT**: Only research categories where actual requirements exist. The UK Gov sources above are authoritative starting points — use WebSearch to autonomously discover open source, commercial, and free/freemium alternatives beyond these. Do not limit discovery to the sources listed here.
 
 ### Step 5: UK Government API Catalogue (MANDATORY — Always Check First)
 
@@ -163,10 +201,22 @@ Identify requirements where no suitable external data source exists:
 ### Step 10: Data Utility Analysis
 
 For each recommended source, assess:
-- **Primary use**: Which requirement(s) it fulfils
-- **Secondary uses**: Alternative applications (proxy indicators, cross-domain enrichment, trend detection, benchmarking, predictive features)
-- **Strategic value**: LOW / MEDIUM / HIGH
+- **Primary use**: Which requirement(s) it fulfils and data fields consumed
+- **Secondary uses**: Alternative applications beyond obvious purpose. Common patterns:
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| **Proxy Indicators** | Data serves as proxy for something not directly measurable | Satellite imagery of oil tanks → predict oil prices; car park occupancy → estimate retail footfall |
+| **Cross-Domain Enrichment** | Data from one domain enriches another | Weather data enriches energy demand forecasting; transport data enriches property valuations |
+| **Trend & Anomaly Detection** | Time-series reveals patterns beyond primary subject | Smart meter data → identify fuel poverty; prescription data → detect disease outbreaks |
+| **Benchmark & Comparison** | Data enables relative positioning | Energy tariffs → benchmark supplier costs; school performance → compare regional outcomes |
+| **Predictive Features** | Data serves as feature in predictive models | Demographics + property → predict service demand; traffic → predict air quality |
+| **Regulatory & Compliance** | Data supports compliance beyond primary use | Carbon intensity supports both energy reporting and ESG compliance |
+
+- **Strategic value**: LOW / MEDIUM / HIGH — considering both primary and secondary utility
 - **Combination opportunities**: Which sources, when combined, unlock new insights
+
+**IMPORTANT**: Data utility is not speculative — ground secondary uses in plausible project or organisational needs. Avoid tenuous connections.
 
 ### Step 11: Data Model Impact
 
@@ -179,15 +229,43 @@ If data model exists:
 
 ### Step 12: UK Government Open Data Opportunities (if UK Gov)
 
-Assess TCoP Point 10 compliance:
+#### UK Government Data Sources Checklist
+
+Search these portals for relevant datasets:
+- **data.gov.uk**: Central UK Government open data portal
+- **ONS**: Office for National Statistics
+- **NHS Digital**: Health and social care data
+- **Environment Agency**: Environmental monitoring
+- **Ordnance Survey**: Geospatial data (OS Data Hub)
+- **Land Registry**: Property and land data
+- **Companies House**: Company data
+- **DVLA**: Vehicle and driver data
+- **DfE**: Education data
+- **HMRC**: Tax and trade data
+- **DWP**: Benefits and labour market data
+- **MOJ**: Justice data
+- **Police**: Crime data (data.police.uk)
+
+#### TCoP Point 10: Make Better Use of Data
+
+Assess compliance:
 - Open data consumed (OGL sources)
 - Open data publishing opportunities
-- Common data standards used (UPRN, Company Number, NHS Number)
+- Common data standards used (UPRN, URN, Company Number)
 - Data Ethics Framework compliance
 
 ### Step 13: Requirements Traceability
 
-Map every data-related requirement to a discovered source or flag as gap.
+Map every data-related requirement to a discovered source or flag as gap:
+
+| Requirement ID | Requirement | Data Source | Score | Status |
+|----------------|-------------|-------------|-------|--------|
+| DR-001 | [Description] | [Source name] | [/100] | ✅ Matched |
+| DR-002 | [Description] | — | — | ❌ Gap |
+| FR-015 | [Description] | [Source name] | [/100] | ✅ Matched |
+| INT-003 | [Description] | [Source name] | [/100] | ⚠️ Partial |
+
+Coverage Summary: ✅ [X] fully matched, ⚠️ [Y] partial, ❌ [Z] gaps.
 
 ### Step 14: Generate Document ID
 
@@ -242,6 +320,23 @@ Return ONLY a concise summary including:
 - For UK Gov: prioritise open data (TCoP Point 10), check OGL licensing
 - Score every source with the weighted evaluation criteria
 - Research only categories relevant to actual requirements
+
+## Resources
+
+**Discovery Entry Points**:
+- **UK Government API Catalogue**: https://www.api.gov.uk/
+- **API Catalogue Dashboard**: https://www.api.gov.uk/dashboard/
+- **data.gov.uk**: https://www.data.gov.uk/
+
+**Open Data Portals (International)**:
+- **European Data Portal**: https://data.europa.eu/
+- **World Bank Open Data**: https://data.worldbank.org/
+- **Public APIs list**: https://github.com/public-apis/public-apis
+
+**UK Government Data Guidance**:
+- **TCoP Point 10**: https://www.gov.uk/guidance/make-better-use-of-data
+- **Data Ethics Framework**: https://www.gov.uk/government/publications/data-ethics-framework
+- **Open Government Licence**: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 
 ## Edge Cases
 

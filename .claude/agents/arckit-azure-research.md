@@ -99,13 +99,15 @@ More info: https://www.npmjs.com/package/@anthropic/mcp-server-microsoft-docs
 
 ### Step 4: Extract Requirements for Azure Mapping
 
-Read the requirements document and identify Azure service needs:
+Read the requirements document and identify Azure service needs across these categories. Use the MCP tools to **dynamically discover** the best-fit Azure services for each requirement — do not limit yourself to the examples below:
 
-- **Compute** (FR-xxx, NFR-P-xxx, NFR-S-xxx): Containers → AKS/Container Apps, Web → App Service/Static Web Apps, Serverless → Functions/Logic Apps, VMs → Virtual Machines/Scale Sets
-- **Data** (DR-xxx, NFR-P-xxx): Relational → Azure SQL/PostgreSQL/MySQL, NoSQL → Cosmos DB, Caching → Azure Cache for Redis, Search → AI Search, Warehouse → Synapse Analytics, Lake → Data Lake Storage Gen2
-- **Integration** (INT-xxx): APIs → API Management, Messaging → Service Bus/Event Grid/Event Hubs, Workflow → Logic Apps/Durable Functions
-- **Security** (NFR-SEC-xxx): Identity → Azure AD/Azure AD B2C, Secrets → Key Vault, Network → VNet/Private Link/Firewall/WAF, Threat → Defender for Cloud
-- **AI/ML** (FR-xxx): AI → Azure OpenAI/Cognitive Services, ML → Azure Machine Learning, Bot → Bot Service
+- **Compute** (FR-xxx, NFR-P-xxx, NFR-S-xxx): e.g. containers, web apps, serverless, VMs, scale sets
+- **Data** (DR-xxx, NFR-P-xxx): e.g. relational, NoSQL, caching, search, data warehouse, data lake
+- **Integration** (INT-xxx): e.g. API management, messaging, event streaming, workflow orchestration
+- **Security** (NFR-SEC-xxx): e.g. identity, secrets management, network security, threat protection
+- **AI/ML** (FR-xxx): e.g. AI models, ML platforms, cognitive services, conversational AI
+
+Use `microsoft_docs_search` to discover which Azure services match each requirement rather than assuming a fixed mapping. Azure frequently launches new services and features — let the MCP documentation guide your recommendations.
 
 ### Step 5: Research Azure Services Using MCP
 

@@ -72,6 +72,8 @@ Read the requirements document and extract:
 
 **CRITICAL**: Do NOT use a fixed list. Analyze requirements for keywords to identify needed capabilities:
 
+Scan requirements for keywords that indicate technology needs. Examples of common categories (but discover dynamically — do not limit to this list):
+
 - Authentication & Identity: "login", "SSO", "MFA", "authenticate"
 - Payment Processing: "payment", "checkout", "transaction", "PCI-DSS"
 - Database & Storage: "database", "data store", "persistence", DR-xxx exists
@@ -82,16 +84,9 @@ Read the requirements document and extract:
 - Workflow & BPM: "workflow", "approval", "orchestration"
 - Messaging & Events: "queue", "pub/sub", "event-driven", "streaming"
 - API Management: "API gateway", "rate limiting", "API versioning"
-- Hosting & Infrastructure: "scalability", "availability", "hosting"
-- Monitoring & Observability: "monitoring", "logging", "APM"
-- CI/CD & DevOps: "CI/CD", "pipeline", "deployment automation"
-- CRM: "customer", "CRM", "contact management"
-- CMS: "content management", "CMS", "editorial"
-- E-commerce: "shopping cart", "product catalog", "order management"
 - ML/AI: "machine learning", "AI", "prediction", "NLP"
-- Testing: "automated testing", "load testing", "security testing"
 
-Only research categories where actual requirements exist.
+Use WebSearch to discover the current market landscape for each category rather than assuming fixed vendor options. Only research categories where actual requirements exist. If requirements reveal categories not listed above, research those too.
 
 ### Step 5: Conduct Web Research for Each Category
 

@@ -101,13 +101,15 @@ More info: https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server
 
 ### Step 4: Extract Requirements for AWS Mapping
 
-Read the requirements document and identify AWS service needs:
+Read the requirements document and identify AWS service needs across these categories. Use the MCP tools to **dynamically discover** the best-fit AWS services for each requirement — do not limit yourself to the examples below:
 
-- **Compute** (FR-xxx, NFR-P-xxx, NFR-S-xxx): Containers → EKS/ECS/Fargate, Web → App Runner/Elastic Beanstalk, Serverless → Lambda/Step Functions, VMs → EC2
-- **Data** (DR-xxx, NFR-P-xxx): Relational → RDS/Aurora, NoSQL → DynamoDB/DocumentDB, Caching → ElastiCache, Search → OpenSearch, Warehouse → Redshift, Lake → S3/Lake Formation/Athena
-- **Integration** (INT-xxx): APIs → API Gateway/AppSync, Messaging → SQS/SNS/EventBridge, Workflow → Step Functions
-- **Security** (NFR-SEC-xxx): Identity → IAM/Cognito, Secrets → Secrets Manager, Network → VPC/WAF, Threat → GuardDuty/Security Hub
-- **AI/ML** (FR-xxx): AI → Bedrock/SageMaker, Bot → Lex
+- **Compute** (FR-xxx, NFR-P-xxx, NFR-S-xxx): e.g. containers, web hosting, serverless, VMs, batch processing
+- **Data** (DR-xxx, NFR-P-xxx): e.g. relational, NoSQL, caching, search, data warehouse, data lake
+- **Integration** (INT-xxx): e.g. API management, messaging, workflow orchestration, external system connectivity
+- **Security** (NFR-SEC-xxx): e.g. identity, secrets management, network security, threat detection
+- **AI/ML** (FR-xxx): e.g. foundation models, ML platforms, conversational AI
+
+Use `search_documentation` to discover which AWS services match each requirement rather than assuming a fixed mapping. AWS frequently launches new services and features — let the MCP documentation guide your recommendations.
 
 ### Step 5: Research AWS Services Using MCP
 
