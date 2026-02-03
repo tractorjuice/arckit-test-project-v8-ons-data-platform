@@ -1,6 +1,6 @@
 # Architecture Roadmap: [INITIATIVE_NAME]
 
-> **Template Status**: Beta | **Version**: 1.0.0 | **Command**: `/arckit.roadmap`
+> **Template Status**: Beta | **Version**: [VERSION] | **Command**: `/arckit.roadmap`
 
 ## Document Control
 

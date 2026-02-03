@@ -1,6 +1,6 @@
 # Project Plan: [PROJECT_NAME]
 
-> **Template Status**: Beta | **Version**: 1.0.0 | **Command**: `/arckit.plan`
+> **Template Status**: Beta | **Version**: [VERSION] | **Command**: `/arckit.plan`
 
 ## Document Control
 

@@ -1,6 +1,6 @@
 # Strategic Outline Business Case (SOBC)
 
-> **Template Status**: Live | **Version**: 1.0.0 | **Command**: `/arckit.sobc`
+> **Template Status**: Live | **Version**: [VERSION] | **Command**: `/arckit.sobc`
 
 ## Document Control
 

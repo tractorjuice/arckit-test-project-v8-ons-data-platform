@@ -1,6 +1,6 @@
 # UK Digital Marketplace: Digital Outcomes and Specialists
 
-> **Template Status**: Beta | **Version**: 1.0.0 | **Command**: `/arckit.dos`
+> **Template Status**: Beta | **Version**: [VERSION] | **Command**: `/arckit.dos`
 
 ## Document Control
 

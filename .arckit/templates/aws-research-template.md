@@ -1,6 +1,6 @@
 # AWS Technology Research: [PROJECT_NAME]
 
-> **Template Status**: Experimental | **Version**: 1.0.0 | **Command**: `/arckit.aws-research`
+> **Template Status**: Experimental | **Version**: [VERSION] | **Command**: `/arckit.aws-research`
 
 ## Document Control
 

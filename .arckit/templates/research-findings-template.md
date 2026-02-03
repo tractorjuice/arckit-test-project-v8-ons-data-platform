@@ -1,6 +1,6 @@
 # Technology and Service Research: [PROJECT_NAME]
 
-> **Template Status**: Beta | **Version**: 1.0.0 | **Command**: `/arckit.research`
+> **Template Status**: Beta | **Version**: [VERSION] | **Command**: `/arckit.research`
 
 ## Document Control
 

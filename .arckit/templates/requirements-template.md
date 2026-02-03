@@ -1,6 +1,6 @@
 # Project Requirements: [PROJECT_NAME]
 
-> **Template Status**: Live | **Version**: 1.0.0 | **Command**: `/arckit.requirements`
+> **Template Status**: Live | **Version**: [VERSION] | **Command**: `/arckit.requirements`
 
 ## Document Control
 
