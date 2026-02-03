@@ -13,42 +13,35 @@ A DPIA is a **legal requirement** under UK GDPR Article 35 for processing that i
 
 ## Instructions
 
-### Step 0: Check Prerequisites
+### Step 0: Read Available Documents
 
-**IMPORTANT**: Before generating a DPIA, verify that foundational artifacts exist:
+Scan the project directory for existing artifacts and read them to inform the DPIA:
 
-1. **Data Model** (REQUIRED):
-   - Check if `projects/*/ARC-*-DATA-v*.md` exists for the target project
-   - If it does NOT exist:
-     ```
-     ❌ Data model not found.
+**MANDATORY** (warn if missing):
+- `ARC-*-DATA-*.md` in `projects/{project}/` — Data model
+  - Extract: All entities with PII/special category data, data subjects, GDPR Article 6 lawful basis, Article 9 conditions, retention periods, data flows, data classifications
+  - If missing: STOP and warn user to run `/arckit.data-model` first — a DPIA requires a data model to identify personal data processing
 
-     A DPIA requires a data model to identify:
-     - Personal data and special category data being processed
-     - Data subjects and vulnerable groups
-     - Processing purposes and lawful basis
-     - Retention periods and data flows
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Privacy by Design principles, data minimization principles, security principles
+  - If missing: warn that DPIAs should be informed by Privacy by Design principles
+- `ARC-*-REQ-*.md` in `projects/{project}/` — Requirements specification
+  - Extract: DR (data requirements), NFR-SEC (security), NFR-C (compliance/GDPR)
+- `ARC-*-STKE-*.md` in `projects/{project}/` — Stakeholder analysis
+  - Extract: Data subject categories, vulnerable groups, RACI for data governance roles (DPO, Data Controller, Data Processors)
 
-     Please run: /arckit.data-model Create data model for [project name]
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-RISK-*.md` in `projects/{project}/` — Risk register
+  - Extract: Data protection risks, privacy risks already identified
+- `ARC-*-SECD-*.md` in `projects/{project}/` — Secure by Design assessment
+  - Extract: Security controls relevant to data protection
 
-     Then return here to generate the DPIA.
-     ```
-   - If it exists, proceed to Step 1
-
-2. **Architecture Principles** (RECOMMENDED):
-   - Check if `projects/000-global/ARC-000-PRIN-*.md` exists
-   - If it does NOT exist, warn:
-     ```
-     ⚠️  Warning: Architecture principles not found.
-
-     DPIAs should be informed by Privacy by Design principles.
-     Consider running: /arckit.principles Create enterprise architecture principles
-     ```
-   - Continue anyway if user confirms
-
-3. **Requirements and Stakeholders** (RECOMMENDED):
-   - Check if `ARC-*-REQ-*.md` and `ARC-*-STKE-*.md` exist for the project
-   - If missing, warn that DPIA will have limited context but can still proceed
+**What to extract from each document**:
+- **Data Model**: Personal data categories, data subjects, lawful basis, retention, data flows
+- **Principles**: Privacy by Design and data minimization standards
+- **Requirements**: Data requirements, GDPR compliance requirements, security controls
+- **Stakeholders**: Data subjects, vulnerable groups, governance roles
 
 ### Step 1: Identify or Create Project
 
@@ -64,51 +57,7 @@ If the user provided a project ID or name in their request, use that. Otherwise,
 
 ### Step 2: Read Source Artifacts
 
-Read the following artifacts to extract information for auto-population:
-
-1. **Data Model** (REQUIRED):
-   - Read `projects/{project_id}/ARC-*-DATA-*.md`
-   - Extract:
-     - All entities with PII/special category data
-     - Data subjects (User, Customer, Employee, etc.)
-     - GDPR Article 6 lawful basis for each entity
-     - GDPR Article 9 conditions for special category data
-     - Retention periods
-     - Data flows (sources, destinations)
-     - Data classifications
-
-2. **Requirements** (if exists):
-   - Read `projects/{project_id}/ARC-*-REQ-*.md`
-   - Extract:
-     - Data requirements (DR-xxx) describing processing purposes
-     - Security requirements (NFR-SEC-xxx) as potential mitigations
-     - Compliance requirements (NFR-C-xxx) related to GDPR
-
-3. **Stakeholder Analysis** (if exists):
-   - Read `projects/{project_id}/ARC-*-STKE-*.md`
-   - Extract:
-     - Data subject categories from stakeholders
-     - Vulnerable groups (children, elderly, disabled)
-     - RACI for data governance roles (DPO, Data Controller, Data Processors)
-
-4. **Architecture Principles** (if exists):
-   - Read `projects/000-global/ARC-000-PRIN-*.md`
-   - Extract:
-     - Privacy by Design principles
-     - Data minimization principles
-     - Security principles
-
-5. **Risk Register** (if exists):
-   - Read `projects/{project_id}/ARC-*-RISK-*.md`
-   - Extract:
-     - Existing data protection/privacy risks
-     - Check if any risks are already tagged as DPIA-related
-
-6. **Secure by Design Assessment** (if exists):
-   - Read any `ARC-*-SECD-*.md` file in `projects/{project_id}/`
-   - Extract:
-     - Security controls that can serve as DPIA mitigations
-     - NCSC CAF A.1 (Data) and A.2 (Identity & Access) controls
+Read all documents listed in Step 0 above. Use the extracted information for auto-population of the DPIA template.
 
 ### Step 3: DPIA Template Reading
 

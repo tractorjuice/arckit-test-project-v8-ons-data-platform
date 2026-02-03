@@ -42,19 +42,37 @@ Parse the user input for:
 
 ## Instructions
 
-### Phase 1: Context Gathering
+### Phase 1: Read Available Documents
 
-Read existing project artifacts:
+Scan the project directory for existing artifacts and read them to inform this document:
 
-**Required Files**:
-1. Any `ARC-*-REQ-*.md` file in `projects/{project-name}/` - Deployment, performance, security NFRs
-2. Any `ARC-000-PRIN-*.md` file in `projects/000-global/` - Technology standards
+**MANDATORY** (warn if missing):
+- `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+  - Extract: NFR-P (performance), NFR-S (scalability), NFR-SEC (security), NFR-A (availability), FR (functional), INT (integration) requirements
+  - If missing: warn user to run `/arckit.requirements` first
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Technology standards, approved platforms, security requirements, cloud-first policy
+  - If missing: warn user to run `/arckit.principles` first
 
-**Optional Files** (read if available):
-3. `projects/{project-name}/diagrams/` - Deployment architecture
-4. Any `ARC-*-RSCH-*.md` file in `projects/{project-name}/` - Technology decisions
-5. Any `ARC-*-DATA-*.md` file in `projects/{project-name}/` - Database requirements
-6. Any `ARC-*-TCOP-*.md` file in `projects/{project-name}/` - UK Gov compliance
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+  - Extract: Deployment topology, component inventory, integration points
+- `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{project-name}/` — Technology research
+  - Extract: Recommended services, platform choices, vendor decisions
+
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-DATA-*.md` in `projects/{project-name}/` — Data model
+  - Extract: Data stores, schemas, database requirements
+- `ARC-*-RISK-*.md` in `projects/{project-name}/` — Risk register
+  - Extract: Technical risks affecting CI/CD and deployment
+- `ARC-*-TCOP-*.md` in `projects/{project-name}/` — TCoP review
+  - Extract: UK Government compliance requirements for DevOps
+
+**What to extract from each document**:
+- **Principles**: Technology standards, approved platforms, security requirements
+- **Requirements**: NFR-P/NFR-S/NFR-SEC/NFR-A IDs, deployment/performance targets
+- **Diagrams**: Component topology, deployment targets, integration points
+- **Research**: Platform choices, recommended services, vendor decisions
 
 ### Phase 2: Analysis
 

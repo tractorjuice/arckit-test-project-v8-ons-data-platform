@@ -16,29 +16,39 @@ $ARGUMENTS
    - Example: "Create evaluation framework for payment gateway project"
    - Example: "Evaluate vendors for project 001"
 
-2. **Prerequisites Check**:
+2. **Read Available Documents**:
 
-**IMPORTANT**: Check prerequisites before proceeding:
+   Scan the project directory for existing artifacts and read them to inform this evaluation:
 
-a. **Architecture Principles** (MUST exist):
-   - Check if any `ARC-000-PRIN-*.md` file exists in `projects/000-global/`
-   - If NOT found: ERROR "Run /arckit.principles first to define governance standards"
-   - Vendor evaluation MUST align with organizational governance
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+     - Extract: BR/FR/NFR/INT/DR requirements to evaluate vendors against
+     - If missing: warn user to run `/arckit.requirements` first
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: Technology standards, governance constraints, compliance requirements for evaluation criteria
+     - If missing: warn user to run `/arckit.principles` first
 
-b. **Project Requirements** (MUST exist):
-   - Check if user specified a project name/number
-   - Look for `projects/{project-dir}/ARC-*-REQ-v*.md`
-   - If NOT found: ERROR "Run /arckit.requirements first to define what you're evaluating"
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-SOW-*.md` in `projects/{project-dir}/` — Statement of Work
+     - Extract: Pre-defined evaluation criteria, scope, deliverables
+   - `ARC-*-DOS-*.md` in `projects/{project-dir}/` — DOS procurement documentation
+     - Extract: Evaluation criteria, essential/desirable skills, assessment approach
+   - `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{project-dir}/` — Technology research
+     - Extract: Market landscape, vendor options, technology recommendations
+   - `ARC-*-GCLD-*.md` in `projects/{project-dir}/procurement/` — G-Cloud search results
+     - Extract: Shortlisted services, feature comparisons, compliance matches
 
-c. **Statement of Work** (RECOMMENDED):
-   - Check if `projects/{project-dir}/ARC-*-SOW-v*.md` or `projects/{project-dir}/procurement/ARC-*-DOS-v*.md` exists
-   - If NOT found: WARN "Consider running /arckit.sow or /arckit.dos to define evaluation criteria"
-   - If exists: Read it to understand pre-defined evaluation criteria
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+     - Extract: Evaluation panel composition, stakeholder priorities
+   - `ARC-*-DPIA-*.md` in `projects/{project-dir}/` — DPIA
+     - Extract: Data protection requirements for vendor assessment
 
-3. **Read project context**:
-   - Read any `ARC-*-REQ-*.md` file in `projects/{project-dir}/` to understand what's being evaluated
-   - Read any `ARC-*-SOW-*.md` file in `projects/{project-dir}/` to understand evaluation criteria already defined
-   - Read any `ARC-000-PRIN-*.md` file in `projects/000-global/` to ensure alignment with governance
+   **What to extract from each document**:
+   - **Principles**: Governance standards, technology constraints for evaluation alignment
+   - **Requirements**: BR/FR/NFR/INT/DR IDs and priorities to score vendors against
+   - **SOW/DOS**: Pre-defined evaluation criteria, scope, deliverables
+   - **Research**: Market context, vendor landscape, technology recommendations
 
 4. **Read the template**: Read `.arckit/templates/evaluation-criteria-template.md`
 

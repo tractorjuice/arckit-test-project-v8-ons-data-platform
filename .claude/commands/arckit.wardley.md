@@ -27,32 +27,45 @@ Wardley Mapping is a strategic situational awareness technique that maps:
 
 **User Request**: {user's wardley mapping request}
 
-## Step 1: Understand the Context
+## Step 1: Read Available Documents
 
-First, analyze the existing project artifacts:
+Scan the project directory for existing artifacts and read them to inform this map:
 
-1. **Read Architecture Principles** (if available):
-   - File: Any `ARC-000-PRIN-*.md` file in `projects/000-global/`
-   - Extract: Strategic principles, technology standards, compliance requirements
+**MANDATORY** (warn if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Strategic principles, technology standards, compliance requirements, cloud-first policy
+  - If missing: warn user to run `/arckit.principles` first
+- `ARC-*-REQ-*.md` in `projects/{current_project}/` — Requirements specification
+  - Extract: Business requirements, functional requirements, non-functional requirements
+  - Identify: User needs, capabilities, technical components
+  - If missing: warn user to run `/arckit.requirements` first
 
-2. **Read Requirements** (if available):
-   - File: Any `ARC-*-REQ-*.md` file in `projects/{current_project}/`
-   - Extract: Business requirements, functional requirements, non-functional requirements
-   - Identify: User needs, capabilities, technical components
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-STKE-*.md` in `projects/{current_project}/` — Stakeholder analysis
+  - Extract: Business drivers, stakeholder goals, priorities, success metrics
+- `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{current_project}/` — Technology research
+  - Extract: Vendor landscape, build vs buy analysis, TCO comparisons
 
-3. **Read UK Government Assessments** (if applicable):
-   - File: Any `ARC-*-TCOP-*.md` file in `projects/{current_project}/` (Technology Code of Practice)
-   - File: Any `ARC-*-AIPB-*.md` file in `projects/{current_project}/` (AI Playbook compliance)
-   - File: Any `ARC-*-ATRS-*.md` file in `projects/{current_project}/` (ATRS for AI systems)
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-DATA-*.md` in `projects/{current_project}/` — Data model
+  - Extract: Data components, storage technology, data flow patterns
+- `ARC-*-TCOP-*.md` in `projects/{current_project}/` — TCoP review
+  - Extract: UK Government compliance requirements, reuse opportunities
+- `ARC-*-AIPB-*.md` in `projects/{current_project}/` — AI Playbook assessment
+  - Extract: AI component risk levels, human oversight requirements
+- Existing maps in `projects/{current_project}/wardley-maps/`
+  - Extract: Previous strategic analysis, evolution predictions
 
-4. **Read Existing Maps** (if available):
-   - Check: `projects/{current_project}/wardley-maps/`
-   - Understand: Previous strategic analysis, evolution predictions
+**What to extract from each document**:
+- **Principles**: Technology standards, cloud-first policy, open source requirements
+- **Requirements**: User needs, capabilities, technical components, BR/FR/NFR IDs
+- **Stakeholders**: Business drivers, strategic goals, success metrics
+- **Research**: Vendor landscape, market maturity, pricing
 
-5. **Understand the Mapping Goal**:
-   - What strategic question are we answering?
-   - What decisions need to be made? (Build vs Buy, vendor selection, technology choices)
-   - What time horizon? (Current state, 12 months, 24 months)
+**Understand the Mapping Goal**:
+- What strategic question are we answering?
+- What decisions need to be made? (Build vs Buy, vendor selection, technology choices)
+- What time horizon? (Current state, 12 months, 24 months)
 
 ## Step 2: Determine the Mapping Mode
 

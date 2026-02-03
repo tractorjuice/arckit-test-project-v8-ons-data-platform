@@ -45,13 +45,34 @@ Generate a comprehensive Secure by Design assessment document using the **contin
    - Project Security Officer (PSyO) appointed if SECRET+ (Yes/No)
    - Current SbD maturity level (self-assessment score)
 
-2. **Check existing documentation**:
-   - Requirements documents: Any `ARC-*-REQ-*.md` file in `projects/*/`
-   - Risk register: Any `ARC-*-RISK-*.md` file in `projects/*/`
-   - Architecture diagrams in `projects/*/diagrams/`
-   - Any existing security documentation
-   - TCoP assessments (if available)
-   - Previous SbD self-assessments
+2. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this assessment:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+     - Extract: NFR-SEC (security), NFR-A (availability), INT (integration), DR (data) requirements, data classification
+     - If missing: warn user to run `/arckit.requirements` first
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: MOD security standards, approved platforms, classification handling, compliance requirements
+     - If missing: warn user to run `/arckit.principles` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-RISK-*.md` in `projects/{project-name}/` — Risk register
+     - Extract: Security risks, threat model, risk appetite, mitigations, MOD-specific threats
+   - `ARC-*-SECD-*.md` in `projects/{project-name}/` — Civilian Secure by Design assessment
+     - Extract: NCSC CAF findings, Cyber Essentials status, existing security controls
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+     - Extract: Deployment topology, network boundaries, data flows, trust zones
+   - Previous SbD self-assessments (if available in project directory)
+
+   **What to extract from each document**:
+   - **Principles**: MOD security policies, JSP 440 requirements, classification standards
+   - **Requirements**: Security NFRs, data classification, availability targets, integration security
+   - **Risk**: Security threats, risk levels, MOD-specific threat vectors, supply chain risks
+   - **Secure**: Existing NCSC CAF findings to build upon for MOD assessment
 
 3. **Assess against the 7 MOD Secure by Design Principles** (ISN 2023/09):
 

@@ -36,21 +36,37 @@ Generate comprehensive JSP 936 AI assurance documentation following this rigorou
 
 ---
 
-## Step 1: Identify Project Context
+## Step 1: Read Available Documents
 
-**Scan ArcKit Artifacts** (if available in workspace):
-- `.arckit/requirements/*.md` - Functional and non-functional requirements
-- `.arckit/architecture/*.md` - System architecture documentation
-- `.arckit/data-model/*.md` - Data sources and flows
-- `.arckit/diagrams/*.mmd` - Architecture diagrams
-- Any other relevant files mentioned by user
+Scan the project directory for existing artifacts and read them to inform this assessment:
 
-**Extract**:
-- Project name and purpose
-- System components and architecture
-- Data sources and processing
-- User interactions and decision points
-- Existing risk assessments
+**MANDATORY** (warn if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: AI governance standards, defence technology constraints, compliance requirements
+  - If missing: warn user to run `/arckit.principles` first
+- `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+  - Extract: AI/ML-related FR requirements, NFR (security, safety), DR (data requirements)
+  - If missing: warn user to run `/arckit.requirements` first
+
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+  - Extract: AI safety risks, operational risks, mitigation strategies
+- `ARC-*-AIPB-*.md` in `projects/{project-dir}/` — AI Playbook assessment
+  - Extract: Risk level, human oversight model, ethical assessment
+
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-MSBD-*.md` in `projects/{project-dir}/` — MOD Secure by Design assessment
+  - Extract: Security classification, MOD security requirements
+- `ARC-*-DATA-*.md` in `projects/{project-dir}/` — Data model
+  - Extract: Training data sources, data flows, data classification
+- `ARC-*-DIAG-*.md` in `projects/{project-dir}/diagrams/` — Architecture diagrams
+  - Extract: System components, deployment topology
+
+**What to extract from each document**:
+- **Principles**: AI governance standards, defence technology constraints
+- **Requirements**: AI use cases (FR-xxx), safety requirements, security requirements
+- **Risk**: AI safety risks, operational risks, ethical risks
+- **AI Playbook**: Risk level, human oversight model, compliance gaps
 
 If no artifacts found, work with user-provided description.
 

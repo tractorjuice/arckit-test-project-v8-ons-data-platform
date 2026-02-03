@@ -30,11 +30,35 @@ $ARGUMENTS
    - **MEDIUM-RISK**: Semi-automated with human review, significant resource allocation
    - **LOW-RISK**: Administrative, productivity tools, recommendations with human control
 
-4. **Read relevant project documents**:
-   - Read `projects/000-global/ARC-000-PRIN-*.md` (if exists)
-   - Read `projects/{project-dir}/ARC-*-REQ-*.md` (if exists)
-   - Read any `ARC-*-AIPB-*.md` file in `projects/{project-dir}/` (if exists - for AI systems)
-   - Read `.arckit/templates/uk-gov-atrs-template.md` for structure
+4. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this record:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: AI governance standards, technology constraints, compliance requirements
+     - If missing: warn user to run `/arckit.principles` first
+   - `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+     - Extract: AI/ML-related FR requirements, NFR (security, fairness), DR (data requirements)
+     - If missing: warn user to run `/arckit.requirements` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-AIPB-*.md` in `projects/{project-dir}/` — AI Playbook assessment
+     - Extract: Risk level, human oversight model, ethical assessment scores, gaps
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-DATA-*.md` in `projects/{project-dir}/` — Data model
+     - Extract: Training data sources, personal data, data quality, storage
+   - `ARC-*-DPIA-*.md` in `projects/{project-dir}/` — DPIA
+     - Extract: Data protection assessment, lawful basis, privacy risks
+
+   **What to extract from each document**:
+   - **Principles**: AI governance standards, compliance constraints
+   - **Requirements**: AI use cases (FR-xxx), fairness requirements, security requirements
+   - **AI Playbook**: Risk level, human oversight model, compliance gaps
+   - **Data Model**: Training data, personal data categories, storage location
+
+   Read `.arckit/templates/uk-gov-atrs-template.md` for structure.
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
 

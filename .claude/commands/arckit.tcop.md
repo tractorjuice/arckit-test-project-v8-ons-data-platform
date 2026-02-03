@@ -20,7 +20,36 @@ Generate a comprehensive TCoP review document by:
 1. **Loading the template**: Use the TCoP review template from `.arckit/templates/tcop-review-template.md`
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
 
-2. **Understanding the project**: Based on the user's description and any existing project documentation (specs, architecture, requirements), assess compliance against all 13 TCoP points:
+2. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this assessment:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project}/` — Requirements specification
+     - Extract: FR/NFR IDs, technology constraints, compliance requirements
+     - If missing: warn user to run `/arckit.requirements` first
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: Technology standards, approved platforms, security requirements
+     - If missing: warn user to run `/arckit.principles` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-STKE-*.md` — Stakeholder analysis (for user needs, priorities)
+   - `ARC-*-RISK-*.md` — Risk register (for security and compliance risks)
+   - `ARC-*-DIAG-*.md` in `projects/{project}/diagrams/` — Architecture diagrams (for deployment topology)
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` — Technology research (for technology choices)
+   - `ARC-*-AIPB-*.md` — AI Playbook assessment (for AI/ML systems)
+   - `ARC-*-DPIA-*.md` — DPIA (for data protection context)
+
+   **What to extract from each document**:
+   - **Principles**: Technology standards, constraints, compliance requirements
+   - **Requirements**: BR/FR/NFR/INT/DR IDs, priorities, acceptance criteria
+   - **Stakeholders**: User personas, goals, success metrics
+   - **Risk**: High/critical risks, mitigations, risk appetite
+   - **Diagrams**: Component topology, deployment targets, integration points
+
+3. **Assess compliance**: Based on the user's description and any existing project documentation, assess compliance against all 13 TCoP points:
    - Point 1: Define user needs
    - Point 2: Make things accessible and inclusive
    - Point 3: Be open and use open source
@@ -35,17 +64,11 @@ Generate a comprehensive TCoP review document by:
    - Point 12: Make your technology sustainable
    - Point 13: Meet the Service Standard
 
-3. **For each TCoP point**:
+4. **For each TCoP point**:
    - Assess status: ✅ Compliant / ⚠️ Partially Compliant / ❌ Non-Compliant / N/A Not Applicable
    - Provide evidence of how the project meets (or fails to meet) the criteria
    - Check relevant checklist items based on project information
    - Identify gaps and required actions
-
-4. **Check for existing documentation**:
-   - Look for requirements documents: Any `ARC-*-REQ-*.md` file in project directory
-   - Look for architecture documents in `specs/*/diagrams/`
-   - Look for any existing compliance documents
-   - Use information from these documents to inform your assessment
 
 5. **Provide realistic assessments**:
    - Be honest about compliance gaps
@@ -53,9 +76,9 @@ Generate a comprehensive TCoP review document by:
    - Use "N/A" only when truly not applicable
    - Provide actionable recommendations for gaps
 
-6. **Generate compliance scorecard**: Create a summary showing status of all 13 points
+7. **Generate compliance scorecard**: Create a summary showing status of all 13 points
 
-7. **Prioritize actions**: Identify critical issues requiring immediate attention
+8. **Prioritize actions**: Identify critical issues requiring immediate attention
 
 8. **Detect version**: Before generating the document ID, check if a previous version exists:
    - Look for existing `ARC-{PROJECT_ID}-TCOP-v*.md` files in the project directory

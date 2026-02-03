@@ -42,19 +42,36 @@ Parse the user input for:
 
 ## Instructions
 
-### Phase 1: Context Gathering
+### Phase 1: Read Available Documents
 
-Read existing project artifacts:
+Scan the project directory for existing artifacts and read them to inform this document:
 
-**Required Files**:
-1. Any `ARC-*-REQ-*.md` file in `projects/{project-name}/` - Scale, performance, budget NFRs
-2. Any `ARC-000-PRIN-*.md` file in `projects/000-global/` - Technology standards
+**MANDATORY** (warn if missing):
+- `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+  - Extract: NFR-P (performance), NFR-S (scalability), NFR-A (availability), BR (business/budget) requirements
+  - If missing: warn user to run `/arckit.requirements` first
 
-**Optional Files** (read if available):
-3. Any `ARC-*-DEVOPS-*.md` file in `projects/{project-name}/` - Infrastructure patterns
-4. `projects/{project-name}/diagrams/` - Resource architecture
-5. Any `ARC-*-RSCH-*.md` file in `projects/{project-name}/` - Technology decisions
-6. Any `ARC-*-STKE-*.md` file in `projects/{project-name}/` - Business drivers
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Technology standards, cloud-first policy, cost governance principles
+- `ARC-*-DEVO-*.md` in `projects/{project-name}/` — DevOps strategy
+  - Extract: Infrastructure patterns, deployment targets, container orchestration
+- `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+  - Extract: Resource architecture, deployment topology
+
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{project-name}/` — Technology research
+  - Extract: Cloud provider choices, service pricing, platform decisions
+- `ARC-*-STKE-*.md` in `projects/{project-name}/` — Stakeholder analysis
+  - Extract: Business drivers, budget constraints, ROI expectations
+- `ARC-*-SOBC-*.md` in `projects/{project-name}/` — Business case
+  - Extract: Budget allocations, cost targets, ROI commitments
+
+**What to extract from each document**:
+- **Principles**: Technology standards, cost governance, cloud-first policy
+- **Requirements**: NFR-P/NFR-S/NFR-A/BR IDs, budget and scale constraints
+- **DevOps**: Infrastructure patterns, scaling approach, deployment targets
+- **Diagrams**: Resource topology, component inventory
 
 ### Phase 2: Analysis
 

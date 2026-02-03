@@ -18,59 +18,38 @@ Generate a comprehensive platform strategy design document using PDT v2.2.1 meth
 
 ## Instructions
 
-### Step 0: Check Prerequisites
+### Step 0: Read Available Documents
 
-**IMPORTANT**: Before generating a platform design, verify that foundational artifacts exist:
+Scan the project directory for existing artifacts and read them to inform this platform design:
 
-1. **Architecture Principles** (REQUIRED):
-   - Check if `projects/000-global/ARC-000-PRIN-*.md` exists
-   - If it does NOT exist:
-     ```
-     ❌ Architecture principles not found.
+**MANDATORY** (warn if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Platform governance principles, ecosystem orchestration standards, technology choices
+  - If missing: STOP — platform designs require architecture principles. Run `/arckit.principles` first.
+- `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+  - Extract: Platform capabilities from FR/NFR requirements, scalability, availability, security
+  - If missing: warn user to run `/arckit.requirements` first
 
-     Platform designs require architecture principles to be established first.
-     Principles should guide platform governance, ecosystem orchestration, and technology choices.
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+  - Extract: Ecosystem entities from stakeholder drivers, user personas, goals
+  - If missing: recommend running `/arckit.stakeholders` for better entity portraits
+- `ARC-*-WARD-*.md` in `projects/{project-dir}/wardley-maps/` — Wardley maps
+  - Extract: Evolution analysis for build vs buy decisions, component positioning
 
-     Please run: /arckit.principles Create enterprise architecture principles
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+  - Extract: Platform risks, ecosystem risks, governance risks
+- `ARC-*-DATA-*.md` in `projects/{project-dir}/` — Data model
+  - Extract: Data exchange patterns, entity schemas, data governance
+- `ARC-*-SOBC-*.md` in `projects/{project-dir}/` — Business case
+  - Extract: Investment context, ROI targets, benefits
 
-     Then return here to generate the platform design.
-     ```
-
-2. **Stakeholder Analysis** (HIGHLY RECOMMENDED):
-   - Check if any `projects/*/ARC-*-STKE-*.md` files exist
-   - If stakeholder analysis exists:
-     - Note which project(s) have stakeholder analysis
-     - You will auto-populate entity portraits from stakeholder drivers
-   - If none exist:
-     ```
-     ⚠️ Stakeholder analysis not found.
-
-     While not strictly required, stakeholder analysis provides valuable entity context.
-     Platform designs map stakeholders → ecosystem entities → platform value propositions.
-
-     Recommendation: Run /arckit.stakeholders first for better entity portraits.
-
-     Proceed with platform design? [Type 'yes' to continue without stakeholders, or run /arckit.stakeholders first]
-     ```
-
-3. **Requirements** (RECOMMENDED):
-   - Check if any `projects/*/ARC-*-REQ-*.md` files exist
-   - If requirements exist:
-     - You will auto-populate platform capabilities from FR/NFR requirements
-   - If none exist:
-     ```
-     ℹ️ Requirements not found.
-
-     Requirements help define platform capabilities and non-functional requirements (scalability, availability, security).
-
-     You can still create platform design, but it will be less detailed.
-     ```
-
-4. **Wardley Maps** (OPTIONAL):
-   - Check if any `projects/*/wardley-maps/ARC-*-WARD-*.md` files exist
-   - If Wardley maps exist:
-     - You will use evolution analysis to inform build vs. buy decisions
-   - This is optional but valuable for platform strategy
+**What to extract from each document**:
+- **Principles**: Platform governance, ecosystem orchestration, technology standards
+- **Requirements**: Platform capabilities (FR-xxx), NFRs (scalability, security), integration points
+- **Stakeholders**: Ecosystem entities, user personas, goals, value propositions
+- **Wardley Maps**: Component evolution, build vs buy positioning
 
 ---
 

@@ -21,28 +21,36 @@ This command generates DOS-compliant procurement documentation from your existin
 
 ## Instructions
 
-### 1. Prerequisites Check
+### 1. Read Available Documents
 
-**IMPORTANT**: Check prerequisites before proceeding:
+Scan the project directory for existing artifacts and read them to inform this document:
 
-a. **Architecture Principles** (MUST exist):
-   - Check if `projects/000-global/ARC-000-PRIN-*.md` exists
-   - If NOT found: ERROR "Run /arckit.principles first to define governance standards"
+**MANDATORY** (warn if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Technology standards, governance constraints for vendor proposals
+  - If missing: ERROR — run `/arckit.principles` first to define governance standards
+- `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+  - Extract: BR/FR/NFR/INT/DR IDs, priorities, acceptance criteria — source of truth for DOS
+  - If missing: ERROR — run `/arckit.requirements` first to define project needs
 
-b. **Project with Requirements** (MUST exist):
-   - Check if user specified a project name/number
-   - Look for `projects/[project]/ARC-*-REQ-v*.md`
-   - If NOT found: ERROR "Run /arckit.requirements first to define project needs"
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+  - Extract: User personas, business drivers, evaluation priorities
+  - If missing: WARN — consider running `/arckit.stakeholders` to understand stakeholder priorities
+- `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{project-dir}/` — Technology research
+  - Extract: Technology decisions informing essential skills requirements
 
-c. **Stakeholder Analysis** (RECOMMENDED):
-   - Check if `projects/[project]/ARC-*-STKE-v*.md` exists
-   - If NOT found: WARN "Consider running /arckit.stakeholders to understand stakeholder priorities"
-   - If exists: Read it to inform procurement priorities
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-SOW-*.md` in `projects/{project-dir}/` — Statement of Work
+  - Extract: Additional procurement context, scope definitions
+- `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+  - Extract: Risks requiring vendor mitigation, compliance requirements
 
-d. **Existing SOW** (OPTIONAL):
-   - Check if `projects/[project]/ARC-*-SOW-v*.md` exists
-   - If exists: Reference it for additional context
-   - This command generates Digital Marketplace-specific docs alongside general SOW
+**What to extract from each document**:
+- **Principles**: Technology standards, governance constraints for vendor proposals
+- **Requirements**: All BR/FR/NFR/INT/DR IDs with MUST/SHOULD/MAY priority
+- **Stakeholders**: User personas, business drivers, evaluation priorities
+- **Research**: Technology landscape informing essential skills
 
 ### 2. Load Project Context
 

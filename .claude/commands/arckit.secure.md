@@ -32,12 +32,40 @@ Generate a comprehensive Secure by Design assessment document by:
    - User base (public-facing, internal staff, both)
    - Hosting approach (cloud, on-premise, hybrid)
 
-3. **Check existing documentation**:
-   - Requirements documents in `specs/*/ARC-*-REQ-*.md`
-   - Architecture diagrams in `specs/*/diagrams/`
-   - Any existing security or compliance documents
-   - TCoP assessments (if available)
-   - Risk registers or threat models
+3. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this assessment:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+     - Extract: NFR-SEC (security), NFR-P (performance), NFR-A (availability), INT (integration), DR (data) requirements
+     - If missing: warn user to run `/arckit.requirements` first
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: Security standards, approved platforms, compliance requirements, cloud policy
+     - If missing: warn user to run `/arckit.principles` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-RISK-*.md` in `projects/{project-name}/` — Risk register
+     - Extract: Security risks, threat model, risk appetite, mitigations
+   - `ARC-*-DPIA-*.md` in `projects/{project-name}/` — Data Protection Impact Assessment
+     - Extract: Personal data processing, lawful basis, data protection risks
+   - `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+     - Extract: Deployment topology, network boundaries, data flows, integration points
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-TCOP-*.md` in `projects/{project-name}/` — TCoP review
+     - Extract: Technology governance compliance, Point 6 (Secure) findings
+   - `ARC-*-AIPB-*.md` in `projects/{project-name}/` — AI Playbook assessment
+     - Extract: AI-specific security requirements (prompt injection, data poisoning)
+   - `ARC-*-ATRS-*.md` in `projects/{project-name}/` — ATRS record
+     - Extract: Algorithmic transparency security requirements
+
+   **What to extract from each document**:
+   - **Principles**: Security standards, approved platforms, compliance constraints
+   - **Requirements**: NFR-SEC IDs, data classification, availability targets, integration security
+   - **Risk**: Security threats, risk levels, existing mitigations
+   - **DPIA**: Personal data categories, lawful basis, data protection controls
+   - **Diagrams**: Network topology, trust boundaries, data flow paths
 
 4. **Assess security using NCSC CAF (14 principles across 4 objectives)**:
 

@@ -27,54 +27,41 @@ This command should be run **before** implementation begins, so that operational
 
 ## Input Context Required
 
-Before generating the ServiceNow design, read and analyze:
+Before generating the ServiceNow design, scan the project directory for existing artifacts and read them:
 
-### Required Files:
-1. **Requirements** (any `ARC-*-REQ-*.md` file in `projects/{project-name}/`):
-   - NFRs for availability, performance, capacity → SLA definitions
-   - Security requirements → Change control requirements
-   - Integration requirements → CMDB dependencies
-   - Data requirements → CMDB attributes
+**MANDATORY** (warn if missing):
+- `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+  - Extract: NFR-A (availability) → SLA targets, NFR-P (performance) → response time SLAs, NFR-SEC (security) → change control, INT (integration) → CMDB dependencies, DR (data) → CMDB attributes
+  - If missing: warn user to run `/arckit.requirements` first
+- `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+  - Extract: Context diagram → Service CI hierarchy, Container diagram → Application/infrastructure CIs, Data flow → CMDB relationships, Deployment diagram → Infrastructure CIs
+  - If missing: warn user to run `/arckit.diagram` first
 
-2. **Architecture Diagrams** (`projects/{project-name}/diagrams/`):
-   - Context diagram → Service CI hierarchy
-   - Container diagram → Application and infrastructure CIs
-   - Data flow diagram → CMDB relationships
-   - Deployment diagram → Infrastructure CIs (servers, databases, queues)
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Operational principles, support requirements, compliance requirements
+- `ARC-*-DATA-*.md` in `projects/{project-name}/` — Data model
+  - Extract: Data stores, schemas, retention policies → CMDB data attributes
+- HLD/DLD in `projects/{project-name}/vendors/*/hld-v*.md` or `dld-v*.md` — Vendor designs
+  - Extract: Component specifications, API contracts → health check endpoints, technology decisions → CMDB attributes
 
-3. **Architecture Principles** (any `ARC-000-PRIN-*.md` file in `projects/000-global/`):
-   - Operational principles that affect service management
-   - Support requirements
-   - Compliance requirements
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-TRAC-*.md` in `projects/{project-name}/` — Traceability matrix
+  - Extract: Requirements to design mapping, test coverage → validation criteria
+- `ARC-*-WARD-*.md` in `projects/{project-name}/` — Wardley map
+  - Extract: Component evolution stages → change risk assessment, build vs buy → CMDB sourcing
 
-### Optional Files (read if available):
-4. **HLD/DLD** (`projects/{project-name}/vendors/{vendor}/hld-v*.md` or `dld-v*.md`):
-   - Detailed component specifications
-   - API contracts → Health check endpoints
-   - Technology decisions → CMDB attributes
-
-5. **Traceability Matrix** (any `ARC-*-TRAC-*.md` file in `projects/{project-name}/`):
-   - Requirements to design mapping
-   - Test coverage → Validation criteria
-
-6. **Wardley Map** (`projects/{project-name}/wardley-maps/`):
-   - Component evolution stages → Change risk assessment
-   - Build vs buy decisions → CMDB sourcing attributes
+**What to extract from each document**:
+- **Requirements**: NFR availability/performance/security → SLA definitions, integration → CMDB dependencies
+- **Diagrams**: Component topology → CI hierarchy, data flows → CMDB relationships
+- **Principles**: Operational standards, support model, compliance requirements
+- **Data Model**: Data stores, schemas → CMDB data attributes
 
 ## Command Workflow
 
-### Phase 1: Context Gathering (First, read existing files)
+### Phase 1: Context Gathering
 
-```bash
-# Read all relevant architecture artifacts
-# DO NOT proceed to generation until you have read these files
-```
-
-1. Read any `ARC-*-REQ-*.md` file in `projects/{project-name}/`
-2. Read all files in diagrams/ directory (especially context and container diagrams)
-3. Read any `ARC-000-PRIN-*.md` file in `projects/000-global/`
-4. Read HLD/DLD if available
-5. Read any `ARC-*-TRAC-*.md` file if available
+Read all documents listed in the "Read Available Documents" section above before proceeding.
 
 **IMPORTANT**: Parse the user's request for:
 - Service name/description

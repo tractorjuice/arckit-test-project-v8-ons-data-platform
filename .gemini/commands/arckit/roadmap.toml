@@ -10,22 +10,36 @@ You are helping an enterprise architect create a **strategic architecture roadma
 {{args}}
 ```
 
-## Prerequisites
+## Prerequisites: Read Available Documents
 
-Before creating the roadmap, verify these strategic inputs exist (roadmap synthesis requires upstream context):
+Scan the project directory for existing artifacts and read them to inform this roadmap:
 
-1. **Architecture Principles**: `projects/000-global/ARC-000-PRIN-*.md` (REQUIRED)
-   - If missing: Ask user to run `/arckit.principles` first
+**MANDATORY** (warn if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Technology standards, strategic direction, compliance requirements
+  - If missing: STOP and ask user to run `/arckit.principles` first. The roadmap must align to approved principles.
+- `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+  - Extract: Capability needs, BR/FR/NFR IDs, technology constraints
+  - If missing: warn user to run `/arckit.requirements` first
 
-2. **Stakeholder Drivers**: Check if stakeholder analysis exists for this initiative
-   - If missing: Suggest running `/arckit.stakeholders` for strategic context
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+  - Extract: Business drivers, strategic goals, success metrics, investment appetite
+- `ARC-*-WARD-*.md` in `projects/{project-dir}/wardley-maps/` — Wardley maps
+  - Extract: Technology evolution, build vs buy positioning, evolution velocity
+- `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+  - Extract: Strategic risks, risk appetite, mitigation timelines
 
-3. **Optional but Recommended**:
-   - Wardley Maps showing technology evolution
-   - Requirements document for capability needs
-   - Risk register for strategic risk context
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-SOBC-*.md` in `projects/{project-dir}/` — Business case
+  - Extract: Investment figures, ROI targets, payback period, benefits timeline
 
-If architecture principles are missing, STOP and ask the user to create them first. The roadmap must align to approved principles.
+**What to extract from each document**:
+- **Principles**: Strategic direction, technology standards, compliance requirements
+- **Requirements**: Capability needs, BR/FR/NFR IDs, priorities
+- **Stakeholders**: Business drivers, strategic goals, investment appetite
+- **Wardley Maps**: Technology evolution, build vs buy, evolution velocity
+- **Risk**: Strategic risks impacting roadmap sequencing
 
 ## Instructions
 
@@ -44,18 +58,7 @@ Parse the JSON response to extract:
 
 ### 2. Gather Strategic Context
 
-Read the following files to understand strategic context (only read files that exist):
-
-**REQUIRED**:
-- `projects/000-global/ARC-000-PRIN-*.md` - Principles to align roadmap to
-
-**If Available**:
-- `projects/[PROJECT_ID]/ARC-*-STKE-*.md` - Business drivers and outcomes
-- `projects/[PROJECT_ID]/ARC-*-REQ-*.md` - Capability requirements
-- `projects/[PROJECT_ID]/ARC-*-RISK-*.md` - Strategic risks
-- `projects/[PROJECT_ID]/wardley-maps/ARC-*-WARD-*.md` - Technology evolution maps
-
-Use this context to inform roadmap themes, timeline, and priorities.
+Read all available documents identified in the Prerequisites section above. Use this context to inform roadmap themes, timeline, and priorities.
 
 ### 3. Read Roadmap Template
 

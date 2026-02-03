@@ -41,20 +41,41 @@ Parse the user input for:
 
 ## Instructions
 
-### Phase 1: Context Gathering
+### Phase 1: Read Available Documents
 
-First, read existing project artifacts to understand the service:
+Scan the project directory for existing artifacts and read them to inform this document:
 
-**Required Files**:
-1. Any `ARC-*-REQ-*.md` file in `projects/{project-name}/` - NFRs for availability, performance, recovery
-2. Any `ARC-000-PRIN-*.md` file in `projects/000-global/` - Operational principles
-3. `projects/{project-name}/diagrams/` - Architecture components
+**MANDATORY** (warn if missing):
+- `ARC-*-REQ-*.md` in `projects/{project-name}/` — Requirements specification
+  - Extract: NFR-A (availability), NFR-P (performance), NFR-S (scalability), NFR-SEC (security), NFR-C (compliance) requirements
+  - If missing: warn user to run `/arckit.requirements` first
+- `ARC-*-DIAG-*.md` in `projects/{project-name}/diagrams/` — Architecture diagrams
+  - Extract: Component inventory, deployment topology, data flows, dependencies
+  - If missing: warn user to run `/arckit.diagram` first
 
-**Optional Files** (read if available):
-4. Any `ARC-*-RISK-*.md` file in `projects/{project-name}/` - Operational risks
-5. Any `ARC-*-DATA-*.md` file in `projects/{project-name}/` - Data dependencies, backup requirements
-6. `projects/{project-name}/ARC-*-SNOW-*.md` - ITSM integration
-7. Any `ARC-*-STKE-*.md` file in `projects/{project-name}/` - Stakeholder expectations
+**RECOMMENDED** (read if available, note if missing):
+- `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+  - Extract: Operational standards, resilience requirements, security principles
+- `ARC-*-SNOW-*.md` in `projects/{project-name}/` — ServiceNow design
+  - Extract: ITSM integration, incident management, change control processes
+- `ARC-*-RISK-*.md` in `projects/{project-name}/` — Risk register
+  - Extract: Operational risks, service continuity risks, mitigation strategies
+
+**OPTIONAL** (read if available, skip silently if missing):
+- `ARC-*-DEVO-*.md` in `projects/{project-name}/` — DevOps strategy
+  - Extract: CI/CD pipeline, deployment strategy, monitoring approach
+- `ARC-*-TRAC-*.md` in `projects/{project-name}/` — Traceability matrix
+  - Extract: Requirements-to-component mapping for runbook coverage
+- `ARC-*-DATA-*.md` in `projects/{project-name}/` — Data model
+  - Extract: Data dependencies, backup requirements, retention policies
+- `ARC-*-STKE-*.md` in `projects/{project-name}/` — Stakeholder analysis
+  - Extract: Stakeholder expectations, SLA requirements, support model preferences
+
+**What to extract from each document**:
+- **Requirements**: NFR-A/NFR-P/NFR-S/NFR-SEC/NFR-C IDs, SLA targets, RTO/RPO
+- **Diagrams**: Component topology, dependencies, data flows
+- **Principles**: Operational standards, resilience requirements
+- **Risk**: Operational risks, business continuity risks
 
 **IMPORTANT**: Do not proceed until you have read the requirements and architecture files.
 

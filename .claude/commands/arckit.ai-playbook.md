@@ -41,10 +41,37 @@ $ARGUMENTS
 - Administrative automation
 - Examples: Email categorization, meeting scheduling, document summarization
 
-3. **Read relevant project documents**:
-   - Read `projects/000-global/ARC-000-PRIN-*.md` (if exists)
-   - Read `projects/{project-dir}/ARC-*-REQ-*.md` (if exists)
-   - Read `.arckit/templates/uk-gov-ai-playbook-template.md` for assessment structure
+3. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this assessment:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: AI/ML governance standards, technology constraints, compliance requirements
+     - If missing: warn user to run `/arckit.principles` first
+   - `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+     - Extract: AI/ML-related FR requirements, NFR (security, compliance, fairness), DR (data requirements)
+     - If missing: warn user to run `/arckit.requirements` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-DATA-*.md` in `projects/{project-dir}/` — Data model
+     - Extract: Training data sources, personal data, special category data, data quality
+   - `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+     - Extract: AI-specific risks, bias risks, security risks, mitigation strategies
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+     - Extract: Affected populations, decision authority, accountability
+   - `ARC-*-DPIA-*.md` in `projects/{project-dir}/` — DPIA
+     - Extract: Data protection context, lawful basis, privacy risks
+
+   **What to extract from each document**:
+   - **Principles**: AI governance standards, ethical AI requirements, compliance constraints
+   - **Requirements**: AI use cases (FR-xxx), fairness (NFR-E-xxx), security (NFR-SEC-xxx), data (DR-xxx)
+   - **Data Model**: Training data sources, personal data categories, data quality
+   - **Risk**: AI-specific risks, bias risks, mitigation strategies
+
+   Read `.arckit/templates/uk-gov-ai-playbook-template.md` for assessment structure.
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
 

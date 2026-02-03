@@ -21,9 +21,33 @@ $ARGUMENTS
      ```
      Parse the JSON output to get the project path and ID
 
-2. **Read the requirements**: Read any `ARC-*-REQ-*.md` file in `projects/{project-dir}/`
-   - If requirements don't exist, suggest running `/arckit.requirements` first
-   - Requirements are the source of truth for the SOW
+2. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this document:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification
+     - Extract: BR/FR/NFR/INT/DR IDs, priorities, acceptance criteria — source of truth for the SOW
+     - If missing: warn user to run `/arckit.requirements` first
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: Technology standards, constraints, compliance requirements for vendor alignment
+     - If missing: warn user to run `/arckit.principles` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-RSCH-*.md` or `ARC-*-AWSR-*.md` or `ARC-*-AZUR-*.md` in `projects/{project-dir}/` — Technology research
+     - Extract: Vendor landscape, technology decisions, TCO estimates
+   - `ARC-*-STKE-*.md` in `projects/{project-dir}/` — Stakeholder analysis
+     - Extract: Business drivers, success criteria, evaluation priorities
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+     - Extract: Risks requiring vendor mitigation, risk allocation
+
+   **What to extract from each document**:
+   - **Requirements**: All BR/FR/NFR/INT/DR IDs with MUST/SHOULD/MAY priority
+   - **Principles**: Technology constraints, compliance requirements for vendors
+   - **Research**: Technology decisions, vendor landscape, TCO data
+   - **Stakeholders**: Business drivers, success criteria, evaluation priorities
 
 3. **Read the template**: Read `.arckit/templates/sow-template.md` to understand the structure
 

@@ -12,15 +12,31 @@ $ARGUMENTS
 
 ## Instructions
 
-1. **Check for prerequisites**:
-   - **MANDATORY**: Check if any `ARC-*-REQ-*.md` file exists in `projects/{project}/`
-     - If requirements don't exist, **STOP** and tell user to run `/arckit.requirements` first
-     - Data model MUST be based on Data Requirements (DR-xxx) from the requirements document
-   - **RECOMMENDED**: Check if any `ARC-*-STKE-*.md` file exists in `projects/{project}/`
-     - If it exists, read it to identify data owners and governance stakeholders
-     - Use RACI matrix to assign data ownership responsibilities
-   - **OPTIONAL**: Check if any `ARC-*-SOBC-*.md` file exists in `projects/{project}/`
-     - If it exists, reference data-related benefits and costs
+1. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform the data model:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-REQ-*.md` in `projects/{project}/` — Requirements specification
+     - Extract: All DR (data requirements), NFR-SEC (security/privacy), INT (integration/data exchange), BR (data-related business requirements)
+     - If missing: STOP and warn user to run `/arckit.requirements` first — data model MUST be based on DR-xxx requirements
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-STKE-*.md` in `projects/{project}/` — Stakeholder analysis
+     - Extract: Data owners from RACI matrix, governance stakeholders, data stewardship responsibilities
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles
+     - Extract: Data governance standards, privacy by design principles, data sovereignty requirements
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-SOBC-*.md` in `projects/{project}/` — Business case
+     - Extract: Data-related benefits and costs
+   - `ARC-*-RSCH-*.md` in `projects/{project}/` — Technology research
+     - Extract: Database technology recommendations, data platform choices
+
+   **What to extract from each document**:
+   - **Requirements**: DR-xxx for entity identification, NFR-SEC for privacy/GDPR, INT-xxx for data exchange
+   - **Stakeholders**: Data owners, governance roles, RACI for data stewardship
+   - **Principles**: Data governance standards, classification policies
 
 2. **Find the project**:
    - If user specifies project name or number, use that

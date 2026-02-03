@@ -17,13 +17,40 @@ $ARGUMENTS
    - Vendor name (if applicable)
    - Location of DLD document
 
-2. **Read the review context**:
-   - Read `projects/{project-dir}/vendors/{vendor}/reviews/ARC-*-HLD-*.md` - Ensure HLD issues were addressed
-   - Read any `ARC-000-PRIN-*.md` file in `projects/000-global/` - Governance rules still apply
-   - Read any `ARC-*-REQ-*.md` file in `projects/{project-dir}/` - Technical requirements
-   - Read `.arckit/templates/dld-review-template.md` - Review checklist
+2. **Read Available Documents**:
+
+   Scan the project directory for existing artifacts and read them to inform this review:
+
+   **MANDATORY** (warn if missing):
+   - `ARC-*-HLDR-*.md` in `projects/{project-dir}/` — HLD review (ensure HLD issues were addressed)
+     - Extract: HLD review findings, conditions, outstanding actions
+     - If missing: warn that DLD review should follow HLD review
+   - `ARC-000-PRIN-*.md` in `projects/000-global/` — Architecture principles (governance rules still apply)
+     - Extract: All principles with validation gates
+     - If missing: warn user to run `/arckit.principles` first
+   - `ARC-*-REQ-*.md` in `projects/{project-dir}/` — Requirements specification (technical requirements)
+     - Extract: NFR/INT/DR requirements for detailed technical verification
+     - If missing: warn user to run `/arckit.requirements` first
+
+   **RECOMMENDED** (read if available, note if missing):
+   - `ARC-*-DATA-*.md` in `projects/{project-dir}/` — Data model
+     - Extract: Entity schemas, data types, relationships for data model review
+   - `ARC-*-RISK-*.md` in `projects/{project-dir}/` — Risk register
+     - Extract: Technical risks that DLD should address
+
+   **OPTIONAL** (read if available, skip silently if missing):
+   - `ARC-*-SECD-*.md` in `projects/{project-dir}/` — Secure by Design assessment
+     - Extract: Security controls for security implementation review
+
+   Read `.arckit/templates/dld-review-template.md` for the review checklist structure.
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
+
+   **What to extract from each document**:
+   - **HLD Review**: Previous findings and conditions to verify
+   - **Principles**: Governance rules for compliance checking
+   - **Requirements**: NFR/INT/DR IDs for technical verification
+   - **Data Model**: Schemas and relationships for data model review
 
 3. **Verify HLD approval**:
    - Check that HLD was approved (DLD cannot proceed without HLD approval)
