@@ -77,6 +77,21 @@ Scan the project directory for existing artifacts and read them to inform this d
 - **AI Playbook**: Risk level, human oversight model, responsible AI obligations
 - **Principles**: AI/ML governance standards, approved platforms
 
+### Phase 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing ML Pipelines & Model Cards**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), YAML (.yml)
+- **What to extract**: Current ML pipeline configurations, model performance metrics, training data specifications, model cards
+- **Examples**: `model-card.md`, `ml-pipeline-config.yml`, `model-evaluation.pdf`
+
+**User prompt**: If no external MLOps docs found but they would improve the strategy, ask:
+"Do you have any existing ML pipeline configurations, model cards, or model evaluation reports? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Phase 2: Analysis
 
 **Determine MLOps Maturity Target**:

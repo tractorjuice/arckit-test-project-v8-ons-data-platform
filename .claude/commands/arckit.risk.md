@@ -64,19 +64,40 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - Reassessing risks after changes
    - Creating organizational risk appetite (advanced - if user asks for this specifically)
 
-3. **Determine project context**:
+3. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **Risk Appetite Statement & External Threat Assessments**:
+   - **Look in**: `projects/000-global/policies/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+   - **What to extract**: Organizational risk appetite, risk tolerance thresholds, external threat landscape, industry risk benchmarks
+   - **Examples**: `risk-appetite-statement.pdf`, `threat-assessment-2025.pdf`, `industry-risk-report.docx`
+
+   **Previous Risk Assessments**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF, Word, Markdown
+   - **What to extract**: Previous risk findings, mitigation effectiveness, residual risks, lessons learned
+   - **Examples**: `previous-risk-register.pdf`, `risk-review-notes.md`
+
+   **User prompt**: If no external risk docs found but they would improve the assessment, ask:
+   "Do you have a risk appetite statement, previous risk assessments, or external threat reports? I can read PDFs directly. Place them in `projects/000-global/policies/` and re-run, or skip."
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+4. **Determine project context**:
    - If user mentions "UK Government", "public sector", "department", "ministry" → Include regulatory/parliamentary risks
    - If user mentions specific industry → Include industry-specific risk categories
    - Check stakeholder analysis for context on project scale, complexity, stakeholders
 
-4. **Read stakeholder analysis carefully**:
+5. **Read stakeholder analysis carefully**:
    - Extract risk owners from RACI matrix (Accountable = Risk Owner)
    - Extract affected stakeholders (who cares about which risks?)
    - Extract stakeholder concerns from conflict analysis (these ARE risks!)
    - Extract stakeholder drivers (drivers under threat = strategic risks)
    - Note: EVERY risk MUST have a risk owner from stakeholder analysis
 
-5. **Identify risks across Orange Book categories**:
+6. **Identify risks across Orange Book categories**:
 
    Use these risk categories aligned to Orange Book framework:
 
@@ -116,7 +137,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - Integration challenges, scalability limitations
    - Example: "Legacy integration fails during peak load"
 
-6. **For EACH risk identified, create comprehensive risk profile**:
+7. **For EACH risk identified, create comprehensive risk profile**:
 
    Use the template at `.arckit/templates/risk-register-template.md` and populate:
 
@@ -212,7 +233,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - **Justification**: Why is this acceptable/not acceptable?
    - **Escalation Required**: Yes/No (if exceeds appetite)
 
-7. **Generate comprehensive risk register** with these sections:
+8. **Generate comprehensive risk register** with these sections:
 
    **A. Executive Summary**:
    - Total risks identified (by category)
@@ -337,7 +358,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - **Management Case Part E**: Full risk register feeds into risk management section
    - **Recommendation**: High risks may influence option selection
 
-8. **Ensure complete traceability to stakeholders**:
+9. **Ensure complete traceability to stakeholders**:
 
    Every risk must link back to stakeholder analysis:
 
@@ -350,7 +371,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
              → Success Criterion: Costs within 5% of budget monthly
    ```
 
-9. **Flag risks that need escalation**:
+10. **Flag risks that need escalation**:
 
    Identify risks that require immediate action:
    - **Critical risks** (score 20-25): Escalate to steering committee immediately
@@ -358,7 +379,7 @@ This command creates a **comprehensive risk register** following HM Treasury Ora
    - **Increasing risk trends**: Risks getting worse over time
    - **Unmitigated high risks**: High risks with no treatment plan
 
-10. **Write the output**:
+11. **Write the output**:
     - Create or update `projects/NNN-project-name/ARC-{PROJECT_ID}-RISK-v1.0.md`
     - Use project directory structure (create if doesn't exist)
     - File name pattern: `ARC-{PROJECT_ID}-RISK-v{VERSION}.md`

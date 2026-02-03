@@ -50,9 +50,30 @@ You are helping an enterprise architect create a vendor evaluation framework and
    - **SOW/DOS**: Pre-defined evaluation criteria, scope, deliverables
    - **Research**: Market context, vendor landscape, technology recommendations
 
-4. **Read the template**: Read `.arckit/templates/evaluation-criteria-template.md`
+3. **Read the template**: Read `.arckit/templates/evaluation-criteria-template.md`
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
+
+4. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **Vendor Proposals & Capability Statements**:
+   - **Look in**: `projects/{project-dir}/vendors/{vendor}/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+   - **What to extract**: Proposed solution, pricing, team qualifications, case studies, certifications, SLA commitments
+   - **Examples**: `proposal-v1.0.pdf`, `capability-statement.docx`, `pricing-schedule.pdf`
+
+   **Evaluation Reference Documents**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF, Word, Markdown
+   - **What to extract**: Industry benchmarks, analyst reports, reference check notes
+   - **Examples**: `gartner-mq-2025.pdf`, `reference-check-notes.md`
+
+   **User prompt**: If no vendor proposals found, ask:
+   \"Do you have vendor proposal documents to evaluate? I can read PDFs and Word docs directly. Place them in `projects/{project-dir}/vendors/{vendor-name}/` and re-run, or skip to create the evaluation framework only.\"
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
 
 5. **Determine the task**: The user may want to:
    - **Create evaluation framework** (before receiving proposals)

@@ -45,13 +45,34 @@ $ARGUMENTS
    - Parse the JSON output to get the project directory path
    - Or if the user specifies an existing project number (e.g., "001"), use that
 
-3. **Read the template**: Read `.arckit/templates/requirements-template.md` to understand the structure
+3. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **RFP/ITT Documents & Legacy System Specs**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+   - **What to extract**: Existing requirements, constraints, scope definitions, acceptance criteria, legacy system interfaces
+   - **Examples**: `rfp-document.pdf`, `legacy-system-spec.docx`, `user-research-report.pdf`
+
+   **Organizational Standards**:
+   - **Look in**: `projects/000-global/policies/`
+   - **File types**: PDF, Word, Markdown
+   - **What to extract**: Mandatory compliance requirements, technology constraints, security standards
+   - **Examples**: `security-standards.pdf`, `accessibility-policy.docx`
+
+   **User prompt**: If no external docs found but they would significantly improve requirements, ask:
+   "Do you have any RFP/ITT documents, legacy system specifications, or user research reports? I can read PDFs and Word docs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+4. **Read the template**: Read `.arckit/templates/requirements-template.md` to understand the structure
    - **Update Template Version**: Read the `VERSION` file and replace the version number in the template metadata line:
      ```
      > **Template Status**: [keep] | **Version**: [from VERSION file] | **Command**: [keep]
      ```
 
-4. **Generate comprehensive requirements** based on user input:
+5. **Generate comprehensive requirements** based on user input:
 
    **Business Requirements (BR-xxx)**:
    - Business objectives and success criteria
@@ -84,14 +105,14 @@ $ARGUMENTS
    - Data privacy and classification
    - Migration requirements
 
-5. **Ensure traceability**: Each requirement MUST have:
+6. **Ensure traceability**: Each requirement MUST have:
    - Unique ID (BR-001, FR-001, NFR-P-001, etc.)
    - Clear requirement statement
    - Acceptance criteria (testable)
    - Priority (MUST/SHOULD/MAY)
    - Rationale
 
-6. **Align with stakeholder goals and architecture principles**:
+7. **Align with stakeholder goals and architecture principles**:
    - If stakeholder analysis exists, trace requirements back to stakeholder goals:
      - Example: "BR-001 addresses CFO's goal G-1: Reduce infrastructure costs 40% by end of Year 1"
      - Example: "NFR-P-001 supports Operations Director's outcome O-3: Maintain 99.95% uptime"
@@ -100,7 +121,7 @@ $ARGUMENTS
    - Ensure high-priority stakeholder drivers get MUST requirements
    - Document which stakeholder benefits from each requirement
 
-7. **Identify and resolve conflicting requirements**:
+8. **Identify and resolve conflicting requirements**:
    - Review stakeholder analysis `conflict analysis` section for known competing drivers
    - Identify requirement conflicts that arise from stakeholder conflicts:
      - **Speed vs Quality**: CFO wants fast delivery vs Operations wants thorough testing
@@ -124,7 +145,7 @@ $ARGUMENTS
      - How losing stakeholder will be managed (communication, future consideration)
    - **Transparency**: Be explicit about trade-offs - don't hide conflicts or pretend both can be satisfied
 
-8. **Write the output**:
+9. **Write the output**:
    - **CRITICAL - Token Efficiency**: Use the **Write tool** to create `projects/{project-dir}/ARC-{PROJECT_ID}-REQ-v${VERSION}.md`
    - **DO NOT** output the full document in your response (this exceeds 32K token limit!)
    - Use the exact template structure
@@ -150,7 +171,7 @@ Before generating the document ID, check if a previous version exists:
    - **Minor increment** (e.g., 1.0 → 1.1): Scope unchanged — refreshed content, updated details, corrections
    - **Major increment** (e.g., 1.0 → 2.0): Scope materially changed — new requirement categories, removed categories, significant new requirements added
 4. Use the determined version for document ID, filename, Document Control, and Revision History
-5. For v1.1+/v2.0+: Add a Revision History entry describing what changed from the previous version
+5. For v1.1+/v2.0+: Add a Revision History entry
 
 ### Step 1: Generate Document ID
 ```bash
@@ -230,7 +251,7 @@ The footer should be populated with:
 ```
 
 
-9. **Show summary only** (NOT the full document):
+10. **Show summary only** (NOT the full document):
 
    After writing the file with Write tool, show ONLY this summary:
 

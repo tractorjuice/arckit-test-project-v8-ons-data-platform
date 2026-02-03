@@ -79,6 +79,21 @@ Scan the project directory for existing artifacts and read them to inform this d
 
 **IMPORTANT**: Do not proceed until you have read the requirements and architecture files.
 
+### Phase 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing SLA Documents & Support Procedures**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+- **What to extract**: Current SLA targets, support tier definitions, escalation procedures, DR/BCP plans, on-call rotas
+- **Examples**: `sla-agreement.pdf`, `support-procedures.docx`, `dr-plan.pdf`, `on-call-rota.md`
+
+**User prompt**: If no external operational docs found but they would improve the readiness pack, ask:
+\"Do you have any existing SLA documents, support procedures, or DR/BCP plans? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip.\"
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Phase 2: Analysis
 
 Extract operational requirements from artifacts:

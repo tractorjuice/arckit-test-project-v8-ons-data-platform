@@ -43,18 +43,33 @@ $ARGUMENTS
    - Otherwise, look for most recent project directory in `projects/`
    - Use the same project directory where the requirements document exists
 
-3. **Read the template**: Read `.arckit/templates/data-model-template.md` to understand the structure
+3. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **Existing Database Schemas & Data Dictionaries**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md), Images (.png, .jpg), SQL (.sql)
+   - **What to extract**: Entity definitions, relationships, data types, constraints, existing schemas, migration requirements
+   - **Examples**: `database-schema.pdf`, `erd-diagram.png`, `data-dictionary.docx`, `schema.sql`
+
+   **User prompt**: If no external data docs found but they would improve the data model, ask:
+   "Do you have any existing database schemas, ERD diagrams, or data dictionaries? I can read PDFs, images, and SQL files directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+4. **Read the template**: Read `.arckit/templates/data-model-template.md` to understand the structure
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
 
-4. **Extract data requirements**:
+5. **Extract data requirements**:
    - Read the project's requirements document (`ARC-*-REQ-*.md`)
    - Extract ALL Data Requirements (DR-xxx)
    - Also look for privacy/GDPR requirements in NFR section
    - Identify integration requirements (INT-xxx) that involve data exchange
    - Note any data-related business requirements (BR-xxx)
 
-5. **Generate comprehensive data model**:
+6. **Generate comprehensive data model**:
 
    **A. Executive Summary**:
    - Total number of entities identified
@@ -175,14 +190,14 @@ $ARGUMENTS
    - **Data Archival**: When to move data from hot to cold storage
    - **Testing Data**: Anonymization/pseudonymization for test environments
 
-6. **UK Government Compliance** (if applicable):
+7. **UK Government Compliance** (if applicable):
    - **Government Security Classifications**: OFFICIAL, SECRET, TOP SECRET
    - **Data Standards**: Use GDS Data Standards Catalogue where applicable
    - **Open Standards**: Preference for open data formats (JSON, CSV, OData)
    - **ICO Data Protection**: Reference ICO guidance for public sector
    - **National Cyber Security Centre (NCSC)**: Data security patterns
 
-7. **Write the output**:
+8. **Write the output**:
    - Write to `projects/{project-dir}/ARC-{PROJECT_ID}-DATA-v1.0.md`
    - Use the exact template structure from `data-model-template.md`
    - Include Mermaid ERD at the top for quick visualization
@@ -224,7 +239,7 @@ Before completing the document, populate document information fields:
 ```
 
 
-8. **Summarize what you created**:
+9. **Summarize what you created**:
    - How many entities defined (E-001, E-002, etc.)
    - How many total attributes across all entities
    - How many entities contain PII (privacy-sensitive)

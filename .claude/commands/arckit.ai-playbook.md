@@ -75,7 +75,28 @@ $ARGUMENTS
 
    > **Note**: Read the `VERSION` file and update the version in the template metadata line when generating.
 
-4. **Assess the 10 Core Principles**:
+4. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **AI Governance Policies & Ethical AI Frameworks**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+   - **What to extract**: AI ethics policies, model cards, algorithmic impact assessments, bias testing results
+   - **Examples**: `ai-ethics-policy.pdf`, `model-card.md`, `bias-assessment.pdf`
+
+   **Organizational AI Standards**:
+   - **Look in**: `projects/000-global/policies/`
+   - **File types**: PDF, Word, Markdown
+   - **What to extract**: AI governance framework, approved AI/ML platforms, responsible AI guidelines
+   - **Examples**: `ai-governance-framework.pdf`, `responsible-ai-guidelines.docx`
+
+   **User prompt**: If no external AI governance docs found, ask:
+   "Do you have any AI governance policies, model cards, or ethical AI assessments? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+5. **Assess the 10 Core Principles**:
 
 ### Principle 1: Understanding AI
 - Team understands AI limitations (no reasoning, contextual awareness)
@@ -163,7 +184,7 @@ $ARGUMENTS
 - Assurance team engaged
 - Risk management process followed
 
-5. **Assess the 6 Ethical Themes**:
+6. **Assess the 6 Ethical Themes**:
 
 ### Theme 1: Safety, Security, and Robustness
 - Safety testing (no harmful outputs)
@@ -211,7 +232,7 @@ $ARGUMENTS
 - Negative impacts mitigated
 - Alignment with public values
 
-6. **Generate comprehensive assessment**:
+7. **Generate comprehensive assessment**:
 
 Create detailed report with:
 
@@ -255,7 +276,7 @@ Create detailed report with:
 - Medium priority (within 3 months)
 - Low priority (continuous improvement)
 
-7. **Map to existing ArcKit artifacts**:
+8. **Map to existing ArcKit artifacts**:
 
 **Link to Requirements**:
 - Principle 2 (Lawful) → NFR-C-xxx (GDPR compliance requirements)
@@ -273,7 +294,7 @@ Create detailed report with:
 - TCoP Point 6 (Secure) aligns with Principle 3
 - TCoP Point 7 (Privacy) aligns with Principle 2
 
-8. **Provide risk-appropriate guidance**:
+9. **Provide risk-appropriate guidance**:
 
 **For HIGH-RISK AI systems**:
 - **STOP**: Do NOT deploy without meeting ALL principles
@@ -297,7 +318,7 @@ Create detailed report with:
 - Periodic review (annual)
 - Continuous improvement mindset
 
-9. **Highlight mandatory requirements**:
+10. **Highlight mandatory requirements**:
 
 **ATRS (Algorithmic Transparency Recording Standard)**:
 - MANDATORY for central government departments
@@ -319,13 +340,13 @@ Create detailed report with:
 - Must consider ECHR (European Convention on Human Rights)
 - Document how rights are protected
 
-10. **Write comprehensive output**:
+11. **Write comprehensive output**:
 
 Output location: `projects/{project-dir}/ARC-{PROJECT_ID}-AIPB-v1.0.md`
 
 Use template structure from `uk-gov-ai-playbook-template.md`
 
-11. **Provide next steps**:
+12. **Provide next steps**:
 
 After assessment:
 - Summary of compliance level

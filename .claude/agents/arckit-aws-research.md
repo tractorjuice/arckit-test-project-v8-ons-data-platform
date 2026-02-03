@@ -87,6 +87,21 @@ More info: https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server
 
 **Do not proceed if MCP is not available.**
 
+### Step 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing AWS Assessments & Cost Reports**:
+- **Look in**: `projects/{project}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), CSV (.csv)
+- **What to extract**: Current AWS usage, cost reports, Well-Architected review findings, migration assessments
+- **Examples**: `aws-cost-report.csv`, `well-architected-review.pdf`, `migration-assessment.docx`
+
+**User prompt**: If no external AWS docs found but they would improve recommendations, ask:
+   "Do you have any existing AWS cost reports, Well-Architected reviews, or migration assessments? Place them in `projects/{project}/external/` and re-run, or skip."
+
+**Important**: This agent works without external documents. They enhance output quality but are never blocking.
+
 ### Step 2: Read Available Documents
 
 Find the project directory in `projects/` (user may specify name/number, otherwise use most recent). Scan for existing artifacts:

@@ -73,6 +73,27 @@ Scan the project directory for existing artifacts and read them to inform this d
 - **DevOps**: Infrastructure patterns, scaling approach, deployment targets
 - **Diagrams**: Resource topology, component inventory
 
+### Phase 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Cloud Billing Data & Cost Allocation Reports**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), CSV (.csv)
+- **What to extract**: Current cloud spend, cost trends, billing anomalies, reserved instance usage, savings opportunities
+- **Examples**: `aws-cost-report.pdf`, `azure-billing.csv`, `cost-allocation.docx`
+
+**Financial Policies**:
+- **Look in**: `projects/000-global/policies/`
+- **File types**: PDF, Word, Markdown
+- **What to extract**: Budget thresholds, chargeback models, cost centre mappings, procurement approval limits
+- **Examples**: `cloud-spending-policy.pdf`, `chargeback-model.docx`
+
+**User prompt**: If no external FinOps docs found but they would improve cost analysis, ask:
+"Do you have any cloud billing reports, cost allocation data, or financial policies? I can read PDFs and CSV files directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Phase 2: Analysis
 
 **Determine FinOps Maturity Target**:

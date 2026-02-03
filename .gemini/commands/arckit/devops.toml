@@ -74,6 +74,21 @@ Scan the project directory for existing artifacts and read them to inform this d
 - **Diagrams**: Component topology, deployment targets, integration points
 - **Research**: Platform choices, recommended services, vendor decisions
 
+### Phase 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing CI/CD Configs & Deployment Runbooks**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), YAML (.yml, .yaml)
+- **What to extract**: Current pipeline configurations, deployment procedures, environment specifications, infrastructure-as-code patterns
+- **Examples**: `ci-pipeline.yml`, `deployment-runbook.pdf`, `infrastructure-guide.docx`
+
+**User prompt**: If no external DevOps docs found but they would improve the strategy, ask:
+\"Do you have any existing CI/CD configurations, deployment runbooks, or infrastructure documentation? I can read PDFs and YAML files directly. Place them in `projects/{project-dir}/external/` and re-run, or skip.\"
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Phase 2: Analysis
 
 **Determine DevOps Maturity Target**:

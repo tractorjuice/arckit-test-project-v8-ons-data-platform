@@ -57,12 +57,33 @@ You are helping an enterprise architect review a Detailed Design (DLD) document 
    - Verify all HLD conditions were addressed
    - Confirm no new architectural changes were introduced (if yes, needs HLD re-review)
 
-4. **Obtain the DLD document**:
+4. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **Vendor DLD Submissions**:
+   - **Look in**: `projects/{project-dir}/vendors/{vendor}/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md), Images (.png, .jpg)
+   - **What to extract**: Detailed component specifications, API contracts, database schemas, deployment configurations, security implementation details
+   - **Examples**: `dld-v1.0.pdf`, `api-specification.docx`, `database-schema.png`
+
+   **Supporting Technical Documents**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF, Word, Markdown, images
+   - **What to extract**: Performance test results, security scan reports, infrastructure specifications
+   - **Examples**: `load-test-results.pdf`, `security-scan.pdf`
+
+   **User prompt**: If no vendor DLD found in standard locations, ask:
+   \"Please provide the DLD document path or paste key sections. I can read PDFs, Word docs, and images directly. Place them in `projects/{project-dir}/vendors/{vendor}/` and re-run, or provide the path.\"
+
+   **Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+5. **Obtain the DLD document**:
    - Ask: \"Please provide the DLD document path or paste key sections\"
    - Or: \"Is the DLD in `projects/{project-dir}/vendors/{vendor}/dld-v*.md`?\"
    - Or: \"Please share detailed design diagrams, sequence diagrams, ERDs\"
 
-5. **Perform detailed technical review**:
+6. **Perform detailed technical review**:
 
    ### A. Component Design Review
 
@@ -139,7 +160,7 @@ You are helping an enterprise architect review a Detailed Design (DLD) document 
    - **Security testing**: SAST/DAST tools? Penetration testing plan?
    - **UAT approach**: User acceptance test criteria?
 
-6. **Implementation Readiness Check**:
+7. **Implementation Readiness Check**:
 
    Ask these critical questions:
    - ✅ Can developers start coding immediately with this DLD?
@@ -148,7 +169,7 @@ You are helping an enterprise architect review a Detailed Design (DLD) document 
    - ✅ Is the test strategy comprehensive?
    - ✅ Are deployment procedures clear?
 
-7. **Generate Review Report**:
+8. **Generate Review Report**:
 
    **Executive Summary**:
    - Status: APPROVED / APPROVED WITH CONDITIONS / REJECTED / NEEDS HLD RE-REVIEW
@@ -175,7 +196,7 @@ You are helping an enterprise architect review a Detailed Design (DLD) document 
    - Critical path items
    - Risk mitigation during implementation
 
-8. **Write outputs**:
+9. **Write outputs**:
    - `projects/{project-dir}/vendors/{vendor}/ARC-{PROJECT_ID}-DLDR-v1.0.md` - Full review report
    - Update traceability matrix with implementation details
    - Create implementation checklist if approved

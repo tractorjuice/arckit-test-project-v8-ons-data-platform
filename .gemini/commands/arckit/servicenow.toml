@@ -70,6 +70,27 @@ Read all documents listed in the \"Read Available Documents\" section above befo
 - Support requirements (24/7 or business hours)
 - Any specific ServiceNow requirements mentioned
 
+### Phase 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing CMDB Exports & SLA Agreements**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), CSV (.csv)
+- **What to extract**: Existing CI relationships, SLA targets, support tiers, incident categories, change workflows
+- **Examples**: `cmdb-export.csv`, `sla-agreement.pdf`, `support-model.docx`
+
+**Vendor Designs for CI Mapping**:
+- **Look in**: `projects/{project-dir}/vendors/{vendor}/`
+- **File types**: PDF, Word, Markdown, images
+- **What to extract**: Component specifications, health check endpoints, technology stack for CMDB attribute mapping
+- **Examples**: `hld-v1.0.pdf`, `infrastructure-diagram.png`
+
+**User prompt**: If no external docs found but they would improve the ServiceNow design, ask:
+\"Do you have any existing CMDB exports, SLA documents, or support model documentation? I can read PDFs and CSV files directly. Place them in `projects/{project-dir}/external/` and re-run, or skip.\"
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Phase 2: Analysis and Mapping
 
 Analyze the gathered context to extract:
@@ -216,9 +237,9 @@ After generation, validate the design:
 
 After generating the ServiceNow design:
 
-1. **Save the file** to `projects/{project-name}/ARC-{PROJECT_ID}-SNOW-v1.0.md`
+2. **Save the file** to `projects/{project-name}/ARC-{PROJECT_ID}-SNOW-v1.0.md`
 
-2. **Provide a summary** to the user:
+3. **Provide a summary** to the user:
    - Number of CMDB CIs created
    - Service tier determined (Tier 1/2/3)
    - Key SLA targets (availability, performance, incident response)
@@ -226,13 +247,13 @@ After generating the ServiceNow design:
    - Support coverage hours
    - Any warnings or recommendations
 
-3. **Flag any gaps or concerns**:
+4. **Flag any gaps or concerns**:
    - Missing information (e.g., \"No performance NFRs found - defaulted to <1s response time\")
    - Unrealistic targets (e.g., \"99.99% SLA may be difficult to achieve with current architecture\")
    - Missing health check endpoints (e.g., \"No /health endpoint found in sequence diagrams\")
    - Compliance concerns (e.g., \"No DPIA mentioned but service processes PII\")
 
-4. **Suggest next steps**:
+5. **Suggest next steps**:
    - \"Review the SLA targets with the service owner\"
    - \"Create ServiceNow CIs in Pre-Production environment for testing\"
    - \"Train support team using the runbooks in Section 8\"
@@ -500,9 +521,9 @@ Before presenting the ServiceNow design to the user, verify:
 ServiceNow designs are typically very large documents (500+ lines) due to the comprehensive nature of CMDB structures, SLAs, incident management, and runbooks.
 
 To avoid exceeding the 32K token output limit:
-1. **ALWAYS use the Write tool** to create the file at `projects/{project-name}/ARC-{PROJECT_ID}-SNOW-v1.0.md`
-2. **Do NOT output the full document** in your response to the user
-3. **Only show a summary** (use the template below)
+2. **ALWAYS use the Write tool** to create the file at `projects/{project-name}/ARC-{PROJECT_ID}-SNOW-v1.0.md`
+3. **Do NOT output the full document** in your response to the user
+4. **Only show a summary** (use the template below)
 
 This ensures the complete document is written to the file system, and the user sees a concise summary without overwhelming token usage.
 

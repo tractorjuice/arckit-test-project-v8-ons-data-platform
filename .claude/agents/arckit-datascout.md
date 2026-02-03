@@ -79,6 +79,21 @@ Find the project directory in `projects/` (user may specify name/number, otherwi
 
 Detect if UK Government project (look for "UK Government", "Ministry of", "Department for", "NHS", "MOD").
 
+### Step 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing Data Catalogues & API Registries**:
+- **Look in**: `projects/{project}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), CSV (.csv), JSON (.json)
+- **What to extract**: Known data sources, API endpoints, data quality assessments, existing integrations
+- **Examples**: `data-catalogue.csv`, `api-registry.json`, `data-audit.pdf`
+
+**User prompt**: If no external data catalogues found but they would improve discovery, ask:
+   "Do you have any existing data catalogues, API registries, or data audit reports? Place them in `projects/{project}/external/` and re-run, or skip."
+
+**Important**: This agent works without external documents. They enhance output quality but are never blocking.
+
 ### Step 2: Read Template and VERSION
 
 - Read `.arckit/templates/datascout-template.md` for output structure

@@ -51,12 +51,33 @@ You are helping an enterprise architect review a High-Level Design (HLD) documen
    - **SOW**: Deliverable expectations and acceptance criteria
    - **Risk**: Technical risks the design should address
 
-3. **Obtain the HLD document**:
+3. **Check for External Documents** (optional):
+
+   Scan for external (non-ArcKit) documents the user may have provided:
+
+   **Vendor HLD Submissions**:
+   - **Look in**: `projects/{project-dir}/vendors/{vendor}/`
+   - **File types**: PDF (.pdf), Word (.docx), Markdown (.md), Images (.png, .jpg)
+   - **What to extract**: Component architecture, technology stack, API specifications, deployment topology, security controls
+   - **Examples**: `hld-v1.0.pdf`, `architecture-overview.docx`, `network-diagram.png`
+
+   **Supporting Design Documents**:
+   - **Look in**: `projects/{project-dir}/external/`
+   - **File types**: PDF, Word, Markdown, images
+   - **What to extract**: Reference architectures, compliance evidence, performance benchmarks
+   - **Examples**: `reference-architecture.pdf`, `compliance-matrix.xlsx`
+
+   **User prompt**: If no vendor HLD found in standard locations, ask:
+   \"Please provide the HLD document path or paste key sections. I can read PDFs, Word docs, and images directly. Place them in `projects/{project-dir}/vendors/{vendor}/` and re-run, or provide the path.\"
+
+   **Important**: External documents enhance the review but the command works with pasted content or descriptions too.
+
+4. **Obtain the HLD document**:
    - Ask user: \"Please provide the HLD document path or paste key sections\"
    - Or: \"Is the HLD in `projects/{project-dir}/vendors/{vendor}/hld-v*.md`?\"
    - Or: \"Please share architecture diagrams (I can read images)\"
 
-4. **Perform comprehensive review**:
+5. **Perform comprehensive review**:
 
    ### A. Architecture Principles Compliance
 
@@ -131,14 +152,14 @@ You are helping an enterprise architect review a High-Level Design (HLD) documen
    - Team expertise with chosen stack
    - Vendor lock-in risks
 
-5. **Risk Assessment**:
+6. **Risk Assessment**:
 
    Identify and categorize risks:
    - **HIGH**: Principle violations, missing NFRs, security gaps
    - **MEDIUM**: Suboptimal design, performance concerns, tech debt
    - **LOW**: Minor improvements, documentation gaps
 
-6. **Generate Review Report**:
+7. **Generate Review Report**:
 
    Create a comprehensive review document with:
 
@@ -164,7 +185,7 @@ You are helping an enterprise architect review a High-Level Design (HLD) documen
    - Timeline for remediation
    - Re-review requirements
 
-7. **Write outputs**:
+8. **Write outputs**:
    - `projects/{project-dir}/vendors/{vendor}/ARC-{PROJECT_ID}-HLDR-v1.0.md` - Full review report
    - `projects/{project-dir}/ARC-{PROJECT_ID}-HLDR-SUM-v1.0.md` - Summary if comparing multiple vendors
    - Update traceability matrix with design references

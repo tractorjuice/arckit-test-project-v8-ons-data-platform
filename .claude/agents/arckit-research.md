@@ -78,6 +78,21 @@ Find the project directory in `projects/` (user may specify name/number, otherwi
 
 Detect if UK Government project (look for "UK Government", "Ministry of", "Department for", "NHS", "MOD" in project name or requirements).
 
+### Step 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Market Research Reports & Analyst Briefings**:
+- **Look in**: `projects/{project}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+- **What to extract**: Market landscape data, vendor rankings, pricing benchmarks, technology trend analysis
+- **Examples**: `gartner-report.pdf`, `forrester-wave.pdf`, `market-analysis.docx`
+
+**User prompt**: If no external research docs found but they would improve market analysis, ask:
+   "Do you have any market research reports, analyst briefings, or vendor comparisons? Place them in `projects/{project}/external/` and re-run, or skip."
+
+**Important**: This agent works without external documents. They enhance output quality but are never blocking.
+
 ### Step 2: Read Template and VERSION
 
 - Read `.arckit/templates/research-findings-template.md` for output structure

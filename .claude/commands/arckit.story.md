@@ -71,6 +71,21 @@ with a limited story based on available artifacts.
 - **Reviews/Assessments**: Governance quality and compliance achievements
 - **Delivery artifacts**: Implementation readiness and operational maturity
 
+### Step 0b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Previous Project Reports & User Research**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+- **What to extract**: Project history, key milestones, lessons learned, user research insights, governance decisions
+- **Examples**: `quarterly-report.pdf`, `user-research-findings.docx`, `lessons-learned.md`
+
+**User prompt**: If no external docs found but they would enrich the project story, ask:
+"Do you have any project reports, user research findings, or governance decision records? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Step 1: Identify or Create Project
 
 **Option A: User Provided Project Name/Number**

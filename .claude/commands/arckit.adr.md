@@ -42,6 +42,21 @@ Scan the project directory for existing artifacts and read them to inform this d
 - **Risk**: Risks this decision mitigates, risk appetite
 - **Research**: Options already analyzed, vendor comparisons, TCO data
 
+### 1b. **Check for External Documents** (optional):
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Previous ADRs & Decision Logs**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+- **What to extract**: Previous architectural decisions, decision rationale, options considered, decision outcomes
+- **Examples**: `legacy-adrs.pdf`, `decision-log.docx`, `architecture-review-notes.md`
+
+**User prompt**: If no external decision docs found but they would improve context, ask:
+"Do you have any previous ADRs from legacy systems or decision logs? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### 2. **Create or find the project**:
    - Run `.arckit/scripts/bash/create-project.sh --name "$PROJECT_NAME" --json` to create project structure
    - Parse the JSON output to get the project directory path and project ID

@@ -67,6 +67,21 @@ Scan the project directory for existing artifacts and read them to inform this m
 - What decisions need to be made? (Build vs Buy, vendor selection, technology choices)
 - What time horizon? (Current state, 12 months, 24 months)
 
+## Step 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing Wardley Maps & Strategic Analysis**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: Images (.png, .jpg), Markdown (.md), PDF (.pdf), OWM syntax files (.owm, .txt)
+- **What to extract**: Existing component positions, evolution assessments, strategic plays, market context
+- **Examples**: `current-wardley-map.png`, `strategic-analysis.pdf`, `wardley-map.owm`
+
+**User prompt**: If no external Wardley maps found but they would improve strategic context, ask:
+\"Do you have any existing Wardley maps (images or OWM syntax) or strategic analysis documents? I can read images and PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip.\"
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ## Step 2: Determine the Mapping Mode
 
 Based on the user's request, determine which type of Wardley Map to create:
@@ -287,51 +302,51 @@ Create the Wardley Map document using the template:
 
 The Wardley Map document must include:
 
-1. **Map Visualization Code**:
+2. **Map Visualization Code**:
    - Complete Wardley Map in OnlineWardleyMaps syntax
    - URL: https://create.wardleymaps.ai
    - Instructions to paste code into create.wardleymaps.ai
 
-2. **Component Inventory**:
+3. **Component Inventory**:
    - All components with visibility, evolution, stage classification
    - Strategic notes for each component
 
-3. **Evolution Analysis**:
+4. **Evolution Analysis**:
    - Components by evolution stage (Genesis, Custom, Product, Commodity)
    - Strategic recommendations for each stage
 
-4. **Build vs Buy Analysis**:
+5. **Build vs Buy Analysis**:
    - Candidates for building (Genesis/Custom with competitive advantage)
    - Candidates for buying (Product with mature market)
    - Candidates for SaaS/cloud (Commodity)
 
-5. **Inertia and Barriers**:
+6. **Inertia and Barriers**:
    - Components with resistance to change
    - Mitigation strategies
 
-6. **Movement and Predictions**:
+7. **Movement and Predictions**:
    - Evolution velocity (12-month, 24-month predictions)
    - Strategic implications
 
-7. **UK Government Context** (if applicable):
+8. **UK Government Context** (if applicable):
    - GOV.UK services mapping
    - Digital Marketplace procurement strategy
    - TCoP compliance mapping
 
-8. **Dependencies and Value Chain**:
+9. **Dependencies and Value Chain**:
    - Component dependency tree
    - Critical path analysis
 
-9. **Risk Analysis**:
+10. **Risk Analysis**:
    - High-risk areas (single vendor, Genesis components)
    - Opportunities (commoditization, market gaps)
 
-10. **Recommendations**:
+11. **Recommendations**:
     - Immediate actions (0-3 months)
     - Short-term actions (3-12 months)
     - Long-term strategic actions (12-24 months)
 
-11. **Traceability**:
+12. **Traceability**:
     - Link to requirements (BR-001, FR-001, etc.)
     - Link to architecture principles
     - Link to UK Government assessments (TCoP, AI Playbook, ATRS)
@@ -509,24 +524,24 @@ style wardley
 
 ### Common Mistakes to Avoid
 
-1. **Misclassifying Evolution Stage**:
+2. **Misclassifying Evolution Stage**:
    - ❌ Positioning cloud services as \"Custom\" (they're Commodity 0.90+)
    - ❌ Positioning novel AI models as \"Product\" (they're Genesis if truly novel)
 
-2. **Ignoring Dependencies**:
+3. **Ignoring Dependencies**:
    - ❌ Not mapping component dependencies
    - ❌ Missing critical path components
 
-3. **Wrong Build vs Buy Decisions**:
+4. **Wrong Build vs Buy Decisions**:
    - ❌ Building commodity components (e.g., custom auth instead of Auth0)
    - ❌ Buying for Genesis needs (no market solutions exist yet)
 
-4. **UK Government Specific Mistakes**:
+5. **UK Government Specific Mistakes**:
    - ❌ Building custom notification service instead of GOV.UK Notify
    - ❌ Not using GOV.UK Design System (accessibility, consistency)
    - ❌ Wrong Digital Marketplace framework for evolution stage
 
-5. **AI Project Mistakes**:
+6. **AI Project Mistakes**:
    - ❌ Not mapping human-in-the-loop as mandatory component
    - ❌ Missing bias testing for HIGH-RISK AI
    - ❌ Not flagging ATRS publication requirement

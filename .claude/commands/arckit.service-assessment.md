@@ -100,6 +100,21 @@ Scan the project directory for existing artifacts and read them to inform this a
 - **Diagrams**: Architecture decisions, technology choices
 - **DevOps**: Deployment strategy, monitoring, reliability evidence
 
+### Step 2b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**GDS Assessment Feedback & Previous Reports**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md)
+- **What to extract**: Previous assessment results, assessor feedback, action items, evidence gaps identified
+- **Examples**: `alpha-assessment-report.pdf`, `assessor-feedback.docx`, `evidence-gaps.md`
+
+**User prompt**: If no external assessment docs found but they would improve preparation, ask:
+"Do you have any previous GDS assessment reports or assessor feedback? I can read PDFs directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
 ### Step 3: Map Evidence to Service Standard Points
 
 For each of the 14 Service Standard points, map evidence from ArcKit artifacts:

@@ -85,6 +85,21 @@ More info: https://www.npmjs.com/package/@anthropic/mcp-server-microsoft-docs
 
 **Do not proceed if MCP is not available.**
 
+### Step 1b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing Azure Assessments & Cost Reports**:
+- **Look in**: `projects/{project}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), CSV (.csv)
+- **What to extract**: Current Azure usage, cost reports, Azure Advisor findings, migration assessments
+- **Examples**: `azure-cost-report.csv`, `azure-advisor-findings.pdf`, `cloud-assessment.docx`
+
+**User prompt**: If no external Azure docs found but they would improve recommendations, ask:
+   "Do you have any existing Azure cost reports, Azure Advisor findings, or cloud assessments? Place them in `projects/{project}/external/` and re-run, or skip."
+
+**Important**: This agent works without external documents. They enhance output quality but are never blocking.
+
 ### Step 2: Read Available Documents
 
 Find the project directory in `projects/` (user may specify name/number, otherwise use most recent). Scan for existing artifacts:

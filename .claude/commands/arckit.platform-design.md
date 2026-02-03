@@ -185,6 +185,23 @@ Read `projects/000-global/ARC-000-PRIN-*.md`:
 
 ---
 
+### Step 3b: Check for External Documents (optional)
+
+Scan for external (non-ArcKit) documents the user may have provided:
+
+**Existing Platform Documentation & Ecosystem Maps**:
+- **Look in**: `projects/{project-dir}/external/`
+- **File types**: PDF (.pdf), Word (.docx), Markdown (.md), Images (.png, .jpg)
+- **What to extract**: Current platform architecture, ecosystem participants, API catalogues, platform metrics
+- **Examples**: `platform-overview.pdf`, `ecosystem-map.png`, `api-catalogue.docx`
+
+**User prompt**: If no external platform docs found but they would improve the design, ask:
+"Do you have any existing platform documentation, ecosystem maps, or API catalogues? I can read PDFs and images directly. Place them in `projects/{project-dir}/external/` and re-run, or skip."
+
+**Important**: This command works without external documents. They enhance output quality but are never blocking.
+
+---
+
 ### Step 4: Detect Version
 
 Before generating the document ID, check if a previous version exists:
@@ -314,25 +331,25 @@ This returns a document ID like: `ARC-001-PLAT-v1.0`
    - Strategic Alignment: Link to stakeholders, requirements, principles, Wardley maps
    - UK Government Context: GaaP, TCoP, Service Standard, Digital Marketplace
 
-4. **Auto-populate from artifacts** (from Step 3):
+5. **Auto-populate from artifacts** (from Step 3):
    - Entity portraits from ARC-*-STKE-*.md
    - Platform capabilities from ARC-*-REQ-*.md
    - Build vs. buy from wardley-maps/ARC-*-WARD-*.md
    - Governance from ARC-000-PRIN-*.md
 
-5. **UK Government Context** (if applicable):
+6. **UK Government Context** (if applicable):
    - Government as a Platform (GaaP) principles
    - Technology Code of Practice (TCoP) alignment
    - GDS Service Standard implications
    - Digital Marketplace positioning (G-Cloud, DOS)
 
-6. **Generate complete traceability** (Section 9):
+7. **Generate complete traceability** (Section 9):
    - Stakeholder → Entity → Value Proposition
    - Requirement → Platform Feature → Implementation
    - Wardley Component → Build/Buy Decision
    - Risk → Platform Mitigation
 
-7. **Provide actionable next steps** (Section 10):
+8. **Provide actionable next steps** (Section 10):
    - Immediate actions (30 days): Validate assumptions, prototype MVP
    - MVP build phase (Months 2-4): Product development, provider acquisition
    - MVP validation phase (Months 5-7): Buyer onboarding, transaction velocity
