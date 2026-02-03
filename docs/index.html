@@ -524,22 +524,30 @@
             height: auto;
         }
 
-        /* Mobile Sidebar Toggle */
-        .app-mobile-toggle {
+        /* Mobile header hamburger button */
+        .app-mobile-menu {
             display: none;
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
+            background: transparent;
             border: none;
+            color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            padding: 0.25rem 0.5rem;
+            line-height: 1;
+        }
+
+        /* Mobile sidebar backdrop */
+        .app-sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            top: var(--header-height);
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .app-sidebar-backdrop.visible {
+            display: block;
         }
 
         /* Sidebar expand button (visible when collapsed) */
@@ -564,41 +572,55 @@
         /* Header */
         .app-header {
             background: #0b0c0c;
-            padding: 0;
             height: var(--header-height);
+            display: flex;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 50;
         }
 
-        .app-header-inner {
+        .app-header__container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 100%;
             padding: 0 1.5rem;
+            width: 100%;
         }
 
-        .app-header-left {
+        .app-header__left {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .app-header-title {
+        .app-header__link {
             color: white;
             font-size: 1.25rem;
             font-weight: 700;
             text-decoration: none;
         }
 
-        .app-header-title:hover {
+        .app-header__link:hover {
             text-decoration: underline;
         }
 
-        .app-header-meta {
+        .app-header__nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .app-header__nav a,
+        .app-header__stats {
             color: #b1b4b6;
+            text-decoration: none;
             font-size: 0.875rem;
+        }
+
+        .app-header__nav a:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -622,16 +644,7 @@
         }
 
         /* Stats */
-        .app-stats {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .app-stat {
-            font-size: 0.8125rem;
-        }
-
-        .app-stat-value {
+        .app-header__stats .app-stat-value {
             font-weight: 700;
             color: var(--primary-color);
         }
@@ -663,7 +676,7 @@
                 left: calc(-1 * var(--sidebar-width));
             }
 
-            .app-mobile-toggle {
+            .app-mobile-menu {
                 display: block;
             }
 
@@ -675,7 +688,7 @@
                 padding: 1.5rem;
             }
 
-            .app-header-meta {
+            .app-header__nav a {
                 display: none;
             }
         }
@@ -686,7 +699,15 @@
             }
 
             .app-doc-title {
-                font-size: 1.75rem;
+                font-size: 1.25rem;
+            }
+
+            .app-markdown h1 {
+                font-size: 1.25rem;
+            }
+
+            .app-welcome h1 {
+                font-size: 1.25rem;
             }
 
             .app-welcome-features {
@@ -696,7 +717,7 @@
 
         /* Print Styles */
         @media print {
-            .app-sidebar, .app-mobile-toggle, .app-header, .app-footer, .app-toc, .app-sidebar-expand {
+            .app-sidebar, .app-mobile-menu, .app-header, .app-footer, .app-toc, .app-sidebar-expand, .app-sidebar-backdrop {
                 display: none !important;
             }
 
@@ -723,12 +744,16 @@
 
     <!-- Header -->
     <header class="app-header">
-        <div class="app-header-inner">
-            <div class="app-header-left">
-                <a href="#" class="app-header-title" id="header-title">Project Documentation</a>
+        <div class="app-header__container">
+            <div class="app-header__left">
+                <button class="app-mobile-menu" id="mobile-menu" aria-label="Open navigation menu">&#9776;</button>
+                <a href="#" class="app-header__link" id="header-title">Project Documentation</a>
             </div>
-            <div class="app-stats" id="header-stats"></div>
-            <span class="app-header-meta" id="header-meta"></span>
+            <nav class="app-header__nav" aria-label="Site navigation">
+                <span class="app-header__stats" id="header-stats"></span>
+                <a href="https://github.com/tractorjuice/arckit-test-project-v8-ons-data-platform" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://tractorjuice.github.io/arc-kit/">ArcKit</a>
+            </nav>
         </div>
     </header>
 
@@ -739,7 +764,7 @@
             <div class="app-sidebar-header">
                 <h2>Documents</h2>
                 <button class="app-sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar (Ctrl+B)">
-                    &#9664;
+                    ◀
                 </button>
             </div>
             <div class="app-search" id="search-container">
@@ -755,11 +780,14 @@
             </div>
         </nav>
 
+        <!-- Mobile sidebar backdrop -->
+        <div class="app-sidebar-backdrop" id="sidebar-backdrop"></div>
+
         <!-- Content Wrapper -->
         <div class="app-content-wrapper">
             <!-- Sidebar expand button -->
             <button class="app-sidebar-expand" id="sidebar-expand" aria-label="Expand sidebar">
-                &#9654;
+                ▶
             </button>
 
             <!-- Table of Contents (Left Side) -->
@@ -775,7 +803,7 @@
                 <div class="app-content-inner" id="content">
                     <div class="app-welcome">
                         <h1>Welcome</h1>
-                        <p>Select a document from the sidebar to view its contents. This documentation site supports Mermaid diagrams, full-text search, and keyboard navigation.</p>
+                        <p>Select a document from the navigation menu to view its contents. This documentation site supports Mermaid diagrams, full-text search, and keyboard navigation.</p>
                         <div class="app-welcome-features">
                             <div class="app-welcome-feature">
                                 <h3>Search</h3>
@@ -813,14 +841,9 @@
         </div>
     </footer>
 
-    <!-- Mobile Toggle -->
-    <button class="app-mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
-        &#9776;
-    </button>
-
     <script>
         // ============================================
-        // Configuration
+        // Configuration - UPDATE THESE VALUES
         // ============================================
         const CONFIG = {
             owner: 'tractorjuice',
@@ -1032,7 +1055,7 @@
                         });
 
                         // Close mobile sidebar
-                        document.getElementById('sidebar').classList.remove('open');
+                        closeMobileSidebar();
                     });
                 });
             }, 150);
@@ -1068,7 +1091,7 @@
                 return;
             }
 
-            toc.style.display = 'block';
+            toc.style.display = '';
             tocList.innerHTML = '';
 
             headings.forEach(heading => {
@@ -1149,7 +1172,7 @@
                     link.classList.add('active');
 
                     // Close mobile sidebar
-                    document.getElementById('sidebar').classList.remove('open');
+                    closeMobileSidebar();
                 });
             });
         }
@@ -1375,7 +1398,6 @@
         async function init() {
             // Update header
             document.getElementById('header-title').textContent = `${CONFIG.repo} Documentation`;
-            document.getElementById('header-meta').textContent = `${CONFIG.owner}/${CONFIG.repo}`;
 
             try {
                 // Load manifest
@@ -1395,10 +1417,8 @@
                 // Update header stats
                 const totalDocs = allDocuments.length || countDocuments(manifest);
                 const projectCount = manifest.projects ? manifest.projects.length : 0;
-                document.getElementById('header-stats').innerHTML = `
-                    <span class="app-stat"><span class="app-stat-value">${totalDocs}</span> documents</span>
-                    <span class="app-stat"><span class="app-stat-value">${projectCount}</span> projects</span>
-                `;
+                document.getElementById('header-stats').innerHTML =
+                    `<span class="app-stat-value">${totalDocs}</span> docs · <span class="app-stat-value">${projectCount}</span> projects`;
 
                 // Build search index
                 buildSearchIndex(manifest);
@@ -1415,22 +1435,13 @@
                 // Setup keyboard shortcuts
                 setupKeyboardShortcuts();
 
-                // Handle initial hash or load default document
+                // Handle initial hash
                 if (window.location.hash) {
                     const path = window.location.hash.slice(1);
                     loadDocument(path);
 
                     // Mark as active
                     const link = document.querySelector(`a[data-path="${path}"]`);
-                    if (link) link.classList.add('active');
-                } else if (manifest.defaultDocument) {
-                    // Load default document (Architecture Principles)
-                    const defaultPath = manifest.defaultDocument;
-                    window.location.hash = defaultPath;
-                    loadDocument(defaultPath);
-
-                    // Mark as active
-                    const link = document.querySelector(`a[data-path="${defaultPath}"]`);
                     if (link) link.classList.add('active');
                 }
 
@@ -1461,10 +1472,27 @@
             return count;
         }
 
-        // Mobile toggle
-        document.getElementById('mobile-toggle').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.toggle('open');
+        // Mobile menu toggle (header hamburger + backdrop)
+        function openMobileSidebar() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('sidebar-backdrop').classList.add('visible');
+        }
+
+        function closeMobileSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebar-backdrop').classList.remove('visible');
+        }
+
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('open')) {
+                closeMobileSidebar();
+            } else {
+                openMobileSidebar();
+            }
         });
+
+        document.getElementById('sidebar-backdrop').addEventListener('click', closeMobileSidebar);
 
         // Hash change handler
         window.addEventListener('hashchange', () => {
