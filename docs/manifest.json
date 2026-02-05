@@ -10,257 +10,308 @@
     {
       "path": "docs/guides/requirements.md",
       "title": "Requirements Guide",
-      "category": "Discovery"
+      "category": "Discovery",
+      "status": "live"
     },
     {
       "path": "docs/guides/stakeholders.md",
       "title": "Stakeholder Analysis Playbook",
-      "category": "Discovery"
+      "category": "Discovery",
+      "status": "live"
     },
     {
       "path": "docs/guides/research.md",
       "title": "Technology Research Guide",
-      "category": "Discovery"
+      "category": "Discovery",
+      "status": "beta"
     },
     {
       "path": "docs/guides/datascout.md",
       "title": "Data Source Discovery Guide",
-      "category": "Discovery"
+      "category": "Discovery",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/sobc.md",
       "title": "Strategic Outline Business Case Playbook",
-      "category": "Planning"
+      "category": "Planning",
+      "status": "live"
     },
     {
       "path": "docs/guides/business-case.md",
       "title": "Strategic Outline Business Case (SOBC) Guide",
-      "category": "Planning"
+      "category": "Planning",
+      "status": "live"
     },
     {
       "path": "docs/guides/plan.md",
       "title": "Project Plan Playbook",
-      "category": "Planning"
+      "category": "Planning",
+      "status": "live"
     },
     {
       "path": "docs/guides/roadmap.md",
       "title": "Architecture Roadmap Playbook",
-      "category": "Planning"
+      "category": "Planning",
+      "status": "beta"
     },
     {
       "path": "docs/guides/backlog.md",
       "title": "Product Backlog Quick Guide",
-      "category": "Planning"
+      "category": "Planning",
+      "status": "beta"
     },
     {
       "path": "docs/guides/principles.md",
       "title": "Architecture Principles Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "live"
     },
     {
       "path": "docs/guides/adr.md",
       "title": "Architecture Decision Record (ADR) Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "beta"
     },
     {
       "path": "docs/guides/diagram.md",
       "title": "Architecture Diagram Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "live"
     },
     {
       "path": "docs/guides/wardley.md",
       "title": "Wardley Mapping Playbook",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/data-model.md",
       "title": "Data Model Quick Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "live"
     },
     {
       "path": "docs/guides/hld-review.md",
       "title": "High-Level Design Review Playbook",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "beta"
     },
     {
       "path": "docs/guides/dld-review.md",
       "title": "Detailed Design Review Playbook",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "beta"
     },
     {
       "path": "docs/guides/design-review.md",
       "title": "Design Review Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "beta"
     },
     {
       "path": "docs/guides/platform-design.md",
       "title": "Platform Strategy Design Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/data-mesh-contract.md",
       "title": "Data Mesh Contract Quick Guide",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "alpha"
     },
     {
       "path": "docs/guides/strategy.md",
       "title": "Architecture Strategy Playbook",
-      "category": "Architecture"
+      "category": "Architecture",
+      "status": "beta"
     },
     {
       "path": "docs/guides/risk.md",
       "title": "Risk Register Playbook",
-      "category": "Governance"
+      "category": "Governance",
+      "status": "live"
     },
     {
       "path": "docs/guides/risk-management.md",
       "title": "Risk Management Guide",
-      "category": "Governance"
+      "category": "Governance",
+      "status": "live"
     },
     {
       "path": "docs/guides/traceability.md",
       "title": "Traceability Guide",
-      "category": "Governance"
+      "category": "Governance",
+      "status": "live"
     },
     {
       "path": "docs/guides/principles-compliance.md",
       "title": "Principles Compliance Guide",
-      "category": "Governance"
+      "category": "Governance",
+      "status": "live"
     },
     {
       "path": "docs/guides/analyze.md",
       "title": "Project Analysis Playbook",
-      "category": "Governance"
+      "category": "Governance",
+      "status": "beta"
     },
     {
       "path": "docs/guides/tcop.md",
       "title": "Technology Code of Practice Playbook",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "beta"
     },
     {
       "path": "docs/guides/secure.md",
       "title": "Secure by Design Playbook",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "beta"
     },
     {
       "path": "docs/guides/mod-secure.md",
       "title": "MOD Secure by Design Playbook",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/dpia.md",
       "title": "Data Protection Impact Assessment (DPIA) Guide",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "beta"
     },
     {
       "path": "docs/guides/ai-playbook.md",
       "title": "AI Playbook Assessment Playbook",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "alpha"
     },
     {
       "path": "docs/guides/atrs.md",
       "title": "Algorithmic Transparency Recording Standard Playbook",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "alpha"
     },
     {
       "path": "docs/guides/jsp-936.md",
       "title": "JSP 936 AI Assurance Guide",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/service-assessment.md",
       "title": "GDS Service Assessment Guide",
-      "category": "Compliance"
+      "category": "Compliance",
+      "status": "beta"
     },
     {
       "path": "docs/guides/devops.md",
       "title": "DevOps Strategy Playbook",
-      "category": "Operations"
+      "category": "Operations",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/mlops.md",
       "title": "MLOps Strategy Playbook",
-      "category": "Operations"
+      "category": "Operations",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/finops.md",
       "title": "FinOps Strategy Playbook",
-      "category": "Operations"
+      "category": "Operations",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/servicenow.md",
       "title": "ServiceNow Service Design Playbook",
-      "category": "Operations"
+      "category": "Operations",
+      "status": "beta"
     },
     {
       "path": "docs/guides/operationalize.md",
       "title": "Operational Readiness Playbook",
-      "category": "Operations"
+      "category": "Operations",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/sow.md",
       "title": "Statement of Work Playbook",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/evaluate.md",
       "title": "Vendor Evaluation Playbook",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/dos.md",
       "title": "Digital Outcomes and Specialists Playbook",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/gcloud-search.md",
       "title": "G-Cloud Search Playbook",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/gcloud-clarify.md",
       "title": "G-Cloud Clarification Questions Playbook",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/procurement.md",
       "title": "Vendor Procurement Guide",
-      "category": "Procurement"
+      "category": "Procurement",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/aws-research.md",
       "title": "AWS Technology Research Guide",
-      "category": "Research"
+      "category": "Research",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/azure-research.md",
       "title": "Azure Technology Research Guide",
-      "category": "Research"
+      "category": "Research",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/pages.md",
       "title": "GitHub Pages Generator Playbook",
-      "category": "Other"
+      "category": "Other",
+      "status": "beta"
     },
     {
       "path": "docs/guides/story.md",
       "title": "Project Story Guide",
-      "category": "Other"
+      "category": "Other",
+      "status": "live"
     },
     {
       "path": "docs/guides/trello.md",
       "title": "Trello Export Quick Guide",
-      "category": "Other"
+      "category": "Other",
+      "status": "experimental"
     },
     {
       "path": "docs/guides/migration.md",
       "title": "File Migration Playbook",
-      "category": "Other"
+      "category": "Other",
+      "status": "beta"
     },
     {
       "path": "docs/guides/customize.md",
       "title": "Template Customization Guide",
-      "category": "Other"
+      "category": "Other",
+      "status": "experimental"
     }
   ],
   "global": [
