@@ -682,12 +682,6 @@
             color: var(--primary-color);
         }
 
-        /* Stats */
-        .app-header__stats .app-stat-value {
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
         /* Responsive */
         @media (max-width: 1200px) {
             .app-toc {
@@ -789,7 +783,6 @@
                 <a href="#" class="app-header__link" id="header-title">Project Documentation</a>
             </div>
             <nav class="app-header__nav" aria-label="Site navigation">
-                <span class="app-header__stats" id="header-stats"></span>
                 <a href="#" id="guides-link" class="app-header__guides-link">Guides</a>
                 <a href="https://github.com/{{OWNER}}/{{REPO}}" target="_blank" rel="noopener">GitHub</a>
                 <a href="https://tractorjuice.github.io/arc-kit/">ArcKit</a>
@@ -1533,12 +1526,6 @@
                         `Generated: ${date.toLocaleDateString()}`;
                 }
 
-                // Update header stats
-                const totalDocs = allDocuments.length || countDocuments(manifest);
-                const projectCount = manifest.projects ? manifest.projects.length : 0;
-                document.getElementById('header-stats').innerHTML =
-                    `<span class="app-stat-value">${totalDocs}</span> docs · <span class="app-stat-value">${projectCount}</span> projects`;
-
                 // Build search index
                 buildSearchIndex(manifest);
 
@@ -1578,25 +1565,6 @@
                     </div>
                 `;
             }
-        }
-
-        function countDocuments(manifest) {
-            let count = 0;
-            if (manifest.guides) count += manifest.guides.length;
-            if (manifest.global) count += manifest.global.length;
-            if (manifest.projects) {
-                manifest.projects.forEach(p => {
-                    if (p.documents) count += p.documents.length;
-                    if (p.diagrams) count += p.diagrams.length;
-                    if (p.decisions) count += p.decisions.length;
-                    if (p.vendors) {
-                        p.vendors.forEach(v => {
-                            if (v.documents) count += v.documents.length;
-                        });
-                    }
-                });
-            }
-            return count;
         }
 
         // Mobile menu toggle (header hamburger + backdrop)
