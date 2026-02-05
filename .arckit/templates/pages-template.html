@@ -1146,11 +1146,6 @@
             const container = document.getElementById('nav-container');
             let html = '';
 
-            // Guides (command usage documentation)
-            if (manifest.guides && manifest.guides.length > 0) {
-                html += buildNavSection('Guides', manifest.guides, 'guides');
-            }
-
             // Global documents
             if (manifest.global && manifest.global.length > 0) {
                 html += buildNavSection('Global', manifest.global, 'global');
@@ -1161,6 +1156,11 @@
                 manifest.projects.forEach(project => {
                     html += buildProjectNav(project);
                 });
+            }
+
+            // Guides (command usage documentation) - at bottom
+            if (manifest.guides && manifest.guides.length > 0) {
+                html += buildNavSection('Guides', manifest.guides, 'guides');
             }
 
             container.innerHTML = html;
