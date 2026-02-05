@@ -944,6 +944,16 @@
         function buildSearchIndex(manifest) {
             allDocuments = [];
 
+            // Add guides
+            if (manifest.guides) {
+                manifest.guides.forEach(doc => {
+                    allDocuments.push({
+                        ...doc,
+                        searchText: `${doc.title} ${doc.category || ''} guide command`.toLowerCase()
+                    });
+                });
+            }
+
             // Add global documents
             if (manifest.global) {
                 manifest.global.forEach(doc => {
@@ -1135,6 +1145,11 @@
         function buildNavigation(manifest) {
             const container = document.getElementById('nav-container');
             let html = '';
+
+            // Guides (command usage documentation)
+            if (manifest.guides && manifest.guides.length > 0) {
+                html += buildNavSection('Guides', manifest.guides, 'guides');
+            }
 
             // Global documents
             if (manifest.global && manifest.global.length > 0) {
@@ -1456,6 +1471,7 @@
 
         function countDocuments(manifest) {
             let count = 0;
+            if (manifest.guides) count += manifest.guides.length;
             if (manifest.global) count += manifest.global.length;
             if (manifest.projects) {
                 manifest.projects.forEach(p => {
