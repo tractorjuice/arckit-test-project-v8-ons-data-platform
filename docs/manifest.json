@@ -1,15 +1,272 @@
 {
-  "generated": "2026-02-03T12:00:00Z",
+  "generated": "2026-02-05T12:00:00Z",
   "repository": {
     "owner": "tractorjuice",
     "name": "arckit-test-project-v8-ons-data-platform",
     "branch": "main"
   },
   "defaultDocument": "projects/000-global/ARC-000-PRIN-v1.0.md",
+  "guides": [
+    {
+      "path": "docs/guides/requirements.md",
+      "title": "Requirements Guide",
+      "category": "Discovery"
+    },
+    {
+      "path": "docs/guides/stakeholders.md",
+      "title": "Stakeholder Analysis Playbook",
+      "category": "Discovery"
+    },
+    {
+      "path": "docs/guides/research.md",
+      "title": "Technology Research Guide",
+      "category": "Discovery"
+    },
+    {
+      "path": "docs/guides/datascout.md",
+      "title": "Data Source Discovery Guide",
+      "category": "Discovery"
+    },
+    {
+      "path": "docs/guides/sobc.md",
+      "title": "Strategic Outline Business Case Playbook",
+      "category": "Planning"
+    },
+    {
+      "path": "docs/guides/business-case.md",
+      "title": "Strategic Outline Business Case (SOBC) Guide",
+      "category": "Planning"
+    },
+    {
+      "path": "docs/guides/plan.md",
+      "title": "Project Plan Playbook",
+      "category": "Planning"
+    },
+    {
+      "path": "docs/guides/roadmap.md",
+      "title": "Architecture Roadmap Playbook",
+      "category": "Planning"
+    },
+    {
+      "path": "docs/guides/backlog.md",
+      "title": "Product Backlog Quick Guide",
+      "category": "Planning"
+    },
+    {
+      "path": "docs/guides/principles.md",
+      "title": "Architecture Principles Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/adr.md",
+      "title": "Architecture Decision Record (ADR) Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/diagram.md",
+      "title": "Architecture Diagram Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/wardley.md",
+      "title": "Wardley Mapping Playbook",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/data-model.md",
+      "title": "Data Model Quick Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/hld-review.md",
+      "title": "High-Level Design Review Playbook",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/dld-review.md",
+      "title": "Detailed Design Review Playbook",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/design-review.md",
+      "title": "Design Review Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/platform-design.md",
+      "title": "Platform Strategy Design Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/data-mesh-contract.md",
+      "title": "Data Mesh Contract Quick Guide",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/strategy.md",
+      "title": "Architecture Strategy Playbook",
+      "category": "Architecture"
+    },
+    {
+      "path": "docs/guides/risk.md",
+      "title": "Risk Register Playbook",
+      "category": "Governance"
+    },
+    {
+      "path": "docs/guides/risk-management.md",
+      "title": "Risk Management Guide",
+      "category": "Governance"
+    },
+    {
+      "path": "docs/guides/traceability.md",
+      "title": "Traceability Guide",
+      "category": "Governance"
+    },
+    {
+      "path": "docs/guides/principles-compliance.md",
+      "title": "Principles Compliance Guide",
+      "category": "Governance"
+    },
+    {
+      "path": "docs/guides/analyze.md",
+      "title": "Project Analysis Playbook",
+      "category": "Governance"
+    },
+    {
+      "path": "docs/guides/tcop.md",
+      "title": "Technology Code of Practice Playbook",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/secure.md",
+      "title": "Secure by Design Playbook",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/mod-secure.md",
+      "title": "MOD Secure by Design Playbook",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/dpia.md",
+      "title": "Data Protection Impact Assessment (DPIA) Guide",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/ai-playbook.md",
+      "title": "AI Playbook Assessment Playbook",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/atrs.md",
+      "title": "Algorithmic Transparency Recording Standard Playbook",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/jsp-936.md",
+      "title": "JSP 936 AI Assurance Guide",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/service-assessment.md",
+      "title": "GDS Service Assessment Guide",
+      "category": "Compliance"
+    },
+    {
+      "path": "docs/guides/devops.md",
+      "title": "DevOps Strategy Playbook",
+      "category": "Operations"
+    },
+    {
+      "path": "docs/guides/mlops.md",
+      "title": "MLOps Strategy Playbook",
+      "category": "Operations"
+    },
+    {
+      "path": "docs/guides/finops.md",
+      "title": "FinOps Strategy Playbook",
+      "category": "Operations"
+    },
+    {
+      "path": "docs/guides/servicenow.md",
+      "title": "ServiceNow Service Design Playbook",
+      "category": "Operations"
+    },
+    {
+      "path": "docs/guides/operationalize.md",
+      "title": "Operational Readiness Playbook",
+      "category": "Operations"
+    },
+    {
+      "path": "docs/guides/sow.md",
+      "title": "Statement of Work Playbook",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/evaluate.md",
+      "title": "Vendor Evaluation Playbook",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/dos.md",
+      "title": "Digital Outcomes and Specialists Playbook",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/gcloud-search.md",
+      "title": "G-Cloud Search Playbook",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/gcloud-clarify.md",
+      "title": "G-Cloud Clarification Questions Playbook",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/procurement.md",
+      "title": "Vendor Procurement Guide",
+      "category": "Procurement"
+    },
+    {
+      "path": "docs/guides/aws-research.md",
+      "title": "AWS Technology Research Guide",
+      "category": "Research"
+    },
+    {
+      "path": "docs/guides/azure-research.md",
+      "title": "Azure Technology Research Guide",
+      "category": "Research"
+    },
+    {
+      "path": "docs/guides/pages.md",
+      "title": "GitHub Pages Generator Playbook",
+      "category": "Other"
+    },
+    {
+      "path": "docs/guides/story.md",
+      "title": "Project Story Guide",
+      "category": "Other"
+    },
+    {
+      "path": "docs/guides/trello.md",
+      "title": "Trello Export Quick Guide",
+      "category": "Other"
+    },
+    {
+      "path": "docs/guides/migration.md",
+      "title": "File Migration Playbook",
+      "category": "Other"
+    },
+    {
+      "path": "docs/guides/customize.md",
+      "title": "Template Customization Guide",
+      "category": "Other"
+    }
+  ],
   "global": [
     {
       "path": "projects/000-global/ARC-000-PRIN-v1.0.md",
-      "title": "Architecture Principles",
+      "title": "Enterprise Architecture Principles",
       "category": "Architecture",
       "documentId": "ARC-000-PRIN-v1.0",
       "isDefault": true
@@ -22,19 +279,19 @@
       "documents": [
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-STKE-v1.0.md",
-          "title": "Stakeholder Drivers",
+          "title": "Stakeholder Drivers & Goals Analysis",
           "category": "Discovery",
           "documentId": "ARC-001-STKE-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-REQ-v1.0.md",
-          "title": "Requirements",
+          "title": "Project Requirements",
           "category": "Discovery",
           "documentId": "ARC-001-REQ-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-SOBC-v1.0.md",
-          "title": "Strategic Outline Business Case",
+          "title": "Strategic Outline Business Case (SOBC)",
           "category": "Planning",
           "documentId": "ARC-001-SOBC-v1.0"
         },
@@ -52,7 +309,7 @@
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-GAAP-v1.0.md",
-          "title": "GaaP Ecosystem Analysis",
+          "title": "Government-as-a-Platform (GaaP) Ecosystem Analysis",
           "category": "Architecture",
           "documentId": "ARC-001-GAAP-v1.0"
         },
@@ -64,19 +321,19 @@
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-TCOP-v1.0.md",
-          "title": "TCoP Assessment",
+          "title": "Technology Code of Practice (TCoP) Assessment",
           "category": "Compliance",
           "documentId": "ARC-001-TCOP-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-SECD-v1.0.md",
-          "title": "Secure by Design",
+          "title": "UK Government Secure by Design Assessment",
           "category": "Compliance",
           "documentId": "ARC-001-SECD-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-DPIA-v1.0.md",
-          "title": "Data Protection Impact Assessment",
+          "title": "Data Protection Impact Assessment (DPIA)",
           "category": "Compliance",
           "documentId": "ARC-001-DPIA-v1.0"
         },
@@ -92,7 +349,6 @@
       "wardleyMaps": [],
       "dataContracts": [],
       "reviews": [],
-      "research": [],
       "vendors": []
     }
   ]
