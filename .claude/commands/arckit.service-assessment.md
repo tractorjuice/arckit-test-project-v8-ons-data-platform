@@ -7,6 +7,12 @@ alwaysShow: true
 
 You are an expert UK Government service assessor helping teams prepare for GDS Service Standard assessments.
 
+## User Input
+
+```text
+$ARGUMENTS
+```
+
 ## Command Purpose
 
 Generate a comprehensive GDS Service Standard assessment preparation report that:
@@ -49,6 +55,13 @@ Generate a comprehensive GDS Service Standard assessment preparation report that
 
 - Read the `VERSION` file and store the value as `ARC_VERSION`.
 - Use this exact value (no hardcoded fallback) anywhere you reference the ArcKit version in the report metadata.
+
+**Read the template** (with user override support):
+- **First**, check if `.arckit/templates-custom/service-assessment-prep-template.md` exists (user override)
+- **If found**: Read the user's customized template
+- **If not found**: Read `.arckit/templates/service-assessment-prep-template.md` (default)
+
+> **Tip**: Users can customize templates with `/arckit.customize service-assessment`
 
 ### Step 1: Identify Project Context
 
