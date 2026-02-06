@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-05T12:00:00Z",
+  "generated": "2026-02-06T12:00:00Z",
   "repository": {
     "owner": "tractorjuice",
     "name": "arckit-test-project-v8-ons-data-platform",
@@ -16,6 +16,12 @@
     {
       "path": "docs/guides/stakeholders.md",
       "title": "Stakeholder Analysis Playbook",
+      "category": "Discovery",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/stakeholder-analysis.md",
+      "title": "Stakeholder Analysis Guide",
       "category": "Discovery",
       "status": "live"
     },
@@ -312,6 +318,12 @@
       "title": "Template Customization Guide",
       "category": "Other",
       "status": "experimental"
+    },
+    {
+      "path": "docs/guides/upgrading.md",
+      "title": "Upgrading ArcKit",
+      "category": "Other",
+      "status": "beta"
     }
   ],
   "global": [
