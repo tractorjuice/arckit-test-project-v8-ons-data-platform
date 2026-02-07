@@ -82,7 +82,6 @@ ons-data-platform/
 ├── .arckit/
 │   ├── templates/        # Document templates
 │   └── scripts/bash/     # Helper scripts
-├── .claude/
 │   ├── commands/         # ArcKit slash commands
 │   └── agents/           # Autonomous research agents
 ├── .codex/prompts/       # Codex CLI commands
