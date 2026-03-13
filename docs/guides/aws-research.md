@@ -1,8 +1,10 @@
 # AWS Technology Research Guide
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.aws-research` researches AWS services, architecture patterns, and implementation guidance using the AWS Knowledge MCP server for authoritative documentation.
 
-> **Agent Architecture**: This command runs as an autonomous agent (bundled with the ArcKit plugin) via the Task tool. The agent makes 15-30+ MCP calls to gather AWS documentation in its own context window, keeping the main conversation clean. The slash command is a thin wrapper that delegates to the agent.
+> **Agent Architecture**: This command runs as an autonomous agent via the Task tool. The agent makes 15-30+ MCP calls to gather AWS documentation in its own context window, keeping the main conversation clean. The slash command is a thin wrapper that delegates to the agent.
 
 ---
 
@@ -14,7 +16,7 @@ This command **requires** the AWS Knowledge MCP server to be installed. It will 
 
 **Installation**:
 
-**Note**: The ArcKit plugin bundles this MCP server automatically. No manual configuration needed.
+Add to your Claude Code MCP configuration (`~/.claude/claude_desktop_config.json` or project `.mcp.json`):
 
 ```json
 {
@@ -127,6 +129,7 @@ When UK Government project detected:
 | Cost estimates | High-level | Detailed AWS pricing |
 
 **When to use which**:
+
 - Use `/arckit.research` for cloud-agnostic evaluation or build vs buy
 - Use `/arckit.aws-research` when AWS is the target platform
 

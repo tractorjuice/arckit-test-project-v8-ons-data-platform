@@ -1,5 +1,7 @@
 # Architecture Strategy Playbook
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.strategy` synthesises multiple strategic artifacts into a single executive-level Architecture Strategy document.
 
 ---
@@ -9,6 +11,7 @@
 Most enterprise architecture initiatives produce multiple strategic artifacts: principles, stakeholder analysis, Wardley maps, roadmaps, and business cases. Executives and senior stakeholders shouldn't need to read 5 separate documents to understand the strategy.
 
 The `/arckit.strategy` command **synthesises** these artifacts into a coherent narrative that:
+
 - Articulates the strategic vision
 - Links stakeholder drivers to strategic themes
 - Shows how principles guide decisions
@@ -66,7 +69,7 @@ Outputs: `projects/<id>/ARC-<id>-STRAT-v1.0.md`
 
 The strategy command sits at a synthesis point in the ArcKit workflow:
 
-```
+```text
                            ┌─────────────┐
                            │  Principles │
                            └──────┬──────┘
@@ -173,7 +176,7 @@ For UK Government projects, the strategy will include:
 
 ## Output Example
 
-```
+```text
 ## Architecture Strategy Created
 
 **Document**: `projects/007-digital-courts/ARC-007-STRAT-v1.0.md`

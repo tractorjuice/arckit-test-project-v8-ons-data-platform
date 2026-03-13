@@ -1,5 +1,7 @@
 # Wardley Mapping Playbook
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.wardley` creates strategic Wardley Maps for architecture decisions and build vs buy analysis.
 
 ---
@@ -108,7 +110,7 @@ Output: `projects/<id>/ARC-<id>-WARD-001-v1.0.md` (uses multi-instance numbering
 
 ## OnlineWardleyMaps Format
 
-```
+```text
 title Your Map Title
 anchor User Need [0.95, 0.63]
 component Component A [0.85, 0.45] label [-50, -10]
@@ -130,3 +132,11 @@ Visualize at: https://create.wardleymaps.ai
 3. **Position Over Labeling**: Where something is matters more than what it's called.
 4. **Context Specific**: Maps are specific to your organization and time.
 5. **Communication Tool**: Maps facilitate strategic conversations.
+
+---
+
+## Quick Questions? Use the Wardley Mapping Skill
+
+For casual Wardley Mapping questions — evolution stage lookups, doctrine assessments, build vs. buy guidance, or interactive map creation — just ask naturally. The **wardley-mapping** skill activates automatically for conversational queries without generating formal documents.
+
+Use `/arckit:wardley` when you need a **formal architecture artifact** with document control, project integration, and UK Government compliance.

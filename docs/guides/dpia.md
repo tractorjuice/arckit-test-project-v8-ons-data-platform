@@ -1,5 +1,7 @@
 # Data Protection Impact Assessment (DPIA) Guide
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.dpia` delivers a GDPR-compliant DPIA whenever processing could present high risk to individuals.
 
 ---
@@ -17,6 +19,7 @@
 ## Trigger Checklist
 
 Tick any that apply (two or more = DPIA mandatory per ICO):
+
 - Evaluation or scoring (profiling, ranking, credit risk)
 - Automated decisions with legal/significant effect
 - Systematic monitoring or surveillance

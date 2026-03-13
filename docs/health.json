@@ -1,0 +1,37 @@
+{
+  "generated": "2026-03-13T11:33:35.854Z",
+  "scanned": {
+    "projects": 1,
+    "artifacts": 11
+  },
+  "summary": {
+    "HIGH": 0,
+    "MEDIUM": 1,
+    "LOW": 0,
+    "total": 1
+  },
+  "byType": {
+    "STALE-RSCH": 0,
+    "FORGOTTEN-ADR": 0,
+    "UNRESOLVED-COND": 0,
+    "STALE-EXT": 0,
+    "ORPHAN-REQ": 1,
+    "MISSING-TRACE": 0,
+    "VERSION-DRIFT": 0
+  },
+  "projects": [
+    {
+      "id": "001-ons-data-platform-modernisation",
+      "artifacts": 11,
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "rule": "ORPHAN-REQ",
+          "file": "ARC-001-REQ-v1.0.md",
+          "message": "Total requirements: 38\n  Requirements not referenced by any ADR: 38\n  Examples: FR-001, FR-003, NFR-P-001, NFR-P-003, FR-004 (+33 more)",
+          "action": "Review whether these requirements need architectural decisions documented as ADRs"
+        }
+      ]
+    }
+  ]
+}

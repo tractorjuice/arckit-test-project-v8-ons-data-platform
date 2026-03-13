@@ -1,5 +1,7 @@
 # Upgrading ArcKit
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 How to upgrade the ArcKit CLI and update your existing projects.
 
 ---
@@ -27,24 +29,28 @@ Navigate to your existing ArcKit project directory and re-run init with `--here`
 cd /path/to/your-existing-project
 
 # Re-initialize in place (updates commands, templates, scripts)
-# For Gemini/Codex: arckit init --here --ai gemini
+arckit init --here --ai codex
 ```
 
 ### What Gets Updated
 
 | Updated | Preserved |
 |---------|-----------|
-| Commands (provided by plugin or CLI) | Project data (`projects/`) |
-| Agents (provided by ArcKit plugin) | Custom templates (`.arckit/templates-custom/`) |
-| Default templates (`.arckit/templates/`) | |
+| Skills (`.agents/skills/`) | Project data (`projects/`) |
+| Default templates (`.arckit/templates/`) | Custom templates (`.arckit/templates-custom/`) |
 | Helper scripts (`.arckit/scripts/`) | |
 | Documentation and guides (`docs/`) | |
 | `VERSION`, `CHANGELOG.md` | |
 
+> **Note:** For Claude Code users, commands and agents are provided by the ArcKit plugin and update automatically via the marketplace. No `arckit init` needed.
+
+> **Note:** For Gemini CLI users, use the ArcKit extension (`gemini extensions install https://github.com/tractorjuice/arckit-gemini`). Updates via `gemini extensions update arckit`.
+
 > **Note:** `README.md` will be overwritten. If you've customized it, back it up first:
+>
 > ```bash
 > cp README.md README.md.bak
-> # For Gemini/Codex: arckit init --here --ai gemini
+> arckit init --here --ai codex
 > mv README.md.bak README.md
 > ```
 
@@ -52,10 +58,7 @@ cd /path/to/your-existing-project
 
 | Flag | Description |
 |------|-------------|
-| `--ai gemini` | Update Gemini CLI commands |
-| `--ai gemini` | Update Gemini CLI commands |
 | `--ai codex` | Update Codex CLI commands |
-| `--all-ai` | Update commands for all AI assistants |
 | `--minimal` | Skip updating docs and guides |
 
 ---
@@ -64,7 +67,7 @@ cd /path/to/your-existing-project
 
 If upgrading from **v0.x** to **v1.x**, your project artifacts may use old-style filenames (e.g., `requirements.md`, `stakeholder-drivers.md`). ArcKit v1.x uses standardized Document IDs:
 
-```
+```text
 Old: requirements.md
 New: ARC-001-REQ-v1.0.md
 ```
@@ -80,6 +83,7 @@ Run the migration script to rename files automatically:
 ```
 
 The script:
+
 - Creates timestamped backups before making changes
 - Skips files that are already migrated
 - Handles subdirectories (decisions, diagrams, wardley-maps, etc.)
@@ -109,8 +113,8 @@ Use `--here` (or `.`) to update an existing project in place:
 
 ```bash
 # These are equivalent:
-# For Gemini/Codex: arckit init --here --ai gemini
-# For Gemini/Codex: arckit init . --ai gemini
+arckit init --here --ai codex
+arckit init . --ai codex
 ```
 
 ### Commands not updating

@@ -1,5 +1,7 @@
 # Trello Export Quick Guide
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 Export your ArcKit product backlog to a Trello board with `/arckit.trello`. The command reads the JSON output from `/arckit.backlog FORMAT=json` and creates a fully structured board with sprint lists, labelled cards, and acceptance criteria checklists.
 
 ---
@@ -33,7 +35,7 @@ export TRELLO_TOKEN="your-token-here"
 
 ## Board Structure
 
-```
+```text
 Board: "{Project Name} - Sprint Backlog"
 ├── List: "Product Backlog"        ← unscheduled/overflow items
 ├── List: "Sprint 1: Foundation"   ← stories assigned to sprint 1
@@ -56,7 +58,7 @@ Board: "{Project Name} - Sprint Backlog"
 
 **Card description example**:
 
-```
+```text
 **As a** new user
 **I want** to create an account
 **So that** I can access the service
@@ -118,10 +120,12 @@ Trello allows **100 requests per 10-second window** per API token. The command a
 ## Re-exporting
 
 This command always creates a **new board**. To re-export:
+
 1. Delete or archive the old board in Trello
 2. Re-run `/arckit.trello`
 
 Or use a different board name:
+
 ```bash
 /arckit.trello BOARD_NAME="Sprint Board v2"
 ```

@@ -1,6 +1,10 @@
 # Technology Code of Practice Playbook
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.tcop` generates a Technology Code of Practice (TCoP) review document for UK Government technology projects.
+
+> **Parent standard**: TCoP is the implementation guidance for [GovS 005 — Government Functional Standard for Digital](https://www.gov.uk/government/publications/government-functional-standard-govs-005-digital). A TCoP review satisfies the majority of GovS 005 obligations.
 
 ---
 
@@ -117,3 +121,4 @@ Output: `projects/<id>/ARC-<id>-TCOP-v1.0.md`
 3. **Cloud First**: Default to cloud unless justified otherwise.
 4. **Security Built-In**: Security from the start, not bolted on.
 5. **Reuse Before Build**: Check for existing solutions first.
+6. **GovS 005 Traceability**: Map each TCoP point back to its parent GovS 005 principle for audit trail.

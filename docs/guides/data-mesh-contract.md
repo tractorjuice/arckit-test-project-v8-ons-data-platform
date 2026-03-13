@@ -1,5 +1,7 @@
 # Data Mesh Contract Quick Guide
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.data-mesh-contract` creates federated data product contracts for mesh architectures with SLAs, governance, and interoperability guarantees.
 
 ---
@@ -30,6 +32,7 @@ Output: `projects/<id>/ARC-<id>-DMC-001-v1.0.md` (uses multi-instance numbering)
 A **data product contract** defines the formal agreement between a data product provider (domain team) and consumers in a federated mesh architecture.
 
 Unlike traditional data models, mesh contracts emphasize:
+
 - **Federated ownership** – Domain teams own their data products end-to-end
 - **Data as a product** – Treated like APIs with SLAs, versioning, and support
 - **Self-serve infrastructure** – Standardized access patterns and discovery
@@ -66,6 +69,7 @@ Unlike traditional data models, mesh contracts emphasize:
 ### Data Quality Framework
 
 Mesh contracts support the **Government Data Quality Framework** five dimensions:
+
 1. **Accuracy** – Validation rules and quality KPIs in contract
 2. **Validity** – Schema constraints and allowed values
 3. **Completeness** – Mandatory field requirements and null handling
@@ -75,6 +79,7 @@ Mesh contracts support the **Government Data Quality Framework** five dimensions
 ### National Data Strategy (NDS)
 
 Contracts align with NDS pillars:
+
 - **Pillar 1 (Unlocking value)** – Discoverability and self-serve access
 - **Pillar 2 (Secure and resilient infrastructure)** – Security controls in contract
 - **Pillar 3 (Transforming capability)** – Federated domain expertise

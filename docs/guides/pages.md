@@ -1,5 +1,7 @@
 # GitHub Pages Generator Playbook
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `/arckit.pages` generates a GitHub Pages documentation site that displays all project documents with Mermaid diagram support.
 
 ---
@@ -21,6 +23,7 @@
 ```
 
 Output:
+
 - `docs/index.html` - Main documentation site
 - `docs/manifest.json` - Document index
 
@@ -117,10 +120,12 @@ graph TD
     A[Start] --> B{Decision}
     B -->|Yes| C[Action]
     B -->|No| D[End]
-```
+```text
+
 ```
 
 Supported diagram types:
+
 - Flowcharts
 - Sequence diagrams
 - C4 diagrams (Context, Container, Component)
@@ -163,12 +168,12 @@ The dashboard (`#dashboard`) is the default landing page, providing an instant p
 | Documents by Category | SVG donut chart showing document distribution across Discovery, Planning, Architecture, etc. |
 | Project Artifact Coverage | Horizontal bar chart per project with color coding (green >=80%, amber >=50%, red <50%) |
 | Projects Table | Name, Docs, Diagrams, ADRs, Vendors, Coverage mini-bar |
-| Guide Maturity | SVG donut chart showing live/beta/alpha/experimental guide counts |
 | Governance Coverage | Checklist of key artifact types present/absent across portfolio |
 
 ### Coverage Calculation
 
 Coverage measures how many of the 6 core artifact types each project has:
+
 - REQ (Requirements), STKE (Stakeholders), RISK (Risk Register)
 - SOBC (Business Case), PLAN (Project Plan), DATA (Data Model)
 
@@ -180,13 +185,16 @@ A project with 4 of 6 types = 67% coverage.
 
 Documents use hash-based routing:
 
-```
+```text
+
 https://org.github.io/repo/#dashboard                              (dashboard)
 https://org.github.io/repo/#guides                                 (guides index)
 https://org.github.io/repo/#projects/001-name/ARC-001-REQ-v1.0.md (document)
+
 ```
 
 Benefits:
+
 - Dashboard is the default view (bare URL with no hash)
 - Shareable links to specific documents
 - Browser back/forward navigation works

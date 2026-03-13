@@ -1,6 +1,10 @@
 # File Migration Playbook
 
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
 `migrate-filenames.sh` converts legacy ArcKit filenames to the standardized Document ID naming convention.
+
+> **Platform note**: This migration script requires a bash shell (Linux, macOS, or Windows via Git Bash / WSL). It is a one-time migration utility and does not affect day-to-day ArcKit command usage.
 
 ---
 
@@ -8,11 +12,12 @@
 
 ArcKit uses standardized Document IDs for all artifacts:
 
-```
+```text
 ARC-{PROJECT_ID}-{TYPE}-v{VERSION}.md
 ```
 
 Examples:
+
 - `ARC-001-REQ-v1.0.md` - Requirements for project 001
 - `ARC-001-ADR-001-v1.0.md` - First ADR for project 001
 - `ARC-000-PRIN-v1.0.md` - Global architecture principles
@@ -23,16 +28,16 @@ Examples:
 
 ```bash
 # Single project
-.arckit/scripts/bash/migrate-filenames.sh projects/001-my-project
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh projects/001-my-project
 
 # Dry run (preview changes)
-.arckit/scripts/bash/migrate-filenames.sh projects/001-my-project --dry-run
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh projects/001-my-project --dry-run
 
 # All projects
-.arckit/scripts/bash/migrate-filenames.sh --all
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh --all
 
 # Global directory only
-.arckit/scripts/bash/migrate-filenames.sh --global
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh --global
 ```
 
 ---
@@ -156,7 +161,7 @@ Root-level research files are moved to `research/` subdirectory:
 
 Files in `procurement/` are migrated to the project root:
 
-```
+```text
 Before:
   projects/001-project/procurement/gcloud-requirements.md
   projects/001-project/procurement/digital-marketplace-dos.md
@@ -170,7 +175,7 @@ After:
 
 HLD and DLD review files are moved to `reviews/`:
 
-```
+```text
 Before:
   projects/001-project/hld-review.md
 
@@ -226,7 +231,7 @@ Some compliance files have date suffixes. These are handled specially:
 
 By default, the script creates a timestamped backup before making changes:
 
-```
+```text
 projects/001-project/.backup/20260128_143022/
 ├── requirements.md
 ├── stakeholder-drivers.md
@@ -242,11 +247,12 @@ Use `--no-backup` to skip backups (not recommended).
 ### Preview All Changes
 
 ```bash
-.arckit/scripts/bash/migrate-filenames.sh --all --dry-run
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh --all --dry-run
 ```
 
 Output:
-```
+
+```text
 [INFO] Migrating project: 001-payment-gateway (ID: 001)
 [DRY-RUN] Would rename: requirements.md → ARC-001-REQ-v1.0.md
 [DRY-RUN] Would rename: stakeholder-drivers.md → ARC-001-STKE-v1.0.md
@@ -257,10 +263,11 @@ Output:
 ### Migrate Global Principles
 
 ```bash
-.arckit/scripts/bash/migrate-filenames.sh --global
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh --global
 ```
 
 This will:
+
 1. Create `projects/000-global/` if it doesn't exist
 2. Check `.arckit/memory/` for legacy principles files
 3. Migrate to `projects/000-global/ARC-000-PRIN-v1.0.md`
@@ -268,13 +275,13 @@ This will:
 ### Migrate Single Project
 
 ```bash
-.arckit/scripts/bash/migrate-filenames.sh projects/001-payment-gateway
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh projects/001-payment-gateway
 ```
 
 ### Force Overwrite Existing
 
 ```bash
-.arckit/scripts/bash/migrate-filenames.sh projects/001-payment-gateway --force
+${CLAUDE_PLUGIN_ROOT}/scripts/bash/migrate-filenames.sh projects/001-payment-gateway --force
 ```
 
 ---
@@ -293,6 +300,7 @@ This will:
 ### "Cannot extract project ID"
 
 Project directories must follow the pattern `{NNN}-{name}`:
+
 - Valid: `001-payment-gateway`, `002-user-auth`
 - Invalid: `payment-gateway`, `project1`
 

@@ -1,190 +1,14 @@
 {
-  "generated": "2026-02-06T12:00:00Z",
+  "generated": "2026-03-13T11:33:51.871Z",
   "repository": {
-    "owner": "tractorjuice",
-    "name": "arckit-test-project-v8-ons-data-platform",
-    "branch": "main"
+    "name": "arckit-test-project-v8-ons-data-platform"
   },
   "defaultDocument": "projects/000-global/ARC-000-PRIN-v1.0.md",
   "guides": [
     {
-      "path": "docs/guides/requirements.md",
-      "title": "Requirements Guide",
-      "category": "Discovery",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/stakeholders.md",
-      "title": "Stakeholder Analysis Playbook",
-      "category": "Discovery",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/stakeholder-analysis.md",
-      "title": "Stakeholder Analysis Guide",
-      "category": "Discovery",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/research.md",
-      "title": "Technology Research Guide",
-      "category": "Discovery",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/datascout.md",
-      "title": "Data Source Discovery Guide",
-      "category": "Discovery",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/sobc.md",
-      "title": "Strategic Outline Business Case Playbook",
-      "category": "Planning",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/business-case.md",
-      "title": "Strategic Outline Business Case (SOBC) Guide",
-      "category": "Planning",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/plan.md",
-      "title": "Project Plan Playbook",
-      "category": "Planning",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/roadmap.md",
-      "title": "Architecture Roadmap Playbook",
-      "category": "Planning",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/backlog.md",
-      "title": "Product Backlog Quick Guide",
-      "category": "Planning",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/principles.md",
-      "title": "Architecture Principles Guide",
-      "category": "Architecture",
-      "status": "live"
-    },
-    {
       "path": "docs/guides/adr.md",
       "title": "Architecture Decision Record (ADR) Guide",
       "category": "Architecture",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/diagram.md",
-      "title": "Architecture Diagram Guide",
-      "category": "Architecture",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/wardley.md",
-      "title": "Wardley Mapping Playbook",
-      "category": "Architecture",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/data-model.md",
-      "title": "Data Model Quick Guide",
-      "category": "Architecture",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/hld-review.md",
-      "title": "High-Level Design Review Playbook",
-      "category": "Architecture",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/dld-review.md",
-      "title": "Detailed Design Review Playbook",
-      "category": "Architecture",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/design-review.md",
-      "title": "Design Review Guide",
-      "category": "Architecture",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/platform-design.md",
-      "title": "Platform Strategy Design Guide",
-      "category": "Architecture",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/data-mesh-contract.md",
-      "title": "Data Mesh Contract Quick Guide",
-      "category": "Architecture",
-      "status": "alpha"
-    },
-    {
-      "path": "docs/guides/strategy.md",
-      "title": "Architecture Strategy Playbook",
-      "category": "Architecture",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/risk.md",
-      "title": "Risk Register Playbook",
-      "category": "Governance",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/risk-management.md",
-      "title": "Risk Management Guide",
-      "category": "Governance",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/traceability.md",
-      "title": "Traceability Guide",
-      "category": "Governance",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/principles-compliance.md",
-      "title": "Principles Compliance Guide",
-      "category": "Governance",
-      "status": "live"
-    },
-    {
-      "path": "docs/guides/analyze.md",
-      "title": "Project Analysis Playbook",
-      "category": "Governance",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/tcop.md",
-      "title": "Technology Code of Practice Playbook",
-      "category": "Compliance",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/secure.md",
-      "title": "Secure by Design Playbook",
-      "category": "Compliance",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/mod-secure.md",
-      "title": "MOD Secure by Design Playbook",
-      "category": "Compliance",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/dpia.md",
-      "title": "Data Protection Impact Assessment (DPIA) Guide",
-      "category": "Compliance",
       "status": "beta"
     },
     {
@@ -194,21 +18,99 @@
       "status": "alpha"
     },
     {
+      "path": "docs/guides/analyze.md",
+      "title": "Project Analysis Playbook",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/artifact-health.md",
+      "title": "Artifact Health Guide",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
       "path": "docs/guides/atrs.md",
       "title": "Algorithmic Transparency Recording Standard Playbook",
       "category": "Compliance",
       "status": "alpha"
     },
     {
-      "path": "docs/guides/jsp-936.md",
-      "title": "JSP 936 AI Assurance Guide",
-      "category": "Compliance",
+      "path": "docs/guides/aws-research.md",
+      "title": "AWS Technology Research Guide",
+      "category": "Integrations",
       "status": "experimental"
     },
     {
-      "path": "docs/guides/service-assessment.md",
-      "title": "GDS Service Assessment Guide",
+      "path": "docs/guides/azure-research.md",
+      "title": "Azure Technology Research Guide",
+      "category": "Integrations",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/backlog.md",
+      "title": "Product Backlog Quick Guide",
+      "category": "Planning",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/business-case.md",
+      "title": "Strategic Outline Business Case (SOBC) Guide",
+      "category": "Planning",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/c4-layout-science.md",
+      "title": "C4 Layout Science Guide",
+      "category": "Architecture",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/codes-of-practice.md",
+      "title": "UK Government Codes of Practice — ArcKit Reference Guide",
       "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/conformance.md",
+      "title": "Architecture Conformance Guide",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/customize.md",
+      "title": "Template Customization Guide",
+      "category": "Getting Started",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/data-mesh-contract.md",
+      "title": "Data Mesh Contract Quick Guide",
+      "category": "Architecture",
+      "status": "alpha"
+    },
+    {
+      "path": "docs/guides/data-model.md",
+      "title": "Data Model Quick Guide",
+      "category": "Architecture",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/data-quality-framework.md",
+      "title": "UK Government Data Quality Framework — ArcKit Reference Guide",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/datascout.md",
+      "title": "Data Source Discovery Guide",
+      "category": "Discovery",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/design-review.md",
+      "title": "Design Review Guide",
+      "category": "Architecture",
       "status": "beta"
     },
     {
@@ -218,10 +120,40 @@
       "status": "experimental"
     },
     {
-      "path": "docs/guides/mlops.md",
-      "title": "MLOps Strategy Playbook",
-      "category": "Operations",
+      "path": "docs/guides/dfd.md",
+      "title": "Data Flow Diagram Guide",
+      "category": "Architecture",
       "status": "experimental"
+    },
+    {
+      "path": "docs/guides/diagram.md",
+      "title": "Architecture Diagram Guide",
+      "category": "Architecture",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/dld-review.md",
+      "title": "Detailed Design Review Playbook",
+      "category": "Architecture",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/dos.md",
+      "title": "Digital Outcomes and Specialists Playbook",
+      "category": "Procurement",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/dpia.md",
+      "title": "Data Protection Impact Assessment (DPIA) Guide",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/evaluate.md",
+      "title": "Vendor Evaluation Playbook",
+      "category": "Procurement",
+      "status": "live"
     },
     {
       "path": "docs/guides/finops.md",
@@ -230,32 +162,14 @@
       "status": "experimental"
     },
     {
-      "path": "docs/guides/servicenow.md",
-      "title": "ServiceNow Service Design Playbook",
-      "category": "Operations",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/operationalize.md",
-      "title": "Operational Readiness Playbook",
-      "category": "Operations",
+      "path": "docs/guides/framework.md",
+      "title": "Framework Guide",
+      "category": "Architecture",
       "status": "experimental"
     },
     {
-      "path": "docs/guides/sow.md",
-      "title": "Statement of Work Playbook",
-      "category": "Procurement",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/evaluate.md",
-      "title": "Vendor Evaluation Playbook",
-      "category": "Procurement",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/dos.md",
-      "title": "Digital Outcomes and Specialists Playbook",
+      "path": "docs/guides/gcloud-clarify.md",
+      "title": "G-Cloud Clarification Questions Playbook",
       "category": "Procurement",
       "status": "experimental"
     },
@@ -266,97 +180,498 @@
       "status": "experimental"
     },
     {
-      "path": "docs/guides/gcloud-clarify.md",
-      "title": "G-Cloud Clarification Questions Playbook",
-      "category": "Procurement",
+      "path": "docs/guides/gcp-research.md",
+      "title": "Google Cloud Technology Research Guide",
+      "category": "Integrations",
       "status": "experimental"
     },
     {
-      "path": "docs/guides/procurement.md",
-      "title": "Vendor Procurement Guide",
-      "category": "Procurement",
+      "path": "docs/guides/glossary.md",
+      "title": "Glossary Guide",
+      "category": "Reporting",
       "status": "experimental"
     },
     {
-      "path": "docs/guides/aws-research.md",
-      "title": "AWS Technology Research Guide",
-      "category": "Research",
+      "path": "docs/guides/govs-007-security.md",
+      "title": "GovS 007: Security — ArcKit Reference Guide",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/health.md",
+      "title": "Health Check Guide",
+      "category": "Governance",
       "status": "experimental"
     },
     {
-      "path": "docs/guides/azure-research.md",
-      "title": "Azure Technology Research Guide",
-      "category": "Research",
+      "path": "docs/guides/hld-review.md",
+      "title": "High-Level Design Review Playbook",
+      "category": "Architecture",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/impact.md",
+      "title": "Impact Analysis",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/init.md",
+      "title": "Init Guide",
+      "category": "Getting Started",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/jsp-936.md",
+      "title": "JSP 936 AI Assurance Guide",
+      "category": "Compliance",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/knowledge-compounding.md",
+      "title": "Knowledge Compounding Guide",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/maturity-model.md",
+      "title": "Maturity Model Guide",
+      "category": "Governance",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/mcp-servers.md",
+      "title": "ArcKit Plugin Setup Guide",
+      "category": "Integrations",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/migration.md",
+      "title": "File Migration Playbook",
+      "category": "Planning",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/mlops.md",
+      "title": "MLOps Strategy Playbook",
+      "category": "Operations",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/mod-secure.md",
+      "title": "MOD Secure by Design Playbook",
+      "category": "Compliance",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/national-data-strategy.md",
+      "title": "UK National Data Strategy — ArcKit Reference Guide",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/operationalize.md",
+      "title": "Operational Readiness Playbook",
+      "category": "Operations",
       "status": "experimental"
     },
     {
       "path": "docs/guides/pages.md",
       "title": "GitHub Pages Generator Playbook",
-      "category": "Other",
+      "category": "Reporting",
+      "status": "alpha"
+    },
+    {
+      "path": "docs/guides/pinecone-mcp.md",
+      "title": "Pinecone MCP Integration Guide",
+      "category": "Integrations",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/plan.md",
+      "title": "Project Plan Playbook",
+      "category": "Planning",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/platform-design.md",
+      "title": "Platform Strategy Design Guide",
+      "category": "Architecture",
+      "status": "experimental"
+    },
+    {
+      "path": "docs/guides/presentation.md",
+      "title": "Presentation Guide",
+      "category": "Reporting",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/principles-compliance.md",
+      "title": "Principles Compliance Guide",
+      "category": "Governance",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/principles.md",
+      "title": "Architecture Principles Guide",
+      "category": "Architecture",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/procurement.md",
+      "title": "Vendor Procurement Guide",
+      "category": "Procurement",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/productivity.md",
+      "title": "Architecture Productivity Guide",
+      "category": "Getting Started",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/remote-control.md",
+      "title": "Govern Architecture from Anywhere: Using Claude Code Remote Control with ArcKit",
+      "category": "Getting Started",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/requirements.md",
+      "title": "Requirements Guide",
+      "category": "Discovery",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/research.md",
+      "title": "Technology Research Guide",
+      "category": "Discovery",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/risk-management.md",
+      "title": "Risk Management Guide",
+      "category": "Governance",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/risk.md",
+      "title": "Risk Register Playbook",
+      "category": "Governance",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/roadmap.md",
+      "title": "Architecture Roadmap Playbook",
+      "category": "Planning",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/score.md",
+      "title": "Vendor Scoring",
+      "category": "Procurement",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/search.md",
+      "title": "Project Search",
+      "category": "Governance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/secure.md",
+      "title": "Secure by Design Playbook",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/security-hooks.md",
+      "title": "Security Hooks Guide",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/service-assessment.md",
+      "title": "GDS Service Assessment Guide",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/servicenow.md",
+      "title": "ServiceNow Service Design Playbook",
+      "category": "Integrations",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/sobc.md",
+      "title": "Strategic Outline Business Case Playbook",
+      "category": "Planning",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/sow.md",
+      "title": "Statement of Work Playbook",
+      "category": "Procurement",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/stakeholder-analysis.md",
+      "title": "Stakeholder Analysis Guide",
+      "category": "Discovery",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/stakeholders.md",
+      "title": "Stakeholder Analysis Playbook",
+      "category": "Discovery",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/start.md",
+      "title": "Getting Started with ArcKit",
+      "category": "Getting Started",
       "status": "beta"
     },
     {
       "path": "docs/guides/story.md",
       "title": "Project Story Guide",
-      "category": "Other",
+      "category": "Reporting",
+      "status": "live"
+    },
+    {
+      "path": "docs/guides/strategy.md",
+      "title": "Architecture Strategy Playbook",
+      "category": "Planning",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/tcop.md",
+      "title": "Technology Code of Practice Playbook",
+      "category": "Compliance",
+      "status": "beta"
+    },
+    {
+      "path": "docs/guides/template-builder.md",
+      "title": "Template Builder Guide",
+      "category": "Getting Started",
+      "status": "alpha"
+    },
+    {
+      "path": "docs/guides/traceability.md",
+      "title": "Traceability Guide",
+      "category": "Governance",
       "status": "live"
     },
     {
       "path": "docs/guides/trello.md",
       "title": "Trello Export Quick Guide",
-      "category": "Other",
-      "status": "experimental"
-    },
-    {
-      "path": "docs/guides/migration.md",
-      "title": "File Migration Playbook",
-      "category": "Other",
-      "status": "beta"
-    },
-    {
-      "path": "docs/guides/customize.md",
-      "title": "Template Customization Guide",
-      "category": "Other",
+      "category": "Integrations",
       "status": "experimental"
     },
     {
       "path": "docs/guides/upgrading.md",
       "title": "Upgrading ArcKit",
-      "category": "Other",
+      "category": "Getting Started",
       "status": "beta"
+    },
+    {
+      "path": "docs/guides/wardley.md",
+      "title": "Wardley Mapping Playbook",
+      "category": "Architecture",
+      "status": "experimental"
+    }
+  ],
+  "roleGuides": [
+    {
+      "path": "docs/guides/roles/business-analyst.md",
+      "title": "Business Analyst",
+      "family": "Product and Delivery",
+      "commandCount": 4
+    },
+    {
+      "path": "docs/guides/roles/business-architect.md",
+      "title": "Business Architect",
+      "family": "Architecture",
+      "commandCount": 5
+    },
+    {
+      "path": "docs/guides/roles/cdo.md",
+      "title": "CDO (Chief Data Officer)",
+      "family": "Chief Digital and Data",
+      "commandCount": 4
+    },
+    {
+      "path": "docs/guides/roles/ciso.md",
+      "title": "CISO (Chief Information Security Officer)",
+      "family": "Chief Digital and Data",
+      "commandCount": 5
+    },
+    {
+      "path": "docs/guides/roles/cto-cdio.md",
+      "title": "CTO / CDIO",
+      "family": "Chief Digital and Data",
+      "commandCount": 5
+    },
+    {
+      "path": "docs/guides/roles/data-architect.md",
+      "title": "Data Architect",
+      "family": "Architecture",
+      "commandCount": 4
+    },
+    {
+      "path": "docs/guides/roles/data-governance-manager.md",
+      "title": "Data Governance Manager",
+      "family": "Data",
+      "commandCount": 4
+    },
+    {
+      "path": "docs/guides/roles/delivery-manager.md",
+      "title": "Delivery Manager",
+      "family": "Product and Delivery",
+      "commandCount": 6
+    },
+    {
+      "path": "docs/guides/roles/devops-engineer.md",
+      "title": "DevOps Engineer",
+      "family": "Software Development",
+      "commandCount": 3
+    },
+    {
+      "path": "docs/guides/roles/enterprise-architect.md",
+      "title": "Enterprise Architect",
+      "family": "Architecture",
+      "commandCount": 12
+    },
+    {
+      "path": "docs/guides/roles/it-service-manager.md",
+      "title": "IT Service Manager",
+      "family": "IT Operations",
+      "commandCount": 3
+    },
+    {
+      "path": "docs/guides/roles/network-architect.md",
+      "title": "Network Architect",
+      "family": "Architecture",
+      "commandCount": 3
+    },
+    {
+      "path": "docs/guides/roles/performance-analyst.md",
+      "title": "Performance Analyst",
+      "family": "Data",
+      "commandCount": 4
+    },
+    {
+      "path": "docs/guides/roles/product-manager.md",
+      "title": "Product Manager",
+      "family": "Product and Delivery",
+      "commandCount": 5
+    },
+    {
+      "path": "docs/guides/roles/security-architect.md",
+      "title": "Security Architect",
+      "family": "Architecture",
+      "commandCount": 5
+    },
+    {
+      "path": "docs/guides/roles/service-owner.md",
+      "title": "Service Owner",
+      "family": "Product and Delivery",
+      "commandCount": 3
+    },
+    {
+      "path": "docs/guides/roles/solution-architect.md",
+      "title": "Solution Architect",
+      "family": "Architecture",
+      "commandCount": 10
+    },
+    {
+      "path": "docs/guides/roles/technical-architect.md",
+      "title": "Technical Architect",
+      "family": "Architecture",
+      "commandCount": 5
     }
   ],
   "global": [
     {
       "path": "projects/000-global/ARC-000-PRIN-v1.0.md",
-      "title": "Enterprise Architecture Principles",
+      "title": "Architecture Principles",
       "category": "Architecture",
       "documentId": "ARC-000-PRIN-v1.0",
       "isDefault": true
     }
   ],
+  "typeCategories": {
+    "REQ": "Discovery",
+    "STKE": "Discovery",
+    "RSCH": "Discovery",
+    "DSCT": "Discovery",
+    "SOBC": "Planning",
+    "PLAN": "Planning",
+    "ROAD": "Planning",
+    "STRAT": "Planning",
+    "BKLG": "Planning",
+    "PRIN": "Architecture",
+    "HLDR": "Architecture",
+    "DLDR": "Architecture",
+    "DATA": "Architecture",
+    "WARD": "Architecture",
+    "DIAG": "Architecture",
+    "DFD": "Architecture",
+    "ADR": "Architecture",
+    "PLAT": "Architecture",
+    "RISK": "Governance",
+    "TRAC": "Governance",
+    "PRIN-COMP": "Governance",
+    "CONF": "Governance",
+    "PRES": "Reporting",
+    "ANAL": "Governance",
+    "GAPS": "Governance",
+    "TCOP": "Compliance",
+    "SECD": "Compliance",
+    "SECD-MOD": "Compliance",
+    "AIPB": "Compliance",
+    "ATRS": "Compliance",
+    "DPIA": "Compliance",
+    "JSP936": "Compliance",
+    "SVCASS": "Compliance",
+    "SNOW": "Operations",
+    "DEVOPS": "Operations",
+    "MLOPS": "Operations",
+    "FINOPS": "Operations",
+    "OPS": "Operations",
+    "SOW": "Procurement",
+    "EVAL": "Procurement",
+    "DOS": "Procurement",
+    "GCLD": "Procurement",
+    "GCLC": "Procurement",
+    "DMC": "Procurement",
+    "VEND": "Procurement",
+    "AWRS": "Research",
+    "AZRS": "Research",
+    "GCRS": "Research",
+    "STORY": "Reporting"
+  },
   "projects": [
     {
       "id": "001-ons-data-platform-modernisation",
-      "name": "ONS Data Platform Modernisation",
+      "name": "Ons Data Platform Modernisation",
       "documents": [
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-STKE-v1.0.md",
-          "title": "Stakeholder Drivers & Goals Analysis",
-          "category": "Discovery",
-          "documentId": "ARC-001-STKE-v1.0"
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DATA-v1.0.md",
+          "title": "Data Model",
+          "category": "Architecture",
+          "documentId": "ARC-001-DATA-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-REQ-v1.0.md",
-          "title": "Project Requirements",
-          "category": "Discovery",
-          "documentId": "ARC-001-REQ-v1.0"
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DPIA-v1.0.md",
+          "title": "Data Protection Impact Assessment",
+          "category": "Compliance",
+          "documentId": "ARC-001-DPIA-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-SOBC-v1.0.md",
-          "title": "Strategic Outline Business Case (SOBC)",
-          "category": "Planning",
-          "documentId": "ARC-001-SOBC-v1.0"
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-GAAP-v1.0.md",
+          "title": "GAAP",
+          "category": "Other",
+          "documentId": "ARC-001-GAAP-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-PLAN-v1.0.md",
@@ -365,16 +680,10 @@
           "documentId": "ARC-001-PLAN-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DATA-v1.0.md",
-          "title": "Data Model",
-          "category": "Architecture",
-          "documentId": "ARC-001-DATA-v1.0"
-        },
-        {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-GAAP-v1.0.md",
-          "title": "Government-as-a-Platform (GaaP) Ecosystem Analysis",
-          "category": "Architecture",
-          "documentId": "ARC-001-GAAP-v1.0"
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-REQ-v1.0.md",
+          "title": "Requirements",
+          "category": "Discovery",
+          "documentId": "ARC-001-REQ-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-RISK-v1.0.md",
@@ -383,36 +692,192 @@
           "documentId": "ARC-001-RISK-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-TCOP-v1.0.md",
-          "title": "Technology Code of Practice (TCoP) Assessment",
-          "category": "Compliance",
-          "documentId": "ARC-001-TCOP-v1.0"
-        },
-        {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-SECD-v1.0.md",
-          "title": "UK Government Secure by Design Assessment",
+          "title": "Secure by Design",
           "category": "Compliance",
           "documentId": "ARC-001-SECD-v1.0"
         },
         {
-          "path": "projects/001-ons-data-platform-modernisation/ARC-001-DPIA-v1.0.md",
-          "title": "Data Protection Impact Assessment (DPIA)",
-          "category": "Compliance",
-          "documentId": "ARC-001-DPIA-v1.0"
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-SOBC-v1.0.md",
+          "title": "Strategic Outline Business Case",
+          "category": "Planning",
+          "documentId": "ARC-001-SOBC-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-STKE-v1.0.md",
+          "title": "Stakeholder Analysis",
+          "category": "Discovery",
+          "documentId": "ARC-001-STKE-v1.0"
         },
         {
           "path": "projects/001-ons-data-platform-modernisation/ARC-001-STORY-v1.0.md",
           "title": "Project Story",
-          "category": "Other",
+          "category": "Reporting",
           "documentId": "ARC-001-STORY-v1.0"
+        },
+        {
+          "path": "projects/001-ons-data-platform-modernisation/ARC-001-TCOP-v1.0.md",
+          "title": "TCoP Assessment",
+          "category": "Compliance",
+          "documentId": "ARC-001-TCOP-v1.0"
         }
-      ],
-      "diagrams": [],
-      "decisions": [],
-      "wardleyMaps": [],
-      "dataContracts": [],
-      "reviews": [],
-      "vendors": []
+      ]
     }
-  ]
+  ],
+  "dependencyGraph": {
+    "nodes": {
+      "ARC-000-PRIN-v1.0": {
+        "type": "PRIN",
+        "project": "000-global",
+        "path": "projects/000-global/ARC-000-PRIN-v1.0.md",
+        "title": "Office for National Statistics (ONS) - Enterprise Architecture Principles",
+        "status": "DRAFT",
+        "severity": "MEDIUM",
+        "createdDate": "2025-11-01",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-DATA-v1.0": {
+        "type": "DATA",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-DATA-v1.0.md",
+        "title": "Data Model: ONS Data Platform Modernisation",
+        "status": "DRAFT",
+        "severity": "MEDIUM",
+        "createdDate": "2025-11-12",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-DPIA-v1.0": {
+        "type": "DPIA",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-DPIA-v1.0.md",
+        "title": "Data Protection Impact Assessment (DPIA)",
+        "status": "DRAFT",
+        "severity": "HIGH",
+        "createdDate": "2025-11-12",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-GAAP-v1.0": {
+        "type": "GAAP",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-GAAP-v1.0.md",
+        "title": "Government-as-a-Platform (GaaP) Ecosystem Analysis",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-09",
+        "lastModified": null
+      },
+      "ARC-001-PLAN-v1.0": {
+        "type": "PLAN",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-PLAN-v1.0.md",
+        "title": "Project Plan: ONS Data Platform Modernisation",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-05",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-REQ-v1.0": {
+        "type": "REQ",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-REQ-v1.0.md",
+        "title": "Project Requirements: ONS Data Platform Modernisation",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-01",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-RISK-v1.0": {
+        "type": "RISK",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-RISK-v1.0.md",
+        "title": "Risk Register: ONS Data Platform Modernisation",
+        "status": "DRAFT",
+        "severity": "HIGH",
+        "createdDate": "2025-11-05",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-SECD-v1.0": {
+        "type": "SECD",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-SECD-v1.0.md",
+        "title": "UK Government Secure by Design Assessment",
+        "status": "DRAFT",
+        "severity": "HIGH",
+        "createdDate": "2025-11-05",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-SOBC-v1.0": {
+        "type": "SOBC",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-SOBC-v1.0.md",
+        "title": "Strategic Outline Business Case (SOBC)",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-05",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-STKE-v1.0": {
+        "type": "STKE",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-STKE-v1.0.md",
+        "title": "Stakeholder Drivers & Goals Analysis: ONS Data Platform Modernisation",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-05",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-STORY-v1.0": {
+        "type": "STORY",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-STORY-v1.0.md",
+        "title": "ONS Data Platform Modernisation - Project Story",
+        "status": "DRAFT",
+        "severity": "LOW",
+        "createdDate": "2025-11-12",
+        "lastModified": "2026-01-26"
+      },
+      "ARC-001-TCOP-v1.0": {
+        "type": "TCOP",
+        "project": "001-ons-data-platform-modernisation",
+        "path": "projects/001-ons-data-platform-modernisation/ARC-001-TCOP-v1.0.md",
+        "title": "UK Government Technology Code of Practice (TCoP) Assessment",
+        "status": "DRAFT",
+        "severity": "HIGH",
+        "createdDate": "2025-11-12",
+        "lastModified": "2026-01-26"
+      }
+    },
+    "edges": [
+      {
+        "from": "ARC-000-PRIN-v1.0",
+        "to": "ARC-001-PRIN",
+        "type": "references"
+      },
+      {
+        "from": "ARC-001-REQ-v1.0",
+        "to": "ARC-001-PRIN",
+        "type": "references"
+      },
+      {
+        "from": "ARC-001-REQ-v1.0",
+        "to": "ARC-001-STKE",
+        "type": "references"
+      },
+      {
+        "from": "ARC-001-STKE-v1.0",
+        "to": "ARC-001-PRIN",
+        "type": "references"
+      },
+      {
+        "from": "ARC-001-STKE-v1.0",
+        "to": "ARC-001-RISK",
+        "type": "references"
+      },
+      {
+        "from": "ARC-001-STKE-v1.0",
+        "to": "ARC-001-REQ",
+        "type": "references"
+      }
+    ]
+  }
 }
