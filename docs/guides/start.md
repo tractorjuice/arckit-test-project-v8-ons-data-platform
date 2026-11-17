@@ -2,37 +2,125 @@
 
 > **Guide Origin**: Official | **ArcKit Version**: [VERSION]
 
-`/arckit.start` and `/arckit.init` are your entry points to ArcKit. Start gives you orientation and routes you to the right workflow; init creates the project structure.
+The `start` and `init` commands are your entry points to ArcKit. Start gives you orientation and routes you to the right workflow; init creates the project structure.
+
+Command syntax depends on your AI platform:
+
+| Platform | Start | Init | Principles |
+| --- | --- | --- | --- |
+| Claude Code / OpenCode | `/arckit:start` | `/arckit:init` | `/arckit:principles` |
+| Gemini CLI | `/arckit:start` | `/arckit:init` | `/arckit:principles` |
+| Codex CLI | `$arckit-start` | `$arckit-init` | `$arckit-principles` |
+| GitHub Copilot | `/arckit-start` | `/arckit-init` | `/arckit-principles` |
+
+Examples below use Claude Code / OpenCode syntax. Translate commands using the table above for other platforms.
 
 ---
 
 ## Quick Start
 
+### Step 0: Check your platform setup
+
+If ArcKit is already installed and enabled for your platform, skip to Step 1.
+
+For Claude Code, ArcKit needs Claude Code **v2.1.319 or later**, and Node.js on your `PATH`. From a terminal:
+
 ```bash
-# Step 1: Get oriented — see project status and available commands
-/arckit.start
-
-# Step 2: Initialize project structure (if no projects/ directory exists)
-/arckit.init
-
-# Step 3: Create architecture principles (prerequisite for most commands)
-/arckit.principles
+claude install latest
+claude --version
 ```
+
+If `claude` isn't on your PATH yet, follow the [official Claude Code install guide](https://docs.claude.com/en/docs/claude-code/quickstart) first, then run `claude install latest`. ArcKit will warn you at session start if your client is below the supported floor.
+
+For Codex CLI, install or upgrade the ArcKit plugin marketplace and enable plugin hooks:
+
+```bash
+# First install
+codex plugin marketplace add tractorjuice/arckit-codex
+
+# Existing install
+codex plugin marketplace upgrade arckit
+
+# Required for plugin-bundled lifecycle hooks
+codex features enable hooks
+codex features enable plugin_hooks
+```
+
+Restart Codex, run `/plugins`, choose **ArcKit Plugins**, then install and enable **ArcKit**.
+
+For Gemini CLI, OpenCode CLI, and GitHub Copilot, use the platform-specific install steps on the [Getting Started page](https://arckit.org/getting-started.html).
+
+### Step 1: Run the workflow
+
+```bash
+# Claude Code / OpenCode: get oriented, initialize, then create principles
+/arckit:start
+/arckit:init
+/arckit:principles
+```
+
+For Codex CLI, the same workflow is:
+
+```bash
+$arckit-start
+$arckit-init
+$arckit-principles
+```
+
+> **Claude Code users — ArcKit "workflows" are unrelated to Claude Code's dynamic-workflows feature.** Throughout this guide, "workflow" means an ArcKit command sequence. Claude Code's built-in dynamic workflows (which fan work out across many agents) are a separate feature; as of Claude Code v2.1.160 their free-text trigger keyword is `ultracode` — the word *workflow* no longer starts one — so the term is safe to type here. ArcKit ships no `ultracode` content, and running a slash command (`/arckit:start`) or the `architecture-workflow` skill never starts a dynamic workflow. Other platforms (Codex, Gemini, OpenCode, Copilot) have no equivalent feature.
 
 ---
 
-## `/arckit.start` — Get Oriented
+## Vibe Start — The 3-Prompt Super Prompt
+
+If you want to skip the decision tree and let ArcKit do the heavy lifting, this is the fastest possible path from empty repo to a fully-populated project. Three prompts, no manual orchestration:
+
+```text
+1. /arckit:init  This is a project for {one-line description of what you're building}.
+
+2. /arckit:principles
+
+3. Now create all the artifacts. Take your time. Do not stop until complete.
+```
+
+### What Happens
+
+- **Prompt 1** — `init` scaffolds the `projects/` structure and the one-line description seeds the project context.
+- **Prompt 2** — `principles` generates `ARC-000-PRIN-v1.0.md`, the prerequisite that most other commands depend on.
+- **Prompt 3** — the assistant works through the standard delivery workflow autonomously: `stakeholders` → `requirements` → `risk` → `sobc` → `adr` → `data-model` → `hld-review` → `roadmap`, etc., chaining via the `handoffs:` metadata in each command's frontmatter.
+
+### When To Use It
+
+- **Greenfield projects** where you want a complete first-pass set of artifacts to react to.
+- **Demos and proofs of concept** where speed matters more than per-command supervision.
+- **Vibe-coding sessions** where you want the assistant to keep going until everything is on disk.
+
+### When Not To Use It
+
+- **Heavily regulated work** (UK Gov Secure by Design, MOD, EU AI Act) where each artifact needs reviewer sign-off before the next is generated.
+- **Existing projects** with artifacts already on disk — run `/arckit:navigator` first to see what is missing rather than regenerating.
+- **Token-constrained sessions** — the full chain can run dozens of commands. Use the Claude Code session default, normally Claude Sonnet 5, and move to Claude Fable 5.1 (the default Fable model since Claude Code v2.1.257) only where your tenant exposes it and the work justifies the higher tier.
+
+### Tips For Vibe Start
+
+- Add constraints to prompt 1: `/arckit:init This is a project for X. Target users are Y. Budget is Z.`
+- Use prompt 3 verbatim — the phrase "do not stop until complete" reliably suppresses early stopping. Followed by `/arckit:health` to spot anything skipped.
+- If the run stalls, resume with: `Continue from where you stopped. Do not stop until complete.`
+
+---
+
+## `/arckit:start` — Get Oriented
 
 **Inputs**: None required. Optionally provide a focus area.
 
 ```bash
 # Full onboarding experience
-/arckit.start
+/arckit:start
 
 # Jump to a specific workflow area
-/arckit.start new project
-/arckit.start procurement
-/arckit.start governance review
+/arckit:start new project
+/arckit:start procurement
+/arckit:start governance review
 ```
 
 Output: Console only (no file created). This is a navigation aid, not a governance artifact.
@@ -49,11 +137,11 @@ Output: Console only (no file created). This is a navigation aid, not a governan
 ### Example Output
 
 ```text
-ArcKit — Enterprise Architecture Governance Toolkit
-Version 2.10.0 | 60 commands | Plugin mode
+ArcKit — The Enterprise Architecture Governance Harness
+Plugin mode
 
-Your AI-powered assistant for architecture governance, vendor procurement,
-and compliance — all driven by templates and traceability.
+Your AI-powered harness for strategy, architecture, delivery, and assurance
+— all driven by templates and traceability.
 
 Projects
 --------
@@ -96,13 +184,13 @@ How can I help today?
 
 ---
 
-## `/arckit.init` — Create Project Structure
+## `/arckit:init` — Create Project Structure
 
 **Inputs**: None required.
 
 ```bash
 # Initialize project structure
-/arckit.init
+/arckit:init
 ```
 
 Output: Creates `projects/` directory structure. No governance artifact is generated.
@@ -156,7 +244,7 @@ Each command automatically creates numbered project directories (001-\*, 002-\*)
 
 ## Workflow Paths
 
-`/arckit.start` connects to all five standard ArcKit workflows:
+`/arckit:start` connects to all five standard ArcKit workflows:
 
 | Workflow | Entry Point | Key Commands |
 |----------|-------------|--------------|
@@ -166,23 +254,23 @@ Each command automatically creates numbered project directories (001-\*, 002-\*)
 | Cloud Migration | Platform strategy | `aws-research` / `azure-research` → `platform-design` → `wardley` |
 | Data Platform | Data architecture | `data-model` → `datascout` → `data-mesh-contract` |
 
-See [WORKFLOW-DIAGRAMS.md](../../WORKFLOW-DIAGRAMS.md) for visual workflow diagrams.
+See [WORKFLOW-DIAGRAMS.md](../WORKFLOW-DIAGRAMS.md) for visual workflow diagrams.
 
 ---
 
 ## Tips
 
-- **Run `/arckit.start` at the beginning of any session** — it gives you a quick snapshot of where things stand and what to do next.
-- **Run `/arckit.init` once per repository** — it creates the project structure. Safe to re-run if the structure already exists.
-- **Use a focus argument** like `/arckit.start procurement` to skip directly to that section of the decision tree.
-- **Principles next** — after init, run `/arckit.principles` as most commands depend on architecture principles.
-- **Pairs well with `/arckit.health`** — start gives you navigation, health gives you artifact-level diagnostics.
+- **Run `/arckit:start` at the beginning of any session** — it gives you a quick snapshot of where things stand and what to do next.
+- **Run `/arckit:init` once per repository** — it creates the project structure. Safe to re-run if the structure already exists.
+- **Use a focus argument** like `/arckit:start procurement` to skip directly to that section of the decision tree.
+- **Principles next** — after init, run `/arckit:principles` as most commands depend on architecture principles.
+- **Pairs well with `/arckit:health`** — start gives you navigation, health gives you artifact-level diagnostics.
 
 ---
 
 ## Related Commands
 
-- `/arckit.principles` — Create architecture principles (run after init)
-- `/arckit.plan` — Create project plan with timeline and phases
-- `/arckit.health` — Detailed artifact health scan
-- `/arckit.customize` — Customize document templates
+- `/arckit:principles` — Create architecture principles (run after init)
+- `/arckit:plan` — Create project plan with timeline and phases
+- `/arckit:health` — Detailed artifact health scan
+- `/arckit:customize` — Customize document templates

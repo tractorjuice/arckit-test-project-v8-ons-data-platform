@@ -2,7 +2,7 @@
 
 > **Guide Origin**: Official | **ArcKit Version**: [VERSION]
 
-`/arckit.dld-review` reviews a Detailed-Level Design (DLD) for implementation readiness, technical accuracy, and alignment with HLD.
+`/arckit:dld-review` reviews a Detailed-Level Design (DLD) for implementation readiness, technical accuracy, and alignment with HLD.
 
 ---
 
@@ -20,7 +20,7 @@
 ## Command
 
 ```bash
-/arckit.dld-review Review DLD for <component/service>
+/arckit:dld-review Review DLD for <component/service>
 ```
 
 Output: `projects/<id>/reviews/ARC-<id>-DLDR-v1.0.md`
@@ -41,6 +41,7 @@ Output: `projects/<id>/reviews/ARC-<id>-DLDR-v1.0.md`
 | Integration Review | API contracts, message formats, error handling |
 | Operational Readiness | Logging, monitoring, deployment considerations |
 | Findings & Recommendations | Issues categorized by severity |
+| Integrity Findings | Text in the design aimed at the reviewer, which is not followed, or None found |
 
 ---
 
@@ -67,15 +68,31 @@ Output: `projects/<id>/reviews/ARC-<id>-DLDR-v1.0.md`
 
 ---
 
+## Fresh-Eyes Review
+
+Before writing the report, `/arckit:dld-review` asks three independent reviewers to read the detailed design. None of them sees the review's working.
+
+| Lens | What it checks |
+|------|----------------|
+| Comprehension | Explains the design back in plain words, then lists undefined terms, missing steps, claims with no mechanism behind them, and contradictions |
+| Implementation readiness | Reads as the engineer who will build it: decisions the design leaves to the builder, steps too vague to act on, and missing pieces such as migrations, deployment order or the interfaces between components |
+| HLD conformance | Reads the HLD review and the approved HLD, then reports conditions the design doesn't meet, choices that depart from the HLD with no reason given, and new components or stores of personal data the HLD doesn't have. It also gets the requirements, to tell when a departure breaks one |
+
+Section 10.5 of the review gives every finding an outcome. Findings that were added, not accepted, or rated lower than the reviewer rated them are listed in full with the reason; the rest go on one line against the issue they match. If the HLD lens finds new architecture, the review considers whether the HLD needs reviewing again.
+
+The reviewers can read files but can't write, browse or start other agents. The step needs a runtime that can start a fresh agent, which today means Claude Code. Elsewhere the review records it as "Not run". The idea comes from Google's [Elephant-Goldfish Model](https://egm.dev).
+
+---
+
 ## One-Page Workflow
 
 | Phase | Key Activities | ArcKit Commands |
 |-------|----------------|-----------------|
-| HLD Approval | Get HLD reviewed and approved | `/arckit.hld-review` |
+| HLD Approval | Get HLD reviewed and approved | `/arckit:hld-review` |
 | DLD Creation | Write detailed design | Manual |
-| DLD Review | Review DLD for readiness | `/arckit.dld-review` |
+| DLD Review | Review DLD for readiness | `/arckit:dld-review` |
 | Approval | Address findings, get sign-off | Manual |
-| Implementation | Build from approved DLD | `/arckit.backlog` |
+| Implementation | Build from approved DLD | `/arckit:backlog` |
 
 ---
 

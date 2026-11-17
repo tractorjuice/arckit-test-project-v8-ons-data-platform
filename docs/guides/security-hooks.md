@@ -39,7 +39,7 @@ Scans user prompts for:
 
 ```text
 $ echo '{"userPrompt": "Use this key sk-ant-abc123def456ghi789"}' \
-    | python3 arckit-claude/hooks/secret-detection.py
+    | python3 plugins/arckit-claude/hooks/secret-detection.py
 # Output: {"decision": "block", "reason": "Warning: Potential secrets detected: ..."}
 ```
 
@@ -60,7 +60,7 @@ Blocks writes to:
 
 ```text
 $ echo '{"tool_name": "Write", "tool_input": {"file_path": ".env", "content": "DB_HOST=localhost"}}' \
-    | python3 arckit-claude/hooks/file-protection.py
+    | python3 plugins/arckit-claude/hooks/file-protection.py
 # Output: {"decision": "block", "reason": "Protected: Protected file: .env\nFile: .env\n..."}
 ```
 
@@ -72,7 +72,7 @@ Scans the content of files being written or edited using the same pattern librar
 
 ```text
 $ echo '{"tool_name": "Write", "tool_input": {"file_path": "config.py", "content": "db_host=localhost"}}' \
-    | python3 arckit-claude/hooks/secret-file-scanner.py
+    | python3 plugins/arckit-claude/hooks/secret-file-scanner.py
 # Output: no output (safe content passes through)
 ```
 
@@ -98,10 +98,10 @@ ALLOWED_EXCEPTIONS = [
 
 ```python
 ALLOWED_DIRECTORIES = [
-    "arckit-claude/commands/",
-    "arckit-claude/templates/",
-    "arckit-claude/agents/",
-    "arckit-claude/hooks/",
+    "plugins/arckit-claude/commands/",
+    "plugins/arckit-claude/templates/",
+    "plugins/arckit-claude/agents/",
+    "plugins/arckit-claude/hooks/",
     "docs/",
     ".arckit/templates/",
     "your-project/docs/",  # Add here
@@ -110,23 +110,51 @@ ALLOWED_DIRECTORIES = [
 
 ### Content scanner skip patterns
 
-To prevent `secret-file-scanner.py` from scanning certain files (e.g., documentation that legitimately discusses secret formats), add a regex to `SKIP_PATTERNS`:
+`secret-file-scanner.mjs` skips only ArcKit's own security tooling and documentation, which legitimately discuss secret formats. Paths are resolved (so `..` and symlinks cannot escape) and matched relative to the plugin root, and — when the plugin runs from an ArcKit source checkout (`<repo>/plugins/arckit-claude`) — relative to that repo root. Files in your own projects, including `docs/*.md`, `README.md` and `CHANGELOG.md`, are always scanned.
 
-```python
-SKIP_PATTERNS = [
-    r"\.pre-commit-config\.yaml$",
-    r"secret-detection\.py$",
-    r"secret-file-scanner\.py$",
-    r"file-protection\.py$",
-    r"\.secrets\.baseline$",
-    r"arckit-claude/commands/.*\.md$",
-    r"arckit-claude/templates/.*\.md$",
-    r"docs/.*\.md$",
-    r"CHANGELOG\.md$",
-    r"README\.md$",
-    r"your-custom-pattern\.md$",  # Add here
-]
+```js
+// Relative to the plugin root
+const PLUGIN_SKIP_PATTERNS = [
+  /^hooks\/(?:secret-detection|secret-file-scanner|file-protection)\.mjs$/,
+  /^commands\/[^/]+\.md$/,
+  /^templates\/[^/]+\.md$/,
+  /^docs\/(?:[^/]+\/)*[^/]+\.md$/,
+  /^(?:README|CHANGELOG)\.md$/,
+];
+
+// Relative to the ArcKit source repo root
+const SOURCE_REPO_SKIP_PATTERNS = [
+  /^\.pre-commit-config\.yaml$/,
+  /^\.secrets\.baseline$/,
+  /^docs\/(?:[^/]+\/)*[^/]+\.md$/,
+  /^(?:README|CHANGELOG)\.md$/,
+];
 ```
+
+Keep new patterns anchored (`^...$`) to a path relative to one of these roots; an unanchored pattern such as `docs/.*\.md$` would exempt any path containing that substring.
+
+## Restricting web access for research agents
+
+ArcKit's web-research agents (`research`, `datascout`, `aws-research`, `azure-research`, `gcp-research`, `gov-*`, `grants`) use `WebFetch`. For a regulated or OFFICIAL-SENSITIVE deployment you may want to confine that traffic to an approved set of domains. As of Claude Code v2.1.162, explicit `WebFetch(domain:...)` permission rules **take precedence over the built-in preapproved-host auto-allow** (previously the preapproved hosts leaked through), so a deny/allow policy now actually holds.
+
+Add rules to `.claude/settings.json` (or org managed settings for fleet-wide enforcement — see [Fleet & Version Governance](enterprise-scale.md#fleet--version-governance-managed-settings)):
+
+```json
+{
+  "permissions": {
+    "deny": ["WebFetch"],
+    "allow": [
+      "WebFetch(domain:*.gov.uk)",
+      "WebFetch(domain:*.service.gov.uk)",
+      "WebFetch(domain:docs.aws.amazon.com)"
+    ]
+  }
+}
+```
+
+This is a Claude Code permission policy, not an ArcKit hook — ArcKit ships no domain restrictions by default, leaving the choice to the deployment.
+
+**Sandboxed commands can be restricted harder (Claude Code v2.1.219+).** `WebFetch` rules govern the model's own fetches. Commands that run inside the sandbox reach the network on their own, and `sandbox.network.strictAllowlist` denies any non-allowlisted host outright rather than prompting for it. Pair it with the MCP endpoint allowlist — see [the enterprise security baseline](enterprise-scale.md#5-set-the-security-and-network-baseline).
 
 ## Testing
 
@@ -136,7 +164,7 @@ You can test each hook by piping JSON to stdin. All hooks handle empty input gra
 
 ```bash
 echo '{"tool_name": "Write", "tool_input": {"file_path": ".env", "content": "VALUE=abc"}}' \
-    | python3 arckit-claude/hooks/file-protection.py
+    | python3 plugins/arckit-claude/hooks/file-protection.py
 ```
 
 Expected: `{"decision": "block", ...}`
@@ -145,7 +173,7 @@ Expected: `{"decision": "block", ...}`
 
 ```bash
 echo '{"userPrompt": "Use this key sk-ant-abc123def456ghi789"}' \
-    | python3 arckit-claude/hooks/secret-detection.py
+    | python3 plugins/arckit-claude/hooks/secret-detection.py
 ```
 
 Expected: `{"decision": "block", ...}`
@@ -154,7 +182,7 @@ Expected: `{"decision": "block", ...}`
 
 ```bash
 echo '{"tool_name": "Write", "tool_input": {"file_path": "test.md", "content": "pwd=hunter2"}}' \
-    | python3 arckit-claude/hooks/secret-file-scanner.py
+    | python3 plugins/arckit-claude/hooks/secret-file-scanner.py
 ```
 
 Expected: `{"decision": "block", ...}`
@@ -162,8 +190,8 @@ Expected: `{"decision": "block", ...}`
 ### Test that allowed files pass through
 
 ```bash
-echo '{"tool_name": "Write", "tool_input": {"file_path": "arckit-claude/commands/research.md", "content": "Use API key format: sk-xxx"}}' \
-    | python3 arckit-claude/hooks/secret-file-scanner.py
+echo '{"tool_name": "Write", "tool_input": {"file_path": "plugins/arckit-claude/commands/research.md", "content": "Use API key format: sk-xxx"}}' \
+    | python3 plugins/arckit-claude/hooks/secret-file-scanner.py
 ```
 
 Expected: no output (exit code 0, file is in a skip pattern)
@@ -171,9 +199,9 @@ Expected: no output (exit code 0, file is in a skip pattern)
 ### Test that empty input does not crash
 
 ```bash
-echo '' | python3 arckit-claude/hooks/file-protection.py
-echo '' | python3 arckit-claude/hooks/secret-detection.py
-echo '' | python3 arckit-claude/hooks/secret-file-scanner.py
+echo '' | python3 plugins/arckit-claude/hooks/file-protection.py
+echo '' | python3 plugins/arckit-claude/hooks/secret-detection.py
+echo '' | python3 plugins/arckit-claude/hooks/secret-file-scanner.py
 ```
 
 Expected: no output or `{}` (exit code 0 for all)

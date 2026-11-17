@@ -4,7 +4,7 @@
 
 A research-backed guide to creating readable C4 architecture diagrams with minimal edge crossings and clear visual hierarchy. This guide covers the graph drawing theory behind layout engines, practical declaration ordering strategies, quality targets from empirical research, and a structured validation checklist.
 
-For the full reference used by the `/arckit:diagram` command, see `arckit-claude/skills/mermaid-syntax/references/c4-layout-science.md`.
+For the full reference used by the `/arckit:diagram` command, see `plugins/arckit-claude/skills/mermaid-syntax/references/c4-layout-science.md`.
 
 ---
 
@@ -135,7 +135,7 @@ The Gestalt principle of proximity states that elements placed close together ar
 
 Use dashed borders for trust boundaries and solid borders for system boundaries:
 
-```mermaid
+```text
 %% Trust boundary (dashed)
 subgraph TrustBoundary["DMZ"]
     style TrustBoundary stroke:#1168BD,stroke-dasharray:5 5,fill:none
@@ -186,7 +186,7 @@ This alone resolves most edge crossing issues.
 
 Group related elements using `subgraph` blocks:
 
-```mermaid
+```text
 subgraph Services["Business Services"]
     PaymentService["Payment Service"]
     NotificationService["Notification Service"]
@@ -277,4 +277,4 @@ Choose the right format based on diagram complexity and requirements:
 
 ---
 
-*This guide is part of the ArcKit documentation. For the reference used by the diagram command, see `arckit-claude/skills/mermaid-syntax/references/c4-layout-science.md`. For the diagram command itself, see `/arckit:diagram`.*
+*This guide is part of the ArcKit documentation. For the reference used by the diagram command, see `plugins/arckit-claude/skills/mermaid-syntax/references/c4-layout-science.md`. For the diagram command itself, see `/arckit:diagram`.*

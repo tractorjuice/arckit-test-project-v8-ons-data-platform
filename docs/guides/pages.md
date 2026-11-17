@@ -2,7 +2,7 @@
 
 > **Guide Origin**: Official | **ArcKit Version**: [VERSION]
 
-`/arckit.pages` generates a GitHub Pages documentation site that displays all project documents with Mermaid diagram support.
+`/arckit:pages` generates a GitHub Pages documentation site that displays all project documents with Mermaid diagram support.
 
 ---
 
@@ -19,13 +19,41 @@
 ## Command
 
 ```bash
-/arckit.pages Generate documentation site for this repository
+/arckit:pages Generate documentation site for this repository
 ```
 
 Output:
 
 - `docs/index.html` - Main documentation site
 - `docs/manifest.json` - Document index
+- `docs/llms.txt` - only with `LLMS=true`: an index for AI agents and crawlers ([llmstxt.org](https://llmstxt.org/) format) linking to every artifact, guide, and project. Without the flag, an `llms.txt` an earlier run generated is removed. Hand-curated `docs/llms.txt` files (without the ArcKit generation marker) are never touched.
+- `docs/telemetry.json` - Session telemetry rollup (newer-first, capped at 50 sessions). Written by the `session-learner.mjs` Stop hook when `docs/` exists; powers the dashboard's Session Telemetry + Recent Sessions panels.
+
+### Confidentiality
+
+A governance site can hold client-confidential or live-tender material, so the command is cautious by default:
+
+- **Nothing is published by the command.** It writes files to `docs/` only. They go public when you commit and push them and the repository is public or GitHub Pages is on.
+- **The vendor ranking is opt-in.** The ranked summary of `vendors/scores.json` (vendor names, weighted totals, category averages) goes into `docs/manifest.json` only with `VENDOR_SCORES=true`.
+- **`llms.txt` is opt-in.** An index built for AI crawlers is written only with `LLMS=true`.
+- **Every run reports what it indexed**: how many artefacts and vendor documents went into `docs/`, which artefacts are marked above OFFICIAL in their Document Control, and whether the ranking and `llms.txt` were included.
+- **To keep a project out of the site completely**, put it in a directory git ignores. The command skips it.
+
+```bash
+/arckit:pages LLMS=true VENDOR_SCORES=true   # include both opt-in outputs
+```
+
+Guide grouping metadata is sourced from `config/guide-groups.mjs`. The
+manifest includes each guide's functional `category`, top-level `section`,
+optional overlay/community `pack`, lifecycle `status`, plus
+`guideSectionOrder` and `guideCategoryOrder` for deterministic UI sorting.
+The fallback `Other / Uncategorised` section is reserved for guides without an
+explicit mapping.
+
+The site copies the core ArcKit guides into `docs/guides/`, plus the guides of
+each overlay you have installed, for you or for this repository. Each overlay
+ships the guides for its own commands, so a French or TOGAF guide appears only
+when that overlay is installed.
 
 ---
 
@@ -103,10 +131,10 @@ Site available at: `https://{owner}.github.io/{repo}/`
 
 | Phase | Key Activities | ArcKit Commands |
 |-------|----------------|-----------------|
-| Discovery | Document requirements and stakeholders | `/arckit.requirements`, `/arckit.stakeholders` |
-| Design | Create architecture artifacts | `/arckit.hld-review`, `/arckit.diagram` |
-| Compliance | Assess against standards | `/arckit.tcop`, `/arckit.secure` |
-| Publish | Generate documentation site | `/arckit.pages` |
+| Discovery | Document requirements and stakeholders | `/arckit:requirements`, `/arckit:stakeholders` |
+| Design | Create architecture artifacts | `/arckit:hld-review`, `/arckit:diagram` |
+| Compliance | Assess against standards | `/arckit:tcop`, `/arckit:secure` |
+| Publish | Generate documentation site | `/arckit:pages` |
 
 ---
 
@@ -114,15 +142,14 @@ Site available at: `https://{owner}.github.io/{repo}/`
 
 The generated site automatically renders Mermaid diagrams:
 
-```markdown
+````markdown
 ```mermaid
 graph TD
     A[Start] --> B{Decision}
     B -->|Yes| C[Action]
     B -->|No| D[End]
-```text
-
 ```
+````
 
 Supported diagram types:
 
@@ -142,7 +169,7 @@ Supported diagram types:
 |-----------|---------|---------|
 | Styling | GOV.UK Frontend | 5.13.0 |
 | Markdown | marked.js | 15.0.6 |
-| Diagrams | mermaid.js | 11.4.1 |
+| Diagrams | mermaid.js | 11.15.0 |
 
 All libraries loaded from CDN for easy updates.
 
@@ -169,6 +196,8 @@ The dashboard (`#dashboard`) is the default landing page, providing an instant p
 | Project Artifact Coverage | Horizontal bar chart per project with color coding (green >=80%, amber >=50%, red <50%) |
 | Projects Table | Name, Docs, Diagrams, ADRs, Vendors, Coverage mini-bar |
 | Governance Coverage | Checklist of key artifact types present/absent across portfolio |
+| Session Telemetry | Aggregate tool calls, median p50 latency, agents spawned, MCP calls across the last 10 sessions (only renders when `docs/telemetry.json` exists — written by `session-learner.mjs`) |
+| Recent Sessions | Last 5 sessions with date, type, tool count, p50, agent count, MCP count |
 
 ### Coverage Calculation
 

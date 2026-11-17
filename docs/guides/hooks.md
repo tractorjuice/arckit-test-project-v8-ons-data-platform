@@ -1,0 +1,170 @@
+# Hooks Guide
+
+> **Guide Origin**: Official | **ArcKit Version**: [VERSION]
+
+ArcKit's Claude Code plugin includes automation hooks across 10 event types. Hooks run automatically — no manual configuration required.
+
+## Overview
+
+| Event | Hooks | When it fires |
+|-------|-------|---------------|
+| **SessionStart** | arckit-session, version-check, v5-migration-banner, notify-stale-artifacts | Session start, resume, clear, compact |
+| **Stop** | session-learner | Session ends normally |
+| **StopFailure** | session-learner | Session ends with error |
+| **UserPromptSubmit** | arckit-context, secret-detection, supplier-isolation, sync-guides, graph-inject | Every user message and matched ArcKit commands |
+| **SubagentStart** | inject-agent-context | An ArcKit subagent starts (not readers or writers) |
+| **PreToolUse** | validate-reader-handoff (SubagentHandback), supplier-isolation, validate-arc-filename, score-validator, validate-wardley-math, file-protection, secret-file-scanner | Before selected tool calls |
+| **PostToolUse** | update-manifest, provenance-stamp, tidy-wardley-labels, telemetry | After selected tool calls |
+| **TaskCreated** | telemetry | When an agent task is created |
+| **FileChanged** | external-context-watch | Watched external documents change |
+| **PostCompact** | postcompact-rehydrate | After context compaction |
+
+## SessionStart Hooks
+
+### arckit-session
+
+Fires once at session start (and on resume/clear/compact). Injects ArcKit plugin version into context and exports environment variables (`ARCKIT_VERSION`, `CLAUDE_CODE_NO_FLICKER=1`) for the session.
+
+Also detects:
+
+- Whether a `projects/` directory exists
+- External files newer than the latest artifacts (prompts re-running commands)
+- Recent session history from `.arckit/memory/sessions.md`
+- `projects/*/external/` directories to watch for mid-session evidence changes
+
+### version-check
+
+Compares the local plugin version against the latest GitHub release tag. Shows a notification if an update is available.
+
+## Stop / StopFailure Hooks
+
+### session-learner
+
+Fires when a session ends (both normal and failure). Records session activity — which projects were touched, what artifact types were created or modified — to `.arckit/memory/sessions.md` for context in future sessions.
+
+## FileChanged Hooks
+
+### external-context-watch
+
+`arckit-session` registers every existing `projects/*/external/` directory as a
+dynamic watch path at session start. `external-context-watch` injects refreshed
+project context when a watched external document is added, changed, or removed,
+and refreshes the watch list so newly created nested external directories are
+picked up after the next file-change event.
+
+This means a briefing, transcript, vendor pack, regulation, or architecture
+note dropped into `external/` mid-session is surfaced to Claude without waiting
+for a restart, `/compact`, or another `/arckit:` command. README files inside
+`external/` are ignored.
+
+## UserPromptSubmit Hooks
+
+### arckit-context (all prompts)
+
+Pre-computes project context when any `/arckit:` command is run. Injects project inventory, artifact lists, newest artifact timestamps, and ArcKit version via `additionalContext` so commands don't need to discover this themselves.
+
+### secret-detection (all prompts)
+
+Scans user prompts for secret patterns (API keys, tokens, passwords, connection strings, private keys). Blocks the message before it reaches the model if a secret is detected. See the [Security Hooks Guide](security-hooks.md) for details.
+
+### Command-Specific Hooks
+
+These fire only when the matched command is invoked:
+
+| Hook | Fires on | Purpose |
+|------|----------|---------|
+| **sync-guides** | `/arckit:pages` | Syncs guide files, regenerates `docs/index.html` from the pages template, builds `docs/manifest.json` (including the v2 `dependencyGraph` with per-node `health` flags and the per-project `projectHealth` rollup that powers the dashboard's Project Health panel and Document Map tinting), and writes `docs/llms.txt` (llmstxt.org format) for LLM/agent discovery |
+| **graph-inject** | `/arckit:search`, `/arckit:impact`, `/arckit:traceability`, `/arckit:health`, `/arckit:analyze`, `/arckit:navigator`, `/arckit:graph-report` | Single recipe-driven handler that builds the artifact graph via `graph-utils.mjs` and injects the right pre-extracted context per command — search index, dependency chains, traceability matrix, health findings, governance scan, navigator coverage, or graph-report metrics. Replaces the per-command `*-scan.mjs` handlers |
+
+## PreToolUse Hooks
+
+These fire before Claude writes or edits a file. They can block the operation.
+
+### validate-arc-filename (Write)
+
+Validates that files written to `projects/` follow the ARC naming convention (`ARC-{PID}-{TYPE}-v{VERSION}.md`). Checks:
+
+- Project ID matches the directory number
+- Document type is a known type code
+- Version format is valid
+- Multi-instance types (ADR, DIAG, etc.) have sequence numbers
+- File goes in the correct subdirectory (e.g., ADRs in `decisions/`)
+
+Blocks the write if invalid, and the reason names the corrected path, with the next sequence number and the right subfolder already worked out. Claude then writes the same content there. The hook never changes the write itself.
+
+### score-validator (Write)
+
+Checks `vendors/scores.json` before it is written. Invalid JSON is blocked. A score outside 0–3, weights that don't sum to about 1.0, missing evidence, or an integrity finding holding anything but a type, file and location is reported to the model as a warning.
+
+### supplier-isolation (Read | Grep | Bash | PowerShell)
+
+While `/arckit:evaluate` or `/arckit:score` runs, only their reader can open a supplier's documents under `vendors/`, so a bid's raw text never reaches the context that scores it. `scores.json` and vendor profiles stay readable. The gate stays on until you run another `/command` or clear the session, so `/arckit:hld-review` still reads supplier designs as normal.
+
+### file-protection (Edit | Write)
+
+Blocks writes to sensitive file paths — environment files (`.env`), credential stores, private keys, lock files, and CI/CD configuration. See the [Security Hooks Guide](security-hooks.md) for the full list.
+
+### secret-file-scanner (Edit | Write)
+
+Scans the content being written for embedded secret patterns. Catches cases where a secret is embedded in an otherwise safe file path. See the [Security Hooks Guide](security-hooks.md) for details.
+
+## SubagentStart Hooks
+
+### inject-agent-context
+
+When an ArcKit subagent starts, such as the framework agent, it gets the same project context your own prompts get: the projects, their artefacts, vendor profiles, external documents and global policies. Reader and writer subagents are left out, because they take strict JSON. Other plugins' agents and Claude Code's own agents are never touched.
+
+## PostToolUse Hooks
+
+### update-manifest (Write)
+
+After a file is written to `projects/`, updates `docs/manifest.json` with the new artifact metadata (document ID, type, version, path, timestamp). This keeps the documentation site's artifact index in sync.
+
+### provenance-stamp (Write | Edit)
+
+After an ArcKit artifact is written or edited, stamps build provenance when the hook can derive build context or command effort. It can also add OKF-compatible frontmatter when explicitly enabled with `ARCKIT_OKF_FRONTMATTER=1` or `.arckit/config.json` containing `{ "okfFrontmatter": true }`.
+
+## TaskCreated Hooks
+
+### telemetry
+
+Records ArcKit agent spawns so session summaries can show which subagents ran
+and how much tool activity they performed.
+
+## PostCompact Hooks
+
+### postcompact-rehydrate
+
+Re-injects the same project inventory used by `arckit-context` after manual or
+automatic compaction so dynamic project state is not lost from the context
+window.
+
+## Permissions
+
+No ArcKit hook approves a permission request. Each command and skill declares what it needs in its own `allowed-tools` frontmatter, and Claude Code applies those rules only while it runs.
+
+- **ArcKit's own files** (templates, references, schemas) are pre-approved for reading by `Read(/${CLAUDE_PLUGIN_ROOT}/**)`, because every command reads its templates from the plugin's install directory, outside your project.
+
+- **ArcKit's own scripts** (document IDs, project creation, Wardley rendering, OKF import and export) are pre-approved by each command's `allowed-tools` rules. Claude Code checks those per command, so a script call chained to anything else still asks.
+- **MCP tool calls** ask the first time. To stop the prompts for a server you trust, add it to `permissions.allow` in your settings, for example `"mcp__plugin_arckit_aws-knowledge"` or `"mcp__plugin_arckit_microsoft-learn"`.
+- **Research reader output** is checked by `validate-reader-handoff` (PostToolUse on `Agent`, and PreToolUse on `SubagentHandback` in auto mode), with no shell command and no permission.
+
+## Utility Files
+
+These are shared libraries, not hooks themselves:
+
+| File | Purpose |
+|------|---------|
+| **hook-utils.mjs** | Shared utilities: `parseHookInput()`, `findRepoRoot()`, `extractDocType()`, file I/O helpers |
+| **external-context-utils.mjs** | Shared helpers for external-document watch paths and path filtering |
+| **graph-utils.mjs** | Dependency graph construction (nodes, edges, requirements, principles, risks, vendors, externals) |
+| **graph-rollups.mjs** | Shared health, coverage, and compliance computations: `tagNodeHealth()`, `computeAllProjectRollups()`, plus the canonical `ESSENTIAL_TYPES` / `HIGH_SEVERITY_TYPES` / `CONTEXTUAL_TYPES` / `STALE_THRESHOLD_DAYS` constants used by both `graph-inject` and `sync-guides` |
+| **hooks.json** | Hook registration — maps events and matchers to handler commands |
+
+## Troubleshooting
+
+**Hook not firing?** Check that the hook is registered in `hooks.json` and the matcher pattern matches the tool or command name.
+
+**Hook blocking unexpectedly?** PreToolUse hooks that exit with code 2 and output JSON with `"decision": "block"` will block the tool call. Check stderr output for the hook's reasoning.
+
+**Timeout errors?** Each hook has a timeout (5–30 seconds) defined in `hooks.json`. Long-running invocations of `graph-inject` (e.g. for `/arckit:health` or `/arckit:analyze`) have 30-second timeouts. If a hook times out, it passes silently.

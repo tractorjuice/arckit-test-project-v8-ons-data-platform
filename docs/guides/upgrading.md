@@ -13,7 +13,7 @@ How to upgrade the ArcKit CLI and update your existing projects.
 pip install --upgrade git+https://github.com/tractorjuice/arc-kit.git
 
 # If installed with uv:
-uv tool upgrade arckit-cli --from git+https://github.com/tractorjuice/arc-kit.git
+uv tool install --force arckit-cli --from git+https://github.com/tractorjuice/arc-kit.git
 
 # Verify the new version:
 arckit --help
@@ -121,10 +121,26 @@ arckit init . --ai codex
 
 Make sure you upgraded the CLI first (Step 1), then re-ran init (Step 2). The init command copies the latest commands from the installed package.
 
-### Custom templates lost
+### Claude Code plugin or hook issue
 
-Custom templates in `.arckit/templates-custom/` are preserved across upgrades. Only default templates in `.arckit/templates/` are refreshed. If you edited files in `.arckit/templates/` directly (instead of `.arckit/templates-custom/`), those edits will be overwritten. Use `/arckit.customize` to set up the override workflow:
+Start Claude Code in safe mode before changing ArcKit files:
 
 ```bash
-/arckit.customize requirements   # Copy template for safe customization
+claude --safe-mode
+```
+
+You can also set `CLAUDE_CODE_SAFE_MODE=1` for the session. Safe mode is the
+fastest way to isolate whether an ArcKit hook, command, skill, or installed
+plugin is involved.
+
+`disableBundledSkills` disables Claude Code's bundled skills; it does not
+disable ArcKit plugin skills. To remove ArcKit from the test path, use safe
+mode, disable the plugin in `/plugin`, or uninstall the plugin.
+
+### Custom templates lost
+
+Custom templates in `.arckit/templates-custom/` are preserved across upgrades. Only default templates in `.arckit/templates/` are refreshed. If you edited files in `.arckit/templates/` directly (instead of `.arckit/templates-custom/`), those edits will be overwritten. Use `/arckit:customize` to set up the override workflow:
+
+```bash
+/arckit:customize requirements   # Copy template for safe customization
 ```
