@@ -8,7 +8,7 @@ The `/arckit:health` command scans your projects for governance artifacts that n
 
 Architecture governance artifacts have a shelf life. Research data goes stale, decisions get forgotten, review conditions go unresolved, and traceability links break as projects evolve. The health command performs a quick, non-destructive scan to surface these issues before they become problems.
 
-**Key principle**: The health check is a diagnostic tool, not a governance artifact. It outputs to the console and does not create files. Run it frequently — before governance gates, at the start of a sprint, or as part of your regular project hygiene.
+**Key principle**: The health check is a diagnostic tool, not a governance artifact. It outputs to the console and writes only `docs/health.json` for dashboard integration; it does not create project governance artifacts. Run it frequently — before governance gates, at the start of a sprint, or as part of your regular project hygiene.
 
 ---
 
@@ -87,7 +87,7 @@ Architecture governance artifacts have a shelf life. Research data goes stale, d
    - **If no**: The requirement is likely covered by general design — no action needed
 3. Run `/arckit:traceability` to generate a full traceability matrix showing how requirements connect to designs
 
-**Example scenario**: The project has 45 requirements, but only 8 ADRs exist. Most functional requirements (FR-xxx) are straightforward, but NFR-S-008 (encryption key management) and INT-005 (third-party API authentication) involve significant architectural choices that should be documented as decisions.
+**Example scenario**: The project has 45 requirements, but only 8 ADRs exist. Most functional requirements (FR-xxx) are straightforward, but NFR-SEC-008 (encryption key management) and INT-005 (third-party API authentication) involve significant architectural choices that should be documented as decisions.
 
 ---
 
@@ -129,6 +129,24 @@ Architecture governance artifacts have a shelf life. Research data goes stale, d
 
 ---
 
+### STALE-VIEW — Out-of-date Generated View
+
+**Severity**: MEDIUM
+
+**What it means**: A generated view, an artifact with a Source Artefacts table such as an arc42 description or an SDD handover pack, was built from sources that have since changed. Either a source it cites now has a newer version, or a document of a type it cites (such as an ADR) exists that its table does not list. Cited global sources count too: when the architecture principles in `000-global` move to a new version, every view built from the old one is flagged.
+
+**Why it matters**: A view summarises its sources and records the versions it read. Once a source moves on, the view describes an architecture its evidence no longer supports, and readers who rely on the view (reviewers, suppliers, a delivery team) work from out-of-date information.
+
+**How to resolve**:
+
+1. Re-run the command named in the finding, for example `/arckit:arc42` for an arc42 description
+2. The command writes the next version beside the old one, and its Source Artefacts table records the current sources
+3. Do not edit the old view by hand: the sources are authoritative, and a regenerated view keeps the citations correct
+
+**Example scenario**: The arc42 description `ARC-001-ARC42-v1.0.md` was assembled from `ARC-001-REQ-v1.0` and two ADRs. The requirements have since moved to v1.1 and a third ADR has been accepted. STALE-VIEW lists both and recommends re-running `/arckit:arc42`.
+
+---
+
 ### VERSION-DRIFT — Version Drift
 
 **Severity**: LOW
@@ -158,6 +176,7 @@ Architecture governance artifacts have a shelf life. Research data goes stale, d
 | Orphaned Requirements | Any age | Flagged for awareness. The architect decides whether ADR coverage is needed based on requirement complexity. |
 | Missing Traceability | Any age | Traceability is a best practice for auditability. Missing references should be added as part of regular governance hygiene. |
 | Unincorporated External Files | Any age | External files newer than all artifacts indicate content not yet reflected in governance artifacts. No safe deferral window. |
+| Out-of-date Generated View | Any newer source | A view records the versions it was built from, so any newer source is a precise signal; regenerating it is cheap. |
 | Version Drift | 3 months | Multiple versions indicate active iteration. Three months of inactivity suggests the iteration has stalled or been abandoned. |
 
 ---
